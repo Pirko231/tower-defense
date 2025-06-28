@@ -2,6 +2,8 @@
 
 void TowerManager::addTower(sf::Vector2i where, TowerType what)
 {
+    ArcherFactory archerFactory;
+    towers.push_back(std::move(archerFactory.create()));
 }
 
 void TowerManager::update()

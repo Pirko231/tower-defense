@@ -2,6 +2,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <vector>
 #include "towerFactoryInterface.hpp"
+#include "factories/archerFactory.hpp"
 
 
 class TowerManager

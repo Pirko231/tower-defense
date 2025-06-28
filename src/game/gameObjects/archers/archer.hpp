@@ -12,6 +12,9 @@ public:
     {
 
     }
+    Archer(const Archer& archer)
+        : sprite(archer.sprite)
+    {}
     Archer(Archer&&) = default;
     ~Archer();
 

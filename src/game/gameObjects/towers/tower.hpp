@@ -14,6 +14,10 @@ public:
     }
     ~Tower() override = default;
 
+    /*Tower(const Tower& tower)
+        : sprite(tower.sprite), archer(tower.archer)
+    {}*/
+
     void update();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
