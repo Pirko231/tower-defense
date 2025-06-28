@@ -26,6 +26,9 @@ public:
     TowerTexture archerTower;
 
     sf::Texture grassTile;
+    sf::Texture dirtTile;
+    sf::Texture sandTile;
+    sf::Texture roadTile;
 private:
     AssetLoader()
     {
@@ -33,6 +36,9 @@ private:
         archerTower.archer.loadFromFile("resources/textures/archer.png");
 
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
+        dirtTile.loadFromFile("resources/textures/tiles/dirt.png");
+        sandTile.loadFromFile("resources/textures/tiles/sand.png");
+        roadTile.loadFromFile("resources/textures/tiles/road.png");
     }
 };
 

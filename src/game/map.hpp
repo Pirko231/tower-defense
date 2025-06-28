@@ -21,7 +21,10 @@ public:
 enum class TileType
 {
     Empty = 0,
-    Grass = 1
+    Grass = 1,
+    Dirt = 2,
+    Sand = 3,
+    Road = 4
 };
 
 /// @brief wczytuje mape z pliku i przechowuje ja

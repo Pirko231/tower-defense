@@ -58,6 +58,12 @@ Tile Map::createTile(TileType type)
 {
     if (type == TileType::Grass)
         return Tile{util::AssetLoader::get().grassTile};
+    else if (type == TileType::Dirt)
+        return Tile{util::AssetLoader::get().dirtTile};
+    else if (type == TileType::Sand)
+        return Tile{util::AssetLoader::get().sandTile};
+    else if (type == TileType::Road)
+        return Tile{util::AssetLoader::get().roadTile};
 
     return Tile{util::AssetLoader::get().emptyTexture};
 }
