@@ -7,7 +7,7 @@ class Archer : public IArcher
 {
     sf::Sprite sprite;
 public:
-    Archer(const sf::Texture& _texture)
+    explicit Archer(const sf::Texture& _texture)
         : sprite(_texture)
     {
 
@@ -16,7 +16,7 @@ public:
         : sprite(archer.sprite)
     {}
     Archer(Archer&&) = default;
-    ~Archer();
+    ~Archer() override = default;
 
     void shoot() override;
 

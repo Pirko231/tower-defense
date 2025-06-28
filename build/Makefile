@@ -310,29 +310,53 @@ src/game/gameObjects/archers/archer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.s
 .PHONY : src/game/gameObjects/archers/archer.cpp.s
 
-src/game/gameObjects/tower.o: src/game/gameObjects/tower.cpp.o
-.PHONY : src/game/gameObjects/tower.o
+src/game/gameObjects/managers/towermanager.o: src/game/gameObjects/managers/towermanager.cpp.o
+.PHONY : src/game/gameObjects/managers/towermanager.o
 
 # target to build an object file
-src/game/gameObjects/tower.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o
-.PHONY : src/game/gameObjects/tower.cpp.o
+src/game/gameObjects/managers/towermanager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/managers/towermanager.cpp.o
+.PHONY : src/game/gameObjects/managers/towermanager.cpp.o
 
-src/game/gameObjects/tower.i: src/game/gameObjects/tower.cpp.i
-.PHONY : src/game/gameObjects/tower.i
+src/game/gameObjects/managers/towermanager.i: src/game/gameObjects/managers/towermanager.cpp.i
+.PHONY : src/game/gameObjects/managers/towermanager.i
 
 # target to preprocess a source file
-src/game/gameObjects/tower.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.i
-.PHONY : src/game/gameObjects/tower.cpp.i
+src/game/gameObjects/managers/towermanager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/managers/towermanager.cpp.i
+.PHONY : src/game/gameObjects/managers/towermanager.cpp.i
 
-src/game/gameObjects/tower.s: src/game/gameObjects/tower.cpp.s
-.PHONY : src/game/gameObjects/tower.s
+src/game/gameObjects/managers/towermanager.s: src/game/gameObjects/managers/towermanager.cpp.s
+.PHONY : src/game/gameObjects/managers/towermanager.s
 
 # target to generate assembly for a file
-src/game/gameObjects/tower.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.s
-.PHONY : src/game/gameObjects/tower.cpp.s
+src/game/gameObjects/managers/towermanager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/managers/towermanager.cpp.s
+.PHONY : src/game/gameObjects/managers/towermanager.cpp.s
+
+src/game/gameObjects/towers/tower.o: src/game/gameObjects/towers/tower.cpp.o
+.PHONY : src/game/gameObjects/towers/tower.o
+
+# target to build an object file
+src/game/gameObjects/towers/tower.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/towers/tower.cpp.o
+.PHONY : src/game/gameObjects/towers/tower.cpp.o
+
+src/game/gameObjects/towers/tower.i: src/game/gameObjects/towers/tower.cpp.i
+.PHONY : src/game/gameObjects/towers/tower.i
+
+# target to preprocess a source file
+src/game/gameObjects/towers/tower.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/towers/tower.cpp.i
+.PHONY : src/game/gameObjects/towers/tower.cpp.i
+
+src/game/gameObjects/towers/tower.s: src/game/gameObjects/towers/tower.cpp.s
+.PHONY : src/game/gameObjects/towers/tower.s
+
+# target to generate assembly for a file
+src/game/gameObjects/towers/tower.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/towers/tower.cpp.s
+.PHONY : src/game/gameObjects/towers/tower.cpp.s
 
 src/game/map.o: src/game/map.cpp.o
 .PHONY : src/game/map.o
@@ -437,9 +461,12 @@ help:
 	@echo "... src/game/gameObjects/archers/archer.o"
 	@echo "... src/game/gameObjects/archers/archer.i"
 	@echo "... src/game/gameObjects/archers/archer.s"
-	@echo "... src/game/gameObjects/tower.o"
-	@echo "... src/game/gameObjects/tower.i"
-	@echo "... src/game/gameObjects/tower.s"
+	@echo "... src/game/gameObjects/managers/towermanager.o"
+	@echo "... src/game/gameObjects/managers/towermanager.i"
+	@echo "... src/game/gameObjects/managers/towermanager.s"
+	@echo "... src/game/gameObjects/towers/tower.o"
+	@echo "... src/game/gameObjects/towers/tower.i"
+	@echo "... src/game/gameObjects/towers/tower.s"
 	@echo "... src/game/map.o"
 	@echo "... src/game/map.i"
 	@echo "... src/game/map.s"

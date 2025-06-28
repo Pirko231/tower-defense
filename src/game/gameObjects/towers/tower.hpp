@@ -14,9 +14,9 @@ public:
     }
     ~Tower() override = default;
 
-    /*Tower(const Tower& tower)
-        : sprite(tower.sprite), archer(tower.archer)
-    {}*/
+    Tower(Tower& tower)
+        : sprite(tower.sprite), archer(std::move(tower.archer))
+    {}
 
     void update();
 

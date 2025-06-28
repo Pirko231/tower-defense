@@ -9,7 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.cpp" "CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o" "gcc" "CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o.d"
-  "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.cpp" "CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o" "gcc" "CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o.d"
+  "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/managers/towermanager.cpp" "CMakeFiles/main.dir/src/game/gameObjects/managers/towermanager.cpp.o" "gcc" "CMakeFiles/main.dir/src/game/gameObjects/managers/towermanager.cpp.o.d"
+  "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/towers/tower.cpp" "CMakeFiles/main.dir/src/game/gameObjects/towers/tower.cpp.o" "gcc" "CMakeFiles/main.dir/src/game/gameObjects/towers/tower.cpp.o.d"
   "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/map.cpp" "CMakeFiles/main.dir/src/game/map.cpp.o" "gcc" "CMakeFiles/main.dir/src/game/map.cpp.o.d"
   "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/main.cpp" "CMakeFiles/main.dir/src/main.cpp.o" "gcc" "CMakeFiles/main.dir/src/main.cpp.o.d"
   "/home/szymek/Dokumenty/C++/SFML/tower-defense/src/program.cpp" "CMakeFiles/main.dir/src/program.cpp.o" "gcc" "CMakeFiles/main.dir/src/program.cpp.o.d"
