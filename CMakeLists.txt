@@ -38,6 +38,7 @@ add_library(imgui
     ${IMGUI_DIR}/imgui_widgets.cpp
     ${IMGUI_DIR}/backends/imgui-SFML.cpp  # albo sfml, glfw, itd.
     ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
+        src/utils/base.hpp
 )
 
 target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
