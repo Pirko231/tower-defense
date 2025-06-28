@@ -17,12 +17,7 @@ void Map::loadMap(const std::filesystem::path& path)
         std::string line;
         int value{};
         std::getline(file, line, ' ');
-        mapPos.x++;
-        if (line.find('\n') != std::string::npos)
-        {
-            mapPos.y++;
-            mapPos.x = 0;
-        }
+
         if (line.empty())
             break;
         try
@@ -35,6 +30,26 @@ void Map::loadMap(const std::filesystem::path& path)
         catch (std::exception& e)
         {
             std::cerr << "error at map loading: " << e.what() << std::endl;
+        }
+        mapPos.x++;
+        if (line.find('\n') != std::string::npos)
+        {
+            mapPos.y++;
+            mapPos.x = 0;
+            line.erase(line.begin(), line.begin() + line.find('\n') + 1);
+            if (!line.empty())
+                try
+                {
+                    value = std::stoi(line);
+                    Tile tile = createTile(static_cast<TileType>(value));
+                    tile.setPosition(util::calculatePosition(mapPos));
+                    tiles.push_back(tile);
+                    mapPos.x++;
+                }
+                catch (std::exception& e)
+                {
+                    std::cerr << "error at map loading(\\n): " << e.what() << std::endl;
+                }
         }
     }
 }
