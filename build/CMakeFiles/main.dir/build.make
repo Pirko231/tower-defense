@@ -97,16 +97,64 @@ CMakeFiles/main.dir/src/program.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/program.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szymek/Dokumenty/C++/SFML/tower-defense/src/program.cpp -o CMakeFiles/main.dir/src/program.cpp.s
 
+CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.cpp
+CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o -MF CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o.d -o CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o -c /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.cpp
+
+CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.cpp > CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.i
+
+CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.cpp -o CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.s
+
+CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.cpp
+CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o -MF CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o.d -o CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o -c /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.cpp
+
+CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.cpp > CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.i
+
+CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.cpp -o CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.s
+
+CMakeFiles/main.dir/src/game/map.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/game/map.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/map.cpp
+CMakeFiles/main.dir/src/game/map.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/game/map.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/game/map.cpp.o -MF CMakeFiles/main.dir/src/game/map.cpp.o.d -o CMakeFiles/main.dir/src/game/map.cpp.o -c /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/map.cpp
+
+CMakeFiles/main.dir/src/game/map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/game/map.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/map.cpp > CMakeFiles/main.dir/src/game/map.cpp.i
+
+CMakeFiles/main.dir/src/game/map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/game/map.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/map.cpp -o CMakeFiles/main.dir/src/game/map.cpp.s
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/main.cpp.o" \
-"CMakeFiles/main.dir/src/program.cpp.o"
+"CMakeFiles/main.dir/src/program.cpp.o" \
+"CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o" \
+"CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o" \
+"CMakeFiles/main.dir/src/game/map.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 bin/main: CMakeFiles/main.dir/src/main.cpp.o
 bin/main: CMakeFiles/main.dir/src/program.cpp.o
+bin/main: CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o
+bin/main: CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o
+bin/main: CMakeFiles/main.dir/src/game/map.cpp.o
 bin/main: CMakeFiles/main.dir/build.make
 bin/main: /opt/sfml-3/lib/libsfml-graphics-d.so.3.0.0
 bin/main: /opt/sfml-3/lib/libsfml-window-d.so.3.0.0
@@ -117,7 +165,7 @@ bin/main: /opt/sfml-3/lib/libsfml-system-d.so.3.0.0
 bin/main: /usr/lib/x86_64-linux-gnu/libGLX.so
 bin/main: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 bin/main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable bin/main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable bin/main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -286,6 +286,78 @@ lib/imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/lib/imgui/imgui_widgets.cpp.s
 .PHONY : lib/imgui/imgui_widgets.cpp.s
 
+src/game/gameObjects/archers/archer.o: src/game/gameObjects/archers/archer.cpp.o
+.PHONY : src/game/gameObjects/archers/archer.o
+
+# target to build an object file
+src/game/gameObjects/archers/archer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.o
+.PHONY : src/game/gameObjects/archers/archer.cpp.o
+
+src/game/gameObjects/archers/archer.i: src/game/gameObjects/archers/archer.cpp.i
+.PHONY : src/game/gameObjects/archers/archer.i
+
+# target to preprocess a source file
+src/game/gameObjects/archers/archer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.i
+.PHONY : src/game/gameObjects/archers/archer.cpp.i
+
+src/game/gameObjects/archers/archer.s: src/game/gameObjects/archers/archer.cpp.s
+.PHONY : src/game/gameObjects/archers/archer.s
+
+# target to generate assembly for a file
+src/game/gameObjects/archers/archer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/archers/archer.cpp.s
+.PHONY : src/game/gameObjects/archers/archer.cpp.s
+
+src/game/gameObjects/tower.o: src/game/gameObjects/tower.cpp.o
+.PHONY : src/game/gameObjects/tower.o
+
+# target to build an object file
+src/game/gameObjects/tower.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.o
+.PHONY : src/game/gameObjects/tower.cpp.o
+
+src/game/gameObjects/tower.i: src/game/gameObjects/tower.cpp.i
+.PHONY : src/game/gameObjects/tower.i
+
+# target to preprocess a source file
+src/game/gameObjects/tower.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.i
+.PHONY : src/game/gameObjects/tower.cpp.i
+
+src/game/gameObjects/tower.s: src/game/gameObjects/tower.cpp.s
+.PHONY : src/game/gameObjects/tower.s
+
+# target to generate assembly for a file
+src/game/gameObjects/tower.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/gameObjects/tower.cpp.s
+.PHONY : src/game/gameObjects/tower.cpp.s
+
+src/game/map.o: src/game/map.cpp.o
+.PHONY : src/game/map.o
+
+# target to build an object file
+src/game/map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/map.cpp.o
+.PHONY : src/game/map.cpp.o
+
+src/game/map.i: src/game/map.cpp.i
+.PHONY : src/game/map.i
+
+# target to preprocess a source file
+src/game/map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/map.cpp.i
+.PHONY : src/game/map.cpp.i
+
+src/game/map.s: src/game/map.cpp.s
+.PHONY : src/game/map.s
+
+# target to generate assembly for a file
+src/game/map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/game/map.cpp.s
+.PHONY : src/game/map.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -362,6 +434,15 @@ help:
 	@echo "... lib/imgui/imgui_widgets.o"
 	@echo "... lib/imgui/imgui_widgets.i"
 	@echo "... lib/imgui/imgui_widgets.s"
+	@echo "... src/game/gameObjects/archers/archer.o"
+	@echo "... src/game/gameObjects/archers/archer.i"
+	@echo "... src/game/gameObjects/archers/archer.s"
+	@echo "... src/game/gameObjects/tower.o"
+	@echo "... src/game/gameObjects/tower.i"
+	@echo "... src/game/gameObjects/tower.s"
+	@echo "... src/game/map.o"
+	@echo "... src/game/map.i"
+	@echo "... src/game/map.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

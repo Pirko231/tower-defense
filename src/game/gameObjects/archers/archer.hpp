@@ -1,23 +1,23 @@
 #ifndef ARCHER_HPP
 #define ARCHER_HPP
-#include <SFML/Graphics.hpp>
+#include "archerInterface.hpp"
 
 
-class Archer : public sf::Drawable, public sf::Transformable
+class Archer : public IArcher
 {
-    const sf::Texture& texture;
     sf::Sprite sprite;
 public:
-    explicit Archer(const sf::Texture& _texture)
-        : texture(_texture), sprite(texture)
+    Archer(const sf::Texture& _texture)
+        : sprite(_texture)
     {
 
     }
+    Archer(Archer&&) = default;
     ~Archer();
 
-    void shoot();
+    void shoot() override;
 
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         states.transform *= getTransform();
 
