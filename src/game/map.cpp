@@ -4,7 +4,7 @@
 
 Map::Map()
 {
-    loadMap("map1.txt");
+    loadMap("resources/maps/map1.txt");
 }
 
 void Map::loadMap(const std::filesystem::path& path)
@@ -12,6 +12,13 @@ void Map::loadMap(const std::filesystem::path& path)
     std::fstream file(path, std::ios::in);
 
     sf::Vector2i mapPos = sf::Vector2i(0, 0);
+
+    if (!file.is_open())
+    {
+        std::cerr << "File could not open " << path << '\n';
+        std::cerr << "Absoulte path: " << absolute(path) << '\n';
+    }
+
     while (!file.eof())
     {
         std::string line;
