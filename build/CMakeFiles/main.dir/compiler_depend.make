@@ -381,9 +381,14 @@ CMakeFiles/main.dir/src/game/map.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-de
   /usr/include/stdc-predef.h
 
 CMakeFiles/main.dir/src/main.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-defense/src/main.cpp \
-  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/archers/archer.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/factories/archerFactory.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/managers/towermanager.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/towers/tower.hpp \
   /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/interfaces/archerInterface.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/interfaces/towerFactoryInterface.hpp \
   /home/szymek/Dokumenty/C++/SFML/tower-defense/src/program.hpp \
+  /home/szymek/Dokumenty/C++/SFML/tower-defense/src/utils/assetloader.hpp \
   /opt/sfml-3/include/SFML/Config.hpp \
   /opt/sfml-3/include/SFML/Graphics.hpp \
   /opt/sfml-3/include/SFML/Graphics/BlendMode.hpp \
@@ -605,6 +610,7 @@ CMakeFiles/main.dir/src/main.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-defens
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
@@ -1135,11 +1141,19 @@ CMakeFiles/main.dir/src/program.cpp.o: /home/szymek/Dokumenty/C++/SFML/tower-def
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 
+/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.hpp:
+
 /usr/include/c++/13/iostream:
 
 /home/szymek/Dokumenty/C++/SFML/tower-defense/src/utils/assetloader.hpp:
 
-/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/tower.hpp:
+/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/interfaces/towerFactoryInterface.hpp:
+
+/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/towers/tower.hpp:
+
+/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/managers/towermanager.hpp:
+
+/home/szymek/Dokumenty/C++/SFML/tower-defense/src/game/gameObjects/factories/archerFactory.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 

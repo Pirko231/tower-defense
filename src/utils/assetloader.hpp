@@ -23,7 +23,8 @@ public:
     }
     sf::Texture emptyTexture;
 
-    TowerTexture archerTower;
+    sf::Texture towerBase;
+    sf::Texture cannon1;
 
     sf::Texture grassTile;
     sf::Texture dirtTile;
@@ -33,8 +34,8 @@ public:
 private:
     AssetLoader()
     {
-        archerTower.tower.loadFromFile("resources/textures/tower.png");
-        archerTower.archer.loadFromFile("resources/textures/archer.png");
+        towerBase.loadFromFile("resources/textures/archers/towerBase.png");
+        cannon1.loadFromFile("resources/textures/archers/cannon1.png");
 
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");

@@ -13,8 +13,8 @@ public:
 
     std::unique_ptr<Tower> create() override
     {
-        std::unique_ptr<IArcher> archer = std::make_unique<Archer>(util::AssetLoader::get().archerTower.archer);
-        Tower tower(util::AssetLoader::get().archerTower.tower, std::move(archer));
+        std::unique_ptr<IArcher> archer = std::make_unique<Archer>(util::AssetLoader::get().cannon1);
+        Tower tower(util::AssetLoader::get().towerBase, std::move(archer));
         return std::make_unique<Tower>(tower);
     }
 
