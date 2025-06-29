@@ -1,11 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+
+#include "pressed.hpp"
 #include "game/gameObjects/managers/towermanager.hpp"
 #include "game/map.hpp"
 
 class Program
 {
     sf::RenderWindow* window;
+    Pressed pressed;
 
     Map map;
     TowerManager towerManager;

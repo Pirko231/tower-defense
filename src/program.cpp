@@ -7,15 +7,35 @@ Program::Program()
     window = new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
 
-    towerManager.addTower({20,12}, TowerType::Archer);
+    towerManager.addTower({5,3}, TowerType::Archer);
 }
 
 void Program::handleEvents()
 {
+    for (auto& key : pressed.getKeys())
+        key.second.released = false;
+    for (auto& mouse : pressed.getMouseButtons())
+        mouse.second.released = false;
+
     while (const std::optional ev = window->pollEvent())
     {
         if (ev->is<sf::Event::Closed>())
             window->close();
+
+        if (const auto* keyP = ev->getIf<sf::Event::KeyPressed>())
+            pressed[keyP->code].pressed = true;
+        if (const auto* keyR = ev->getIf<sf::Event::KeyReleased>())
+        {
+            pressed[keyR->code].pressed = false;
+            pressed[keyR->code].released = true;
+        }
+        if (const auto* mButtonP = ev->getIf<sf::Event::MouseButtonPressed>())
+            pressed[mButtonP->button].pressed = true;
+        if (const auto* mButtonR = ev->getIf<sf::Event::MouseButtonReleased>())
+        {
+            pressed[mButtonR->button].pressed = true;
+            pressed[mButtonR->button].released = true;
+        }
     }
 }
 

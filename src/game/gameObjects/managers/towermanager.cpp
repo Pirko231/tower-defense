@@ -1,9 +1,16 @@
 #include "towermanager.hpp"
 
-void TowerManager::addTower(sf::Vector2i where, TowerType what)
+#include "base.hpp"
+
+void TowerManager::addTower(sf::Vector2i where, TowerType type)
 {
-    ArcherFactory archerFactory;
-    towers.push_back(std::move(archerFactory.create()));
+    if (type == TowerType::Archer)
+    {
+        ArcherFactory archerFactory;
+        auto tower = archerFactory.create();
+        tower->setPosition(util::calculatePosition(where));
+        towers.push_back(std::move(tower));
+    }
 }
 
 void TowerManager::update()
