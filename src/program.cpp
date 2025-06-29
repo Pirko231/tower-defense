@@ -8,7 +8,7 @@ Program::Program()
     window = new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
 
-    towerManager.addTower({5,3}, TowerType::Archer);
+    towerManager.addTower({19,11}, TowerType::Archer);
 }
 
 void Program::handleEvents()
