@@ -2,6 +2,7 @@
 #include <fstream>
 #include <filesystem>
 #include "assetloader.hpp"
+#include "towers/tower.hpp"
 
 enum class TileType
 {
@@ -17,12 +18,17 @@ class Tile : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
     TileType type;
+    Tower* tower{};
 public:
     Tile(const sf::Texture& texture, TileType type)
         : sprite(texture), type(type)
     {}
 
     TileType getType() const {return type;}
+
+    void setTower(Tower* _tower) {tower = _tower;}
+
+    Tower* getTower() const {return tower;}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -63,6 +69,8 @@ public:
         for (auto& buildPoint : buildPoints)
             window->draw(buildPoint);
     }
+
+    Tile& operator[](int index){return tiles[index];}
 
 private:
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika

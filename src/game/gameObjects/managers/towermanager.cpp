@@ -10,6 +10,8 @@ void TowerManager::addTower(sf::Vector2i where, TowerType type)
         auto tower = archerFactory.create();
         tower->setPosition(util::calculatePosition(where));
         towers.push_back(std::move(tower));
+
+        map->operator[](util::calculateIndex(where)).setTower(towers.back().get());
     }
 }
 
