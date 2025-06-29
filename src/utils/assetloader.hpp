@@ -29,6 +29,7 @@ public:
     sf::Texture dirtTile;
     sf::Texture sandTile;
     sf::Texture roadTile;
+    sf::Texture buildPoint;
 private:
     AssetLoader()
     {
@@ -39,6 +40,7 @@ private:
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");
         sandTile.loadFromFile("resources/textures/tiles/sand.png");
         roadTile.loadFromFile("resources/textures/tiles/road.png");
+        buildPoint.loadFromFile("resources/textures/tiles/build.png");
     }
 };
 

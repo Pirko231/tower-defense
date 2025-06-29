@@ -27,7 +27,7 @@ void Map::loadMap(const std::filesystem::path& path)
             tile.setPosition(util::calculatePosition(mapPos));
             tiles.push_back(tile);
         }
-        catch (std::exception& e)
+        catch (const std::exception& e)
         {
             std::cerr << "error at map loading: " << e.what() << std::endl;
         }
@@ -41,7 +41,9 @@ void Map::loadMap(const std::filesystem::path& path)
                 try
                 {
                     value = std::stoi(line);
-                    Tile tile = createTile(static_cast<TileType>(value));
+                    auto type = static_cast<TileType>(value);
+                    Tile tile = createTile(type);
+
                     tile.setPosition(util::calculatePosition(mapPos));
                     tiles.push_back(tile);
                     mapPos.x++;
@@ -57,13 +59,15 @@ void Map::loadMap(const std::filesystem::path& path)
 Tile Map::createTile(TileType type)
 {
     if (type == TileType::Grass)
-        return Tile{util::AssetLoader::get().grassTile};
+        return Tile{util::AssetLoader::get().grassTile, type};
     else if (type == TileType::Dirt)
-        return Tile{util::AssetLoader::get().dirtTile};
+        return Tile{util::AssetLoader::get().dirtTile, type};
     else if (type == TileType::Sand)
-        return Tile{util::AssetLoader::get().sandTile};
+        return Tile{util::AssetLoader::get().sandTile, type};
     else if (type == TileType::Road)
-        return Tile{util::AssetLoader::get().roadTile};
+        return Tile{util::AssetLoader::get().roadTile, type};
+    else if (type == TileType::BuildPoint)
+        return Tile{util::AssetLoader::get().buildPoint, type};
 
-    return Tile{util::AssetLoader::get().emptyTexture};
+    return Tile{util::AssetLoader::get().emptyTexture, type};
 }
