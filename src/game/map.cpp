@@ -49,9 +49,15 @@ void Map::loadMap(const std::filesystem::path& path)
                 try
                 {
                     value = std::stoi(line);
-                    auto type = static_cast<TileType>(value);
-                    Tile tile = createTile(type);
 
+                    if (static_cast<TileType>(value) == TileType::BuildPoint)
+                    {
+                        auto buildPoint = BuildPoint{util::AssetLoader::get().buildPoint};
+                        buildPoint.setPosition(util::calculatePosition(mapPos));
+                        buildPoints.push_back(buildPoint);
+                        value = static_cast<int>(tiles.back().getType());
+                    }
+                    Tile tile = createTile(static_cast<TileType>(value));
                     tile.setPosition(util::calculatePosition(mapPos));
                     tiles.push_back(tile);
                     mapPos.x++;
