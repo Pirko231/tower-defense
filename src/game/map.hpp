@@ -31,10 +31,28 @@ public:
     }
 };
 
+class BuildPoint : public sf::Drawable, public sf::Transformable
+{
+    sf::Sprite sprite;
+public:
+    explicit BuildPoint(const sf::Texture& texture)
+        : sprite(texture)
+    {
+
+    }
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
+    {
+        states.transform *= getTransform();
+        target.draw(sprite,states);
+    }
+};
+
 /// @brief wczytuje mape z pliku i przechowuje ja
 class Map
 {
     std::vector<Tile> tiles;
+    std::vector<BuildPoint> buildPoints;
 public:
     Map();
 
@@ -42,6 +60,8 @@ public:
     {
         for (auto& tile : tiles)
             window->draw(tile);
+        for (auto& buildPoint : buildPoints)
+            window->draw(buildPoint);
     }
 
 private:
