@@ -12,4 +12,6 @@ void BuildingUI::click(sf::Vector2i where)
     auto tile = map->findTile(where);
 
     mapPointer.setPosition(tile->getPosition());
+
+    mapPointerVisible = true;
 }

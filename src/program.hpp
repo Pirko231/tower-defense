@@ -1,20 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+#include "screens/screenstatemachine.hpp"
 #include "pressed.hpp"
-#include "game/buildingui.hpp"
-#include "game/gameObjects/managers/towermanagerproxy.hpp"
-#include "game/map.hpp"
 
 class Program
 {
     sf::RenderWindow* window;
     Pressed pressed;
 
-    Map map;
-    BuildingUI buildingUI;
-    TowerManager towerManager;
-    TowerManagerProxy towerManagerProxy;
+    ScreenStateMachine screenStateMachine;
 public:
     Program();
 

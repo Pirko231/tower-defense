@@ -3,13 +3,10 @@
 #include "assetloader.hpp"
 
 Program::Program()
-    : towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map)
+    : screenStateMachine(pressed, window)
 {
     window = new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
-
-    towerManagerProxy.addTower({19,11}, TowerType::Archer);
-    towerManagerProxy.addTower({12,11}, TowerType::Archer);
 }
 
 void Program::handleEvents()
@@ -43,12 +40,7 @@ void Program::handleEvents()
 
 void Program::update()
 {
-    util::AssetLoader::get();
-
-    towerManager.update();
-
-    if (pressed[sf::Mouse::Button::Left].released)
-        buildingUI.click(sf::Mouse::getPosition(*window));
+    screenStateMachine.update();
 }
 
 void Program::display()
@@ -56,11 +48,7 @@ void Program::display()
     window->clear();
 
     //strefa rysowania
-    window->draw(map);
-
-    window->draw(towerManager);
-
-    window->draw(buildingUI);
+    window->draw(screenStateMachine);
 
     window->display();
 }

@@ -74,6 +74,13 @@ add_executable(main
         src/game/buildingui.hpp
         src/game/gameObjects/managers/towermanagerproxy.cpp
         src/game/gameObjects/managers/towermanagerproxy.hpp
+        src/screens/screenstate.hpp
+        src/screens/mainmenuscreen.cpp
+        src/screens/mainmenuscreen.hpp
+        src/screens/gamescreen.cpp
+        src/screens/gamescreen.hpp
+        src/screens/screenstatemachine.cpp
+        src/screens/screenstatemachine.hpp
 
 
 )
