@@ -6,12 +6,9 @@
 
 class MainMenuScreen : public ScreenState
 {
-    Pressed& pressed;
-    sf::RenderWindow* window{};
-
     btn::TextButton playButton;
 public:
-    MainMenuScreen(IScreenStateMachine*, Pressed& _pressed, sf::RenderWindow* _window);
+    MainMenuScreen(IScreenStateMachine*);
 
     void update() override;
 

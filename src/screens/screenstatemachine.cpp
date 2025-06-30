@@ -5,8 +5,8 @@
 #include "screenstatemachine.hpp"
 
 ScreenStateMachine::ScreenStateMachine(Pressed& _pressed, sf::RenderWindow* _window)
-    :
-    mainMenuScreen(std::make_unique<MainMenuScreen>(this,_pressed, _window)), gameScreen(std::make_unique<GameScreen>(this,_pressed, _window))
+    : IScreenStateMachine(_pressed, _window),
+    mainMenuScreen(std::make_unique<MainMenuScreen>(this)), gameScreen(std::make_unique<GameScreen>(this))
 {
     currentState = getMainMenuScreen();
 

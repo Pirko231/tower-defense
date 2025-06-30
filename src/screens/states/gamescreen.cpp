@@ -1,7 +1,7 @@
 #include "gamescreen.hpp"
 
-GameScreen::GameScreen(IScreenStateMachine* _stateMachine, Pressed& _pressed, sf::RenderWindow* _window)
-    : ScreenState(_stateMachine),  pressed(_pressed), window(_window),
+GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
+    : ScreenState(_stateMachine),
     towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map)
 {
     towerManagerProxy.addTower({19,11}, TowerType::Archer);
@@ -12,8 +12,8 @@ void GameScreen::update()
 {
     towerManager.update();
 
-    if (pressed[sf::Mouse::Button::Left].released)
-        buildingUI.click(sf::Mouse::getPosition(*window));
+    if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
+        buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
