@@ -3,9 +3,9 @@
 #include "assetloader.hpp"
 
 Program::Program()
-    : screenStateMachine(pressed, window)
+    : window(new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close)),
+    screenStateMachine(pressed, window)
 {
-    window = new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
 }
 
