@@ -15,7 +15,7 @@ class GameScreen : public ScreenState
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
 public:
-    GameScreen(Pressed& _pressed, sf::RenderWindow* window);
+    GameScreen(IScreenStateMachine* _machine, Pressed& _pressed, sf::RenderWindow* window);
 
     void update() override;
 

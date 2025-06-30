@@ -81,6 +81,10 @@ add_executable(main
         src/screens/states/gamescreen.hpp
         src/screens/screenstatemachine.cpp
         src/screens/screenstatemachine.hpp
+        src/buttons/button.hpp
+        src/buttons/textbutton.cpp
+        src/buttons/textbutton.hpp
+        src/screens/screenstatemachineinterface.hpp
 
 
 )

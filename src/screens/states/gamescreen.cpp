@@ -1,7 +1,7 @@
 #include "gamescreen.hpp"
 
-GameScreen::GameScreen(Pressed& _pressed, sf::RenderWindow* _window)
-    : pressed(_pressed), window(_window),
+GameScreen::GameScreen(IScreenStateMachine* _stateMachine, Pressed& _pressed, sf::RenderWindow* _window)
+    : ScreenState(_stateMachine),  pressed(_pressed), window(_window),
     towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map)
 {
     towerManagerProxy.addTower({19,11}, TowerType::Archer);

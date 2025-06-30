@@ -22,6 +22,7 @@ public:
         return instance;
     }
     sf::Texture emptyTexture;
+    sf::Font font;
 
     sf::Texture towerBase;
     sf::Texture cannon1;
@@ -34,6 +35,8 @@ public:
 private:
     AssetLoader()
     {
+        font.openFromFile("resources/fonts/arial.ttf");
+
         towerBase.loadFromFile("resources/textures/archers/towerBase.png");
         cannon1.loadFromFile("resources/textures/archers/cannon1.png");
 
