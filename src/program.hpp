@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "pressed.hpp"
-#include "game/gameObjects/managers/towermanager.hpp"
+#include "game/gameObjects/managers/towermanagerproxy.hpp"
 #include "game/map.hpp"
 
 class Program
@@ -12,6 +12,7 @@ class Program
 
     Map map;
     TowerManager towerManager;
+    TowerManagerProxy towerManagerProxy;
 public:
     Program();
 

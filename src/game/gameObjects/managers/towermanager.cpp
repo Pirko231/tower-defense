@@ -11,7 +11,7 @@ void TowerManager::addTower(sf::Vector2i where, TowerType type)
         tower->setPosition(util::calculatePosition(where));
         towers.push_back(std::move(tower));
 
-        // zalozenie ze jest wartosc - sprawdzone wczesniej
+        // zalozenie ze jest wartosc - sprawdzone wczesniej w proxy
         map->getBuildPoint(where)->setTower(towers.back().get());
     }
 }

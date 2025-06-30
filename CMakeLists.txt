@@ -70,6 +70,10 @@ add_executable(main
         src/game/gameObjects/managers/towermanager.cpp
         src/game/gameObjects/managers/towermanager.hpp
         src/utils/pressed.hpp
+        src/game/buildingui.cpp
+        src/game/buildingui.hpp
+        src/game/gameObjects/managers/towermanagerproxy.cpp
+        src/game/gameObjects/managers/towermanagerproxy.hpp
 
 
 )
