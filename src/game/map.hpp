@@ -57,19 +57,19 @@ public:
 };
 
 /// @brief wczytuje mape z pliku i przechowuje ja
-class Map
+class Map : public sf::Drawable
 {
     std::vector<Tile> tiles;
     std::vector<BuildPoint> buildPoints;
 public:
     Map();
 
-    void display(sf::RenderWindow* window)
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override
     {
         for (auto& tile : tiles)
-            window->draw(tile);
+            target.draw(tile,states);
         for (auto& buildPoint : buildPoints)
-            window->draw(buildPoint);
+            target.draw(buildPoint,states);
     }
 
     BuildPoint* getBuildPoint(sf::Vector2i pos)

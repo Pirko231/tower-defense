@@ -35,7 +35,7 @@ void Program::handleEvents()
             pressed[mButtonP->button].pressed = true;
         if (const auto* mButtonR = ev->getIf<sf::Event::MouseButtonReleased>())
         {
-            pressed[mButtonR->button].pressed = true;
+            pressed[mButtonR->button].pressed = false;
             pressed[mButtonR->button].released = true;
         }
     }
@@ -56,9 +56,9 @@ void Program::display()
     window->clear();
 
     //strefa rysowania
-    map.display(window);
+    window->draw(map);
 
-    towerManager.display(window);
+    window->draw(towerManager);
 
     window->draw(buildingUI);
 

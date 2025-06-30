@@ -6,7 +6,7 @@
 #include "../map.hpp"
 
 
-class TowerManager
+class TowerManager : public sf::Drawable
 {
     friend class TowerManagerProxy;
 
@@ -18,7 +18,7 @@ public:
 
     void update();
 
-    void display(sf::RenderWindow* window);
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 private:
     void addTower(sf::Vector2i where, TowerType what);
 };

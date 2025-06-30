@@ -22,8 +22,8 @@ void TowerManager::update()
         i->update();
 }
 
-void TowerManager::display(sf::RenderWindow *window)
+void TowerManager::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     for (auto& i : towers)
-        window->draw(*i);
+        target.draw(*i,states);
 }
