@@ -3,7 +3,7 @@
 #include "screenstate.hpp"
 #include "managers/towermanagerproxy.hpp"
 #include "../map.hpp"
-#include "../game/buildingui.hpp"
+#include "../../game/buildingui.hpp"
 
 class GameScreen : public ScreenState
 {

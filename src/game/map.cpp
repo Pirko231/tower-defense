@@ -36,7 +36,15 @@ void Map::loadMap(const std::filesystem::path& path)
                 auto buildPoint = BuildPoint{util::AssetLoader::get().buildPoint};
                 buildPoint.setPosition(util::calculatePosition(mapPos));
                 buildPoints.push_back(buildPoint);
+
                 value = static_cast<int>(tiles.back().getType());
+                auto it = tiles.end() - 1;
+                // teraz szukamy ostatniego pola ktore nie jest trasa
+                while (static_cast<TileType>(value) == TileType::Road)
+                {
+                    value = static_cast<int>(it->getType());
+                    it--;
+                }
             }
             Tile tile = createTile(static_cast<TileType>(value));
             tile.setPosition(util::calculatePosition(mapPos));

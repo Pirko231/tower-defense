@@ -1,6 +1,6 @@
 #pragma once
-#include "mainmenuscreen.hpp"
-#include "gamescreen.hpp"
+#include "states/mainmenuscreen.hpp"
+#include "states/gamescreen.hpp"
 
 class ScreenStateMachine : public sf::Drawable
 {
