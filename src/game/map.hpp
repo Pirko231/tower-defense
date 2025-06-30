@@ -81,6 +81,15 @@ public:
         return nullptr;
     }
 
+    Tile* findTile(sf::Vector2i mousePos)
+    {
+        // z zaokraglenia do liczby calkowitej wyjdzie ilosc pol
+        mousePos.x /= util::tileSize.x;
+        mousePos.y /= util::tileSize.y;
+
+        return &tiles[(mousePos.y * util::mapSize.x) + mousePos.x];
+    }
+
 private:
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
     void loadMap(const std::filesystem::path& path);

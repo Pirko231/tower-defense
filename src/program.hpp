@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "pressed.hpp"
+#include "game/buildingui.hpp"
 #include "game/gameObjects/managers/towermanagerproxy.hpp"
 #include "game/map.hpp"
 
@@ -11,6 +12,7 @@ class Program
     Pressed pressed;
 
     Map map;
+    BuildingUI buildingUI;
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
 public:

@@ -3,7 +3,7 @@
 #include "assetloader.hpp"
 
 Program::Program()
-    : towerManager(&map), towerManagerProxy(&towerManager)
+    : towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map)
 {
     window = new sf::RenderWindow(sf::VideoMode{{1280, 832}, 32}, "Tower-defense", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
@@ -46,6 +46,9 @@ void Program::update()
     util::AssetLoader::get();
 
     towerManager.update();
+
+    if (pressed[sf::Mouse::Button::Left].released)
+        buildingUI.click(sf::Mouse::getPosition(*window));
 }
 
 void Program::display()
@@ -56,6 +59,8 @@ void Program::display()
     map.display(window);
 
     towerManager.display(window);
+
+    window->draw(buildingUI);
 
     window->display();
 }
