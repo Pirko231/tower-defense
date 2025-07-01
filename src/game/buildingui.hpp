@@ -8,6 +8,7 @@ class BuildingUI : public sf::Drawable
 
     sf::RectangleShape mapPointer;
     bool mapPointerVisible{};
+    sf::RectangleShape background;
 public:
     BuildingUI(Map* _map);
 
@@ -17,6 +18,9 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         if (mapPointerVisible)
+        {
             target.draw(mapPointer, states);
+            target.draw(background, states);
+        }
     }
 };
