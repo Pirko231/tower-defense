@@ -7,7 +7,7 @@ BuildingUI::BuildingUI(Map *_map)
     mapPointer.setSize(static_cast<sf::Vector2f>(util::tileSize));
 
     sf::Vector2f size = {util::mapSize.x * util::tileSize.x, util::mapSize.y * util::tileSize.y};
-    background.setSize({size.x / 2.f, size.y});
+    background.setSize({size.x / 3.f, size.y});
     background.setFillColor({255,255,255,120});
 }
 
@@ -21,7 +21,7 @@ void BuildingUI::click(sf::Vector2i where)
     if (tile->getPosition().x >= size.x / 2.f)
         background.setPosition({0.f,0.f});
     else
-        background.setPosition({size.x / 2.f,0.f});
+        background.setPosition({size.x - background.getGlobalBounds().size.x,0.f});
 
     mapPointerVisible = true;
 }
