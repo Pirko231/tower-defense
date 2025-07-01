@@ -89,6 +89,10 @@ add_executable(main
         src/screens/states/mapselectionscreen.hpp
         src/buttons/mapbutton.cpp
         src/buttons/mapbutton.hpp
+        src/game/buildingui/towerlist.cpp
+        src/game/buildingui/towerlist.hpp
+        src/game/buildingui/product.cpp
+        src/game/buildingui/product.hpp
 
 
 )

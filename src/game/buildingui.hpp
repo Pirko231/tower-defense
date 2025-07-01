@@ -1,14 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "map.hpp"
+#include "buildingui/towerlist.hpp"
 
 class BuildingUI : public sf::Drawable
 {
     Map* map{};
+    TowerList towerList;
 
     sf::RectangleShape mapPointer;
     bool mapPointerVisible{};
-    sf::RectangleShape background;
 public:
     BuildingUI(Map* _map);
 
@@ -20,7 +21,7 @@ public:
         if (mapPointerVisible)
         {
             target.draw(mapPointer, states);
-            target.draw(background, states);
         }
+        target.draw(towerList, states);
     }
 };
