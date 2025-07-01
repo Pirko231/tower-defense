@@ -23,5 +23,7 @@ public:
 
     virtual ScreenState* getGameScreen() = 0;
 
+    virtual ScreenState* getMapSelectionScreen() = 0;
+
     virtual void setState(ScreenState*) = 0;
 };
