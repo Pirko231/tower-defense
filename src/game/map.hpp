@@ -62,7 +62,7 @@ class Map : public sf::Drawable
     std::vector<Tile> tiles;
     std::vector<BuildPoint> buildPoints;
 public:
-    Map();
+    Map(const std::filesystem::path& fileName);
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override
     {
@@ -90,9 +90,11 @@ public:
         return &tiles[(mousePos.y * util::mapSize.x) + mousePos.x];
     }
 
-private:
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
     void loadMap(const std::filesystem::path& path);
+
+private:
+
 
     /// @brief zwraca odpowiedni tile do podanego typu. Kiedy typ sie nie zgadza zwraca Tile bez tekstury
     Tile createTile(TileType type);

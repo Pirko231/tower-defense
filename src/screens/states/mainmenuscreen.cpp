@@ -12,7 +12,7 @@ void MainMenuScreen::update()
 
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
         if (playButton.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
-            stateMachine->setState(stateMachine->getGameScreen());
+            stateMachine->setState(stateMachine->getMapSelectionScreen());
 }
 
 void MainMenuScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const

@@ -2,13 +2,16 @@
 
 #include "base.hpp"
 
-Map::Map()
+Map::Map(const std::filesystem::path& fileName)
 {
-    loadMap("resources/maps/map1.txt");
+    loadMap(fileName);
 }
 
 void Map::loadMap(const std::filesystem::path& path)
 {
+    tiles.clear();
+    buildPoints.clear();
+
     std::fstream file(path, std::ios::in);
 
     sf::Vector2i mapPos = sf::Vector2i(0, 0);

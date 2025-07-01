@@ -15,6 +15,8 @@ public:
         : pressed{_pressed}, window{_window}
     {}
 
+    virtual void setCurrentMap(const std::filesystem::path& _mapPath) = 0;
+
     Pressed& getPressed() { return pressed; }
 
     sf::RenderWindow* getWindow() { return window; }

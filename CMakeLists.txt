@@ -87,6 +87,8 @@ add_executable(main
         src/screens/screenstatemachineinterface.hpp
         src/screens/states/mapselectionscreen.cpp
         src/screens/states/mapselectionscreen.hpp
+        src/buttons/mapbutton.cpp
+        src/buttons/mapbutton.hpp
 
 
 )

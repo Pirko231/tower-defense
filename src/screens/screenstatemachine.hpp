@@ -17,6 +17,11 @@ public:
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
+    void setCurrentMap(const std::filesystem::path& _mapPath) override
+    {
+        static_cast<GameScreen*>(gameScreen.get())->setCurrentMap(_mapPath);
+    }
+
     void setState(ScreenState* newState) override {currentState = newState;}
     ScreenState* getMainMenuScreen() override {return mainMenuScreen.get();}
     ScreenState* getGameScreen() override {return gameScreen.get();}
