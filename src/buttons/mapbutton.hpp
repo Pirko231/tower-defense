@@ -23,6 +23,8 @@ public:
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override
     {
+        states.transform *= getTransform();
+
         target.draw(background, states);
 
         target.draw(text, states);

@@ -11,7 +11,7 @@ namespace btn
     {
         background.setFillColor(sf::Color::Green);
 
-        background.setSize({20.f,20.f});
+        background.setSize({220.f,240.f});
     }
 
     void MapButton::update()

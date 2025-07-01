@@ -4,7 +4,8 @@
 
 class MapSelectionScreen : public ScreenState
 {
-    std::array<btn::MapButton, 1> mapButtons;
+    sf::Text title;
+    std::array<btn::MapButton, 6> mapButtons;
 public:
     MapSelectionScreen(IScreenStateMachine* _stateMachine);
 
