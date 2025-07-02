@@ -1,9 +1,21 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../gameObjects/towers/tower.hpp"
+#include "towerFactoryInterface.hpp"
 
-
-class Product : public sf::Drawable
+class Product : public sf::Drawable, public sf::Transformable
 {
-public:
+    int price;
+    std::unique_ptr<Tower> tower;
 
+    sf::RectangleShape background;
+public:
+    Product(ITowerFactory* _towerFactory, int _price, sf::Vector2f position);
+
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override
+    {
+        states.transform *= getTransform();
+        target.draw(background,states);
+        target.draw(*tower,states);
+    }
 };

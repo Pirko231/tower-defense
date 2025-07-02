@@ -1,6 +1,7 @@
 #pragma once
 #include "product.hpp"
 #include "../map.hpp"
+#include "../gameObjects/factories/archerFactory.hpp"
 
 class TowerList : public sf::Drawable
 {
@@ -8,6 +9,8 @@ class TowerList : public sf::Drawable
 
     bool visible{};
     sf::RectangleShape background;
+
+    std::vector<Product> products;
 public:
     TowerList(Map* _map);
 
@@ -16,6 +19,10 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         if (visible)
-            target.draw(background,states);
+        {
+            target.draw(background, states);
+            for (auto& i : products)
+                target.draw(i,states);
+        }
     }
 };
