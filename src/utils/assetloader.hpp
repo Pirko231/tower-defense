@@ -24,6 +24,9 @@ public:
     sf::Texture emptyTexture;
     sf::Font font;
 
+    sf::Texture attackIcon;
+    sf::Texture coinIcon;
+
     sf::Texture towerBase;
     sf::Texture cannon1;
 
@@ -36,6 +39,9 @@ private:
     AssetLoader()
     {
         font.openFromFile("resources/fonts/arial.ttf");
+
+        attackIcon.loadFromFile("resources/textures/attackIcon.png");
+        coinIcon.loadFromFile("resources/textures/coinIcon.png");
 
         towerBase.loadFromFile("resources/textures/archers/towerBase.png");
         cannon1.loadFromFile("resources/textures/archers/cannon1.png");

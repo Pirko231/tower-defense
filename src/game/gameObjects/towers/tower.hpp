@@ -18,6 +18,8 @@ public:
         : sprite(tower.sprite), archer(std::move(tower.archer))
     {}
 
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}
+
     void update();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override

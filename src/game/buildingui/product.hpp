@@ -9,6 +9,10 @@ class Product : public sf::Drawable, public sf::Transformable
     std::unique_ptr<Tower> tower;
 
     sf::RectangleShape background;
+    sf::Sprite attackIcon;
+    sf::Text attackText;
+    sf::Sprite coinIcon;
+    sf::Text coinText;
 public:
     Product(ITowerFactory* _towerFactory, int _price, sf::Vector2f position);
 
@@ -17,5 +21,9 @@ public:
         states.transform *= getTransform();
         target.draw(background,states);
         target.draw(*tower,states);
+        target.draw(attackIcon, states);
+        target.draw(attackText, states);
+        target.draw(coinIcon, states);
+        target.draw(coinText, states);
     }
 };
