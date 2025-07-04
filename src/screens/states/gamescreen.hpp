@@ -7,10 +7,11 @@
 
 class GameScreen : public ScreenState
 {
+    int money{100};
     Map map;
-    BuildingUI buildingUI;
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
+    BuildingUI buildingUI;
 public:
     GameScreen(IScreenStateMachine* _machine);
 

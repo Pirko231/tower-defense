@@ -22,3 +22,17 @@ void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)
     else
         background.setPosition({size.x - background.getGlobalBounds().size.x,0.f});
 }
+
+std::optional<const Product*> TowerList::click(sf::Vector2i mousePos)
+{
+    if (!background.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+        return std::nullopt;
+
+    for (auto& product : products)
+        if (product.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+        {
+            return &product;
+        }
+
+    return std::nullopt;
+}

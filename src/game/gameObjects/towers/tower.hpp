@@ -2,13 +2,20 @@
 #include  "archerInterface.hpp"
 #include <memory>
 
+enum class TowerType
+{
+    Archer
+};
+
 class Tower : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
     std::unique_ptr<IArcher> archer;
+
+    TowerType type;
 public:
-    Tower(const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer)
-        : sprite(towerTexture), archer(std::move(_archer))
+    Tower(const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type)
+        : sprite(towerTexture), archer(std::move(_archer)), type(_type)
     {
 
     }
@@ -19,6 +26,8 @@ public:
     {}
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}
+
+    TowerType getType() const {return type;}
 
     void update();
 

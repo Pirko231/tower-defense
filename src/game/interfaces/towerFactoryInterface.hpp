@@ -1,11 +1,6 @@
 #pragma once
 #include "../gameObjects/towers/tower.hpp"
 
-enum class TowerType
-{
-    Archer
-};
-
 class ITowerFactory
 {
 public:
