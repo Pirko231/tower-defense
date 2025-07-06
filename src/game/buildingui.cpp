@@ -18,6 +18,7 @@ void BuildingUI::click(sf::Vector2i where)
 
             buyProduct(product);
             towerList.setVisible({0,0}, false);
+            mapPointerVisible = false;
             return;
         }
     }

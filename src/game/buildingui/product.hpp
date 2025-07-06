@@ -17,7 +17,7 @@ class Product : public sf::Drawable, public sf::Transformable
 public:
     Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::Vector2f position);
 
-    sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), background.getSize());}
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), background.getSize()};}
 
     int getPrice() const {return price;}
 
