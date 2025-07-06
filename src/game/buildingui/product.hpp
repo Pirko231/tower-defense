@@ -7,7 +7,7 @@ class Product : public sf::Drawable, public sf::Transformable
 {
     int price;
     std::unique_ptr<Tower> tower;
-    TowerType type;
+    std::unique_ptr<ITowerFactory> towerFactory;
 
     sf::RectangleShape background;
     sf::Sprite attackIcon;
@@ -15,13 +15,13 @@ class Product : public sf::Drawable, public sf::Transformable
     sf::Sprite coinIcon;
     sf::Text coinText;
 public:
-    Product(ITowerFactory* _towerFactory, int _price, sf::Vector2f position);
+    Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::Vector2f position);
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), background.getSize());}
 
     int getPrice() const {return price;}
 
-    TowerType getType() const {return type;}
+    ITowerFactory* getFactory() const {return towerFactory.get();}
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override
     {

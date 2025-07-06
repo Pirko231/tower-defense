@@ -8,7 +8,7 @@ TowerList::TowerList(Map* _map)
     background.setFillColor({255,255,255,120});
 
     ArcherFactory archerFactory;
-    products.push_back(Product(&archerFactory, 20, {30.f,0.f}));
+    products.push_back(Product(std::make_unique<ArcherFactory>(), 20, {30.f,0.f}));
 }
 
 void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)

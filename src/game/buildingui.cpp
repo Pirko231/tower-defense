@@ -38,5 +38,5 @@ void BuildingUI::buyProduct(const Product *product)
 
     *money -= product->getPrice();
 
-    towerManager->addTower(util::calculatePosition(mapPointer.getPosition()), product->getType());
+    towerManager->addTower(util::calculatePosition(mapPointer.getPosition()), product->getFactory());
 }

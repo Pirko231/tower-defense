@@ -6,8 +6,8 @@
 
 #include "assetloader.hpp"
 
-Product::Product(ITowerFactory* towerFactory, int _price, sf::Vector2f position)
-    : price(_price), tower(std::move(towerFactory->create())), type(tower->getType()),
+Product::Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::Vector2f position)
+    : price(_price), tower(std::move(_towerFactory->create())), towerFactory(std::move(_towerFactory)),
     attackIcon(util::AssetLoader::get().attackIcon), attackText(util::AssetLoader::get().font),
     coinIcon(util::AssetLoader::get().coinIcon), coinText(util::AssetLoader::get().font)
 {

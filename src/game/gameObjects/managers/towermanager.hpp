@@ -20,5 +20,5 @@ public:
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 private:
-    void addTower(sf::Vector2i where, TowerType what);
+    void addTower(sf::Vector2i where, ITowerFactory* towerFactory);
 };

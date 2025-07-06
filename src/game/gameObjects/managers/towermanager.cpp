@@ -2,20 +2,14 @@
 
 #include "base.hpp"
 
-void TowerManager::addTower(sf::Vector2i where, TowerType type)
+void TowerManager::addTower(sf::Vector2i where, ITowerFactory* towerFactory)
 {
-    if (type == TowerType::Archer)
-    {
-        ArcherFactory archerFactory;
-        auto tower = archerFactory.create();
-        tower->setPosition(util::calculatePosition(where));
-        towers.push_back(std::move(tower));
+    auto tower = towerFactory->create();
+    tower->setPosition(util::calculatePosition(where));
+    towers.push_back(std::move(tower));
 
-        // zalozenie ze jest wartosc - sprawdzone wczesniej w proxy
-        map->getBuildPoint(where)->setTower(towers.back().get());
-    }
-    else
-        std::cerr << "TowerManager::addTower: TowerType not implemented" << std::endl;
+    // zalozenie ze jest wartosc - sprawdzone wczesniej w proxy
+    map->getBuildPoint(where)->setTower(towers.back().get());
 }
 
 void TowerManager::update()
