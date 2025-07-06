@@ -21,9 +21,21 @@ void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)
 
     sf::Vector2f size = {util::mapSize.x * util::tileSize.x, util::mapSize.y * util::tileSize.y};
     if (tile->getPosition().x >= size.x / 2.f)
+    {
         background.setPosition({0.f,0.f});
+        for (auto& product : products)
+            product.setPosition({0.f, product.getPosition().y});
+        moneyText.setPosition({0.f + moneyIcon.getGlobalBounds().size.x * 1.2f,moneyText.getPosition().y});
+        moneyIcon.setPosition({0.f,moneyIcon.getPosition().y});
+    }
     else
+    {
         background.setPosition({size.x - background.getGlobalBounds().size.x,0.f});
+        for (auto& product : products)
+            product.setPosition({size.x - background.getGlobalBounds().size.x , product.getPosition().y});
+        moneyText.setPosition({size.x - background.getGlobalBounds().size.x + moneyIcon.getGlobalBounds().size.x * 1.2f, moneyText.getPosition().y});
+        moneyIcon.setPosition({size.x - background.getGlobalBounds().size.x, moneyIcon.getPosition().y});
+    }
 }
 
 std::optional<const Product*> TowerList::click(sf::Vector2i mousePos)
