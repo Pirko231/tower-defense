@@ -13,5 +13,5 @@ public:
         : towerManager(_towerManager)
     {}
 
-    void addTower(sf::Vector2i where, ITowerFactory* towerFactory);
+    bool addTower(sf::Vector2i where, ITowerFactory* towerFactory);
 };

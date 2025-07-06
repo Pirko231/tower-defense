@@ -36,7 +36,8 @@ void BuildingUI::buyProduct(const Product *product)
     if (product->getPrice() > *money)
         return; //nie stac nas na zakup
 
-    *money -= product->getPrice();
 
-    towerManager->addTower(util::calculatePosition(mapPointer.getPosition()), product->getFactory());
+
+    if (towerManager->addTower(util::calculatePosition(mapPointer.getPosition()), product->getFactory()))
+        *money -= product->getPrice();
 }

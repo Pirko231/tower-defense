@@ -4,14 +4,15 @@
 
 #include "towermanagerproxy.hpp"
 
-void TowerManagerProxy::addTower(sf::Vector2i where, ITowerFactory* towerFactory)
+bool TowerManagerProxy::addTower(sf::Vector2i where, ITowerFactory* towerFactory)
 {
     Map* map = towerManager->map;
     auto buildPoint = map->getBuildPoint(where);
     if (!buildPoint)
-        return;
+        return false;
     if (buildPoint->getTower())
-        return;
+        return false;
 
     towerManager->addTower(where, towerFactory);
+    return true;
 }
