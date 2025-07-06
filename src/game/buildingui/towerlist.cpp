@@ -1,7 +1,7 @@
 #include "towerlist.hpp"
 
-TowerList::TowerList(Map* _map)
-    : map(_map)
+TowerList::TowerList(Map* _map, const int* _money)
+    : map(_map), money(_money), moneyIcon(util::AssetLoader::get().coinIcon), moneyText(util::AssetLoader::get().font)
 {
     sf::Vector2f size = {util::mapSize.x * util::tileSize.x, util::mapSize.y * util::tileSize.y};
     background.setSize({size.x / 3.f, size.y});
@@ -9,6 +9,9 @@ TowerList::TowerList(Map* _map)
 
     ArcherFactory archerFactory;
     products.push_back(Product(std::make_unique<ArcherFactory>(), 20, {0.f,50.f}));
+
+    moneyIcon.setPosition({0.f,-10.f});
+    moneyText.setPosition({moneyIcon.getPosition().x + moneyIcon.getGlobalBounds().size.x * 1.2f,moneyIcon.getPosition().y + 10.f});
 }
 
 void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)

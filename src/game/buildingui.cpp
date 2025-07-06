@@ -1,7 +1,7 @@
 #include "buildingui.hpp"
 
 BuildingUI::BuildingUI(Map *_map, TowerManagerProxy* _towerManager, int* _money)
-    : map(_map), towerManager(_towerManager), towerList(_map), money(_money)
+    : map(_map), money(_money), towerManager(_towerManager), towerList(_map, money)
 {
     mapPointer.setFillColor({20,20,100,80});
     mapPointer.setSize(static_cast<sf::Vector2f>(util::tileSize));
@@ -36,7 +36,6 @@ void BuildingUI::buyProduct(const Product *product)
 {
     if (product->getPrice() > *money)
         return; //nie stac nas na zakup
-
 
 
     if (towerManager->addTower(util::calculatePosition(mapPointer.getPosition()), product->getFactory()))

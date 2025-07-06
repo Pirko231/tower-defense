@@ -7,13 +7,12 @@
 class BuildingUI : public sf::Drawable
 {
     Map* map{};
+    int* money{};
     TowerManagerProxy* towerManager{};
     TowerList towerList;
 
     sf::RectangleShape mapPointer;
     bool mapPointerVisible{};
-
-    int* money{};
 public:
     BuildingUI(Map* _map, TowerManagerProxy* towerManager, int* _money);
 
