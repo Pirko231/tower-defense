@@ -4,7 +4,7 @@
 
 enum class TowerType
 {
-    Archer
+    Archer = 0
 };
 
 class Tower : public sf::Drawable, public sf::Transformable

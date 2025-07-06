@@ -14,6 +14,8 @@ void TowerManager::addTower(sf::Vector2i where, TowerType type)
         // zalozenie ze jest wartosc - sprawdzone wczesniej w proxy
         map->getBuildPoint(where)->setTower(towers.back().get());
     }
+    else
+        std::cerr << "TowerManager::addTower: TowerType not implemented" << std::endl;
 }
 
 void TowerManager::update()
