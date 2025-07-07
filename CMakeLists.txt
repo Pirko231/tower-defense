@@ -95,6 +95,8 @@ add_executable(main
         src/game/buildingui/product.hpp
         src/buttons/playbutton.cpp
         src/buttons/playbutton.hpp
+        src/game/gameObjects/managers/enemymanager.cpp
+        src/game/gameObjects/managers/enemymanager.hpp
 
 
 )

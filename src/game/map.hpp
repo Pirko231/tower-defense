@@ -64,6 +64,8 @@ class Map : public sf::Drawable
 public:
     Map(const std::filesystem::path& fileName);
 
+    const std::vector<Tile>& getTiles() const {return tiles;}
+
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override
     {
         for (auto& tile : tiles)

@@ -2,6 +2,7 @@
 #include "pressed.hpp"
 #include "screenstate.hpp"
 #include "managers/towermanagerproxy.hpp"
+#include "managers/enemymanager.hpp"
 #include "../map.hpp"
 #include "../../game/buildingui.hpp"
 
@@ -12,6 +13,7 @@ class GameScreen : public ScreenState
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
     BuildingUI buildingUI;
+    EnemyManager enemyManager;
 public:
     GameScreen(IScreenStateMachine* _machine);
 
@@ -19,5 +21,5 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-    void setCurrentMap(const std::filesystem::path& _mapPath) {map.loadMap(_mapPath);}
+    void setCurrentMap(const std::filesystem::path& _mapPath) {map.loadMap(_mapPath); enemyManager.loadCheckPoints();}
 };
