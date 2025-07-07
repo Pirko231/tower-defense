@@ -1,7 +1,7 @@
 #include "mainmenuscreen.hpp"
 
 MainMenuScreen::MainMenuScreen(IScreenStateMachine* _screenMachine)
-    : ScreenState(_screenMachine)
+    : ScreenState(_screenMachine), background(util::AssetLoader::get().background)
 {
     playButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - playButton.getGlobalBounds().size.x / 2.f, util::mapSize.y * util::tileSize.y / 2.f - playButton.getGlobalBounds().size.y / 2.f});
 }
@@ -17,5 +17,6 @@ void MainMenuScreen::update()
 
 void MainMenuScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    target.draw(background);
     target.draw(playButton);
 }

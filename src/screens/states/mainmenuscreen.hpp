@@ -7,6 +7,8 @@
 
 class MainMenuScreen : public ScreenState
 {
+    sf::Sprite background;
+
     btn::PlayButton playButton;
 public:
     MainMenuScreen(IScreenStateMachine*);
