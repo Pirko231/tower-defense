@@ -24,6 +24,9 @@ public:
     sf::Texture emptyTexture;
     sf::Font font;
 
+    sf::Texture background;
+    sf::Texture playButton;
+
     sf::Texture attackIcon;
     sf::Texture coinIcon;
 
@@ -42,6 +45,9 @@ private:
 
         attackIcon.loadFromFile("resources/textures/attackIcon.png");
         coinIcon.loadFromFile("resources/textures/coinIcon.png");
+
+        background.loadFromFile("resources/textures/background.jpg");
+        playButton.loadFromFile("resources/textures/Play.png");
 
         towerBase.loadFromFile("resources/textures/archers/towerBase.png");
         cannon1.loadFromFile("resources/textures/archers/cannon1.png");

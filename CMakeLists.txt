@@ -93,6 +93,8 @@ add_executable(main
         src/game/buildingui/towerlist.hpp
         src/game/buildingui/product.cpp
         src/game/buildingui/product.hpp
+        src/buttons/playbutton.cpp
+        src/buttons/playbutton.hpp
 
 
 )

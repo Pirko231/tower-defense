@@ -1,9 +1,9 @@
 #include "mainmenuscreen.hpp"
 
 MainMenuScreen::MainMenuScreen(IScreenStateMachine* _screenMachine)
-    : ScreenState(_screenMachine), playButton(util::AssetLoader::get().font)
+    : ScreenState(_screenMachine)
 {
-    playButton.setString("Play");
+    playButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - playButton.getGlobalBounds().size.x / 2.f, util::mapSize.y * util::tileSize.y / 2.f - playButton.getGlobalBounds().size.y / 2.f});
 }
 
 void MainMenuScreen::update()
