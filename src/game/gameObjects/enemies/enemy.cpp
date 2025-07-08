@@ -3,6 +3,10 @@
 Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint)
     : sprite(_texture), currentCheckpoint(_checkpoint)
 {
+    moveBy =  currentCheckpoint->getGlobalBounds().getCenter() - getPosition();
+    if(moveBy != sf::Vector2f{})
+        moveBy = moveBy.normalized();
+    setRotation(moveBy.angle());
 }
 
 void Enemy::update()
