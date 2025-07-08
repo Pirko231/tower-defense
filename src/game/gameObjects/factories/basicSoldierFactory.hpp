@@ -7,5 +7,8 @@ class BasicSoldierFactory : public IEnemyFactory
 public:
     BasicSoldierFactory() = default;
     
-    std::unique_ptr<Enemy> create() const override {return std::make_unique<Enemy>(Enemy{util::AssetLoader::get().basicSoldier});}
+    std::unique_ptr<Enemy> create(Checkpoint::Iterator checkpoint) const override
+    {
+        return std::make_unique<Enemy>(Enemy{util::AssetLoader::get().basicSoldier, checkpoint});
+    }
 };
