@@ -1,7 +1,3 @@
-//
-// Created by szymek on 07.07.25.
-//
-
 #include "enemymanager.hpp"
 
 EnemyManager::EnemyManager(Map* _map)

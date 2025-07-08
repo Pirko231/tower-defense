@@ -97,6 +97,9 @@ add_executable(main
         src/buttons/playbutton.hpp
         src/game/gameObjects/managers/enemymanager.cpp
         src/game/gameObjects/managers/enemymanager.hpp
+        src/game/gameObjects/enemies/enemy.cpp
+        src/game/gameObjects/enemies/enemy.hpp
+        src/game/interfaces/enemyfactoryinterface.hpp
 
 
 )

@@ -1,9 +1,12 @@
 #pragma once
 #include "../map.hpp"
+#include "enemyfactoryinterface.hpp"
 
 class EnemyManager : public sf::Drawable
 {
     Map* map{};
+
+    std::vector<std::unique_ptr<Enemy>> enemies;
 public:
     EnemyManager(Map* _map);
 
