@@ -17,7 +17,10 @@ void EnemyManager::update()
     if(!v)
     {
         BasicSoldierFactory f;
-        enemies.push_back(f.create(map->getCheckpointIterator()));
+        auto e = f.create(map->getCheckpointIterator());
+        e->setPosition(map->getEntrance()->getPosition());
+        e->nextDestination();
+        enemies.push_back(std::move(e));
     }
     v = true;
 }

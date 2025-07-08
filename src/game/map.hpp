@@ -103,6 +103,10 @@ public:
         return &tiles[(mousePos.y * util::mapSize.x) + mousePos.x];
     }
 
+    Tile* getEntrance() {return entrance;}
+
+    Tile* getExit() {return exit;}
+
     Checkpoint::Iterator getCheckpointIterator() {return Checkpoint::Iterator{checkpoints.begin(), checkpoints};}
 
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
