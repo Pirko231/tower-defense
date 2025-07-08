@@ -3,6 +3,7 @@
 #include "base.hpp"
 
 Map::Map(const std::filesystem::path& fileName)
+ //   : entrance(util::AssetLoader::get().roadTile, TileType::Entrance), exit(util::AssetLoader::get().roadTile, TileType::Exit)
 {
     loadMap(fileName);
 }
@@ -58,6 +59,10 @@ void Map::loadMap(const std::filesystem::path& path)
             Tile tile = createTile(static_cast<TileType>(value));
             tile.setPosition(util::calculatePosition(mapPos));
             tiles.push_back(tile);
+            if (tiles.back().getType() == TileType::Entrance)
+                entrance = &tiles.back();
+            else if (tiles.back().getType() == TileType::Exit)
+                exit = &tiles.back();
         }
         catch (const std::exception& e)
         {
@@ -102,7 +107,7 @@ Tile Map::createTile(TileType type)
         return Tile{util::AssetLoader::get().dirtTile, type};
     else if (type == TileType::Sand)
         return Tile{util::AssetLoader::get().sandTile, type};
-    else if (type == TileType::Road || type == TileType::Checkpoint)
+    else if (type == TileType::Road || type == TileType::Checkpoint || type == TileType::Entrance || type == TileType::Exit)
         return Tile{util::AssetLoader::get().roadTile, type};
     else if (type == TileType::BuildPoint)
         return Tile{util::AssetLoader::get().buildPoint, type};

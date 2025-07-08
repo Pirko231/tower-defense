@@ -13,6 +13,8 @@ enum class TileType
     Sand = 12,
     Road = 30,
     Checkpoint = 31,
+    Entrance = 32,
+    Exit = 33,
     BuildPoint = 50
 };
 
@@ -82,6 +84,8 @@ public:
 class Map : public sf::Drawable
 {
     std::vector<Tile> tiles;
+    Tile* entrance{};
+    Tile* exit{};
     std::vector<BuildPoint> buildPoints;
     std::vector<Checkpoint> checkpoints;
 public:
