@@ -96,7 +96,7 @@ Tile Map::createTile(TileType type)
         return Tile{util::AssetLoader::get().dirtTile, type};
     else if (type == TileType::Sand)
         return Tile{util::AssetLoader::get().sandTile, type};
-    else if (type == TileType::Road)
+    else if (type == TileType::Road || type == TileType::Checkpoint)
         return Tile{util::AssetLoader::get().roadTile, type};
     else if (type == TileType::BuildPoint)
         return Tile{util::AssetLoader::get().buildPoint, type};

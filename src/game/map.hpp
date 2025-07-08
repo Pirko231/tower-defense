@@ -8,11 +8,12 @@
 enum class TileType
 {
     Empty = 0,
-    Grass = 1,
-    Dirt = 2,
-    Sand = 3,
-    Road = 4,
-    BuildPoint = 5
+    Grass = 10,
+    Dirt = 11,
+    Sand = 12,
+    Road = 30,
+    Checkpoint = 31,
+    BuildPoint = 50
 };
 
 class Tile : public sf::Drawable, public sf::Transformable
@@ -56,11 +57,33 @@ public:
     }
 };
 
+// checkpoint nie ma byc drawable, to jest tylko test
+class Checkpoint : public sf::Drawable, public sf::Transformable
+{
+    sf::FloatRect bounds{{0.f,0.f}, static_cast<sf::Vector2f>(util::tileSize)};
+public:
+    Checkpoint() = default;
+    Checkpoint(sf::Vector2f position)
+    {
+        setPosition(position);
+    }
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
+    {
+        states.transform *= getTransform();
+        sf::RectangleShape shape(bounds.size);
+        shape.setFillColor(sf::Color::Red);
+
+        target.draw(shape, states);
+    }
+};
+
 /// @brief wczytuje mape z pliku i przechowuje ja
 class Map : public sf::Drawable
 {
     std::vector<Tile> tiles;
     std::vector<BuildPoint> buildPoints;
+    std::vector<Checkpoint> checkpoints;
 public:
     Map(const std::filesystem::path& fileName);
 
