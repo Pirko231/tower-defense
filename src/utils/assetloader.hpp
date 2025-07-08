@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#pragma ignore warning(disable : 4100)
+#pragma GCC diagnostic ignored "-Wunused-result"
 
 struct TowerTexture
 {

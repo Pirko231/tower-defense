@@ -1,5 +1,5 @@
 #pragma once
-#include "../map.hpp"
+#include "../../map.hpp"
 #include "enemyfactoryinterface.hpp"
 
 class EnemyManager : public sf::Drawable

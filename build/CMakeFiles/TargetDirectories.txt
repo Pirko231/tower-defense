@@ -1,4 +1,0 @@
-/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles/imgui.dir
-/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles/main.dir
-/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles/edit_cache.dir
-/home/szymek/Dokumenty/C++/SFML/tower-defense/build/CMakeFiles/rebuild_cache.dir

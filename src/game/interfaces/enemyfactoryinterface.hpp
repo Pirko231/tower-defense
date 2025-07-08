@@ -1,5 +1,5 @@
 #pragma once
-#include "../enemies/enemy.hpp"
+#include "../gameObjects/enemies/enemy.hpp"
 
 class EnemyFactoryInterface
 {
