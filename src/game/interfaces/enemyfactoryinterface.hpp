@@ -1,10 +1,10 @@
 #pragma once
 #include "../gameObjects/enemies/enemy.hpp"
 
-class EnemyFactoryInterface
+class IEnemyFactory
 {
 public:
-    EnemyFactoryInterface() = default;
+    IEnemyFactory() = default;
 
     virtual std::unique_ptr<Enemy> create() const = 0;
 };

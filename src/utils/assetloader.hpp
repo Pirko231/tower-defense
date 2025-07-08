@@ -33,6 +33,8 @@ public:
     sf::Texture towerBase;
     sf::Texture cannon1;
 
+    sf::Texture basicSoldier;
+
     sf::Texture grassTile;
     sf::Texture dirtTile;
     sf::Texture sandTile;
@@ -51,6 +53,8 @@ private:
 
         towerBase.loadFromFile("resources/textures/archers/towerBase.png");
         cannon1.loadFromFile("resources/textures/archers/cannon1.png");
+
+        basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
 
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");

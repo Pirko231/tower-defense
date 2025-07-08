@@ -4,3 +4,8 @@ Enemy::Enemy(const sf::Texture& _texture)
     : sprite(_texture)
 {
 }
+
+void Enemy::update()
+{
+    
+}

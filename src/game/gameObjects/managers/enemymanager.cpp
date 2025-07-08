@@ -3,6 +3,8 @@
 EnemyManager::EnemyManager(Map* _map)
     : map(_map)
 {
+    BasicSoldierFactory f;
+    enemies.push_back(f.create());
 }
 
 void EnemyManager::update()

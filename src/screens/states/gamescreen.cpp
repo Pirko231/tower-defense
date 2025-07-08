@@ -13,6 +13,8 @@ void GameScreen::update()
 {
     towerManager.update();
 
+    enemyManager.update();
+
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
         buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
 }

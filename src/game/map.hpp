@@ -78,6 +78,22 @@ public:
 
         target.draw(shape, states);
     }
+
+    class Iterator
+    {
+        std::vector<Checkpoint>& checkpoints;
+        std::vector<Checkpoint>::iterator current;
+    public:
+        Iterator(std::vector<Checkpoint>::iterator _current, std::vector<Checkpoint>& _data)
+            : checkpoints(_data), current(_current)
+        {}
+
+        Checkpoint& operator*() {return *current;}
+
+        void operator++() {current++;}
+
+        bool hasNext() const {return current != checkpoints.end();}
+    };
 };
 
 /// @brief wczytuje mape z pliku i przechowuje ja
@@ -120,6 +136,8 @@ public:
 
         return &tiles[(mousePos.y * util::mapSize.x) + mousePos.x];
     }
+
+    Checkpoint::Iterator getCheckpointIterator() {return Checkpoint::Iterator{checkpoints.begin(), checkpoints};}
 
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
     void loadMap(const std::filesystem::path& path);
