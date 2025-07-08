@@ -95,6 +95,8 @@ public:
             target.draw(tile,states);
         for (auto& buildPoint : buildPoints)
             target.draw(buildPoint,states);
+        for (auto& checkpoint : checkpoints)
+            target.draw(checkpoint,states);
     }
 
     BuildPoint* getBuildPoint(sf::Vector2i pos)

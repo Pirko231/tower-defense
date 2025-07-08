@@ -49,6 +49,12 @@ void Map::loadMap(const std::filesystem::path& path)
                     it--;
                 }
             }
+            else if (static_cast<TileType>(value) == TileType::Checkpoint)
+            {
+                auto checkPoint(util::calculatePosition(mapPos));
+                checkpoints.emplace_back(checkPoint);
+                value = static_cast<int>(tiles.back().getType());
+            }
             Tile tile = createTile(static_cast<TileType>(value));
             tile.setPosition(util::calculatePosition(mapPos));
             tiles.push_back(tile);
