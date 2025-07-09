@@ -76,7 +76,7 @@ Tile *Map::findNextPath(Tile *tile)
         if(!isClear)
             return nullptr;
         Tile* t = findTile(where);
-        if(t->getType() == TileType::Road || t->getType() == TileType::Checkpoint)
+        if(t->getType() == TileType::Road)
             return findTile(where);
         return nullptr;
     };
