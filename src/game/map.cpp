@@ -34,10 +34,9 @@ Tile *Map::findNextPath(Tile *tile)
     // jest 4 pol do przeszukania
     constexpr int directions{4};
 
-    static Tile* previousTile{tile};
+    static std::vector<Tile*> previousTiles{};
 
     Tile* result{};
-
 
     sf::Vector2i mapPos = util::calculatePosition(tile->getPosition());
 
@@ -84,11 +83,18 @@ Tile *Map::findNextPath(Tile *tile)
     {
         auto currentTile = getTile(positions[i], *clear[i]);
 
-        if(currentTile && currentTile != previousTile)
+        if(currentTile)
         {
-            result = currentTile;
-            previousTile = currentTile;
-            break;
+            bool isDuplicate{};
+            for(auto& i : previousTiles)
+                if(currentTile == i)
+                    isDuplicate = true;
+            if(!isDuplicate)
+            {
+                result = currentTile;
+                previousTiles.push_back(currentTile);
+                break;
+            }
         }
     }
 
