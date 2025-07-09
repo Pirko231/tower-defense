@@ -27,6 +27,8 @@ void Map::sortCheckpoints()
             }
     }
     checkpoints = newCheckpoints;
+    if(exit)
+        checkpoints.push_back(Checkpoint{exit->getPosition()});
 }
 
 Tile *Map::findNextPath(Tile *tile)
@@ -98,29 +100,9 @@ Tile *Map::findNextPath(Tile *tile)
         }
     }
 
-    /*if(leftClear)
-        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y} )->getType() == TileType::Road
-        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y} )->getType() == TileType::Checkpoint)
-            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y});
-    if(rightClear)
-        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y})->getType() == TileType::Road
-        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y})->getType() == TileType::Checkpoint)
-            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y});
-    if(upClear)
-        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y})->getType() == TileType::Road
-        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y})->getType() == TileType::Checkpoint)
-            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y});
-    if(downClear)
-        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y})->getType() == TileType::Road
-        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y})->getType() == TileType::Checkpoint)
-            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y});  
-    */
-
     if(result)
-    {
-        //previousTile = result;
         return result;
-    }
+    
     return nullptr;
 }
 
@@ -207,6 +189,11 @@ void Map::loadMap(const std::filesystem::path &path)
                     tile.setPosition(util::calculatePosition(mapPos));
                     tiles.push_back(tile);
                     mapPos.x++;
+
+                    if (tiles.back().getType() == TileType::Entrance)
+                        entrance = &tiles.back();
+                    else if (tiles.back().getType() == TileType::Exit)
+                        exit = &tiles.back();
                 }
                 catch (std::exception& e)
                 {
@@ -214,7 +201,6 @@ void Map::loadMap(const std::filesystem::path &path)
                 }
         }
     }
-
     sortCheckpoints();
 }
 
