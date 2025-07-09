@@ -5,10 +5,10 @@ Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint)
 {
     setOrigin(getGlobalBounds().getCenter());
 
-    moveBy =  currentCheckpoint->getGlobalBounds().getCenter() - getPosition();
+    /*moveBy =  currentCheckpoint->getGlobalBounds().getCenter() - getPosition();
     if(moveBy != sf::Vector2f{})
         moveBy = moveBy.normalized();
-    setRotation(moveBy.angle());
+    setRotation(moveBy.angle());*/
 }
 
 void Enemy::update()
@@ -19,15 +19,30 @@ void Enemy::update()
         nextDestination();
 }
 
+bool Enemy::hasReachedDestination()
+{
+    
+    return (bool)getGlobalBounds().findIntersection(calculateCheckpointsHitbox());
+}
+
 void Enemy::nextDestination()
 {
     if(!currentCheckpoint.hasNext())
         return;
     currentCheckpoint++;
 
-    sf::Vector2f mBy = currentCheckpoint->getGlobalBounds().getCenter() - getPosition();
+    sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
     if(mBy != sf::Vector2f{})
         moveBy = mBy.normalized();
 
     setRotation(moveBy.angle());
+}
+
+sf::FloatRect Enemy::calculateCheckpointsHitbox() const
+{
+    auto center = currentCheckpoint->getGlobalBounds().getCenter();
+    sf::FloatRect rect{center, currentCheckpoint->getGlobalBounds().size / 10.f};
+    rect.position -= rect.size / 2.f;
+
+    return rect;
 }

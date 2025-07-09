@@ -19,14 +19,21 @@ public:
     /// @brief nalezy wywolywac to w glownej petli
     void update();
 
-    virtual bool hasReachedDestination() {return (bool)getGlobalBounds().findIntersection(currentCheckpoint->getGlobalBounds());}
+    virtual bool hasReachedDestination();
 
     /// @brief zmienia currentChecpoint i wylicza moveBy
     virtual void nextDestination();
+private:
+
+    sf::FloatRect calculateCheckpointsHitbox() const;
     
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         states.transform *= getTransform();
+
+        sf::RectangleShape shape(calculateCheckpointsHitbox().size);
+        shape.setPosition(calculateCheckpointsHitbox().position);
+        target.draw(shape);
 
         target.draw(sprite, states);
     }

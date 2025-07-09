@@ -37,7 +37,7 @@ public:
 
         void operator++(int) {current++;}
 
-        Checkpoint* operator->() {return &(*current);}
+        Checkpoint* operator->() const {return &(*current);}
 
         bool hasNext() const {return current != checkpoints.end();}
     };
