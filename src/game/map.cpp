@@ -8,7 +8,117 @@ Map::Map(const std::filesystem::path& fileName)
     loadMap(fileName);
 }
 
-void Map::loadMap(const std::filesystem::path& path)
+void Map::sortCheckpoints()
+{
+    std::vector<Checkpoint> newCheckpoints;
+    int foundCheckpoints{};
+    Tile* currentTile{entrance};
+
+    while(foundCheckpoints != (int)checkpoints.size())
+    {
+        currentTile = findNextPath(currentTile);
+        if(!currentTile)
+            break;
+        for(auto& checkpoint : checkpoints)
+            if(checkpoint.getPosition() == currentTile->getPosition())
+            {
+                foundCheckpoints++;
+                newCheckpoints.push_back(checkpoint);
+            }
+    }
+    checkpoints = newCheckpoints;
+}
+
+Tile *Map::findNextPath(Tile *tile)
+{
+    // jest 4 pol do przeszukania
+    constexpr int directions{4};
+
+    static Tile* previousTile{tile};
+
+    Tile* result{};
+
+
+    sf::Vector2i mapPos = util::calculatePosition(tile->getPosition());
+
+    sf::Vector2f pos = tile->getPosition();
+
+    bool leftClear{};
+    bool rightClear{};
+    bool upClear{};
+    bool downClear{};
+
+    // sprawdzenie czy mozemy przeszukiwac pola
+    if(mapPos.x - 1 >= 0)
+        leftClear = true;
+    if(mapPos.x + 1 <= util::mapSize.x - 1)
+        rightClear = true;
+    if(mapPos.y - 1 >= 0)
+        upClear = true;
+    if(mapPos.y - 1 <= util::mapSize.y + 1)
+        downClear = true;
+
+    bool* clear[directions] {&leftClear, &rightClear, &upClear, &downClear};
+
+    // pozycje mapy ktore sie sprawdza. Koordynaty sa zapisane w kratkach, np. 12,6
+    sf::Vector2i positions[directions]
+    {
+        sf::Vector2i{(int)pos.x - util::tileSize.x, (int)pos.y}, // left
+        sf::Vector2i{(int)pos.x + util::tileSize.x, (int)pos.y}, // right
+        sf::Vector2i{(int)pos.x, (int)pos.y - util::tileSize.y}, // up
+        sf::Vector2i{(int)pos.x, (int)pos.y + util::tileSize.y} // down
+    };
+
+    // zwroci tile i sprawdzi czy ma typ checkpoint lub road
+    auto getTile = [&](sf::Vector2i where, bool isClear)->Tile*
+    {
+        if(!isClear)
+            return nullptr;
+        Tile* t = findTile(where);
+        if(t->getType() == TileType::Road || t->getType() == TileType::Checkpoint)
+            return findTile(where);
+        return nullptr;
+    };
+
+    for(int i = 0; i < directions; i++)
+    {
+        auto currentTile = getTile(positions[i], *clear[i]);
+
+        if(currentTile && currentTile != previousTile)
+        {
+            result = currentTile;
+            previousTile = currentTile;
+            break;
+        }
+    }
+
+    /*if(leftClear)
+        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y} )->getType() == TileType::Road
+        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y} )->getType() == TileType::Checkpoint)
+            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x - util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y});
+    if(rightClear)
+        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y})->getType() == TileType::Road
+        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y})->getType() == TileType::Checkpoint)
+            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x + util::tileSize.x, static_cast<sf::Vector2i>(tile->getPosition()).y});
+    if(upClear)
+        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y})->getType() == TileType::Road
+        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y})->getType() == TileType::Checkpoint)
+            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y - util::tileSize.y});
+    if(downClear)
+        if(findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y})->getType() == TileType::Road
+        || findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y})->getType() == TileType::Checkpoint)
+            result = findTile({static_cast<sf::Vector2i>(tile->getPosition()).x,static_cast<sf::Vector2i>(tile->getPosition()).y + util::tileSize.y});  
+    */
+
+    if(result)
+    {
+        //previousTile = result;
+        return result;
+    }
+    return nullptr;
+}
+
+void Map::loadMap(const std::filesystem::path &path)
 {
     tiles.clear();
     buildPoints.clear();
@@ -54,7 +164,8 @@ void Map::loadMap(const std::filesystem::path& path)
             {
                 auto checkPoint(util::calculatePosition(mapPos));
                 checkpoints.emplace_back(checkPoint);
-                value = static_cast<int>(tiles.back().getType());
+                //value = static_cast<int>(tiles.back().getType());
+                value = static_cast<int>(TileType::Road);
             }
             Tile tile = createTile(static_cast<TileType>(value));
             tile.setPosition(util::calculatePosition(mapPos));
@@ -97,6 +208,8 @@ void Map::loadMap(const std::filesystem::path& path)
                 }
         }
     }
+
+    sortCheckpoints();
 }
 
 Tile Map::createTile(TileType type)

@@ -113,7 +113,11 @@ public:
     void loadMap(const std::filesystem::path& path);
 
 private:
+    /// @brief sortuje checkpointy przygotowujac je do stanu uzywalnosci. Wywolywane w loadMap
+    void sortCheckpoints();
 
+    /// @brief zwraca kolejne pole ktore jest trasa przeciwnikow i obok obecnego
+    Tile* findNextPath(Tile* tile);
 
     /// @brief zwraca odpowiedni tile do podanego typu. Kiedy typ sie nie zgadza zwraca Tile bez tekstury
     Tile createTile(TileType type);
