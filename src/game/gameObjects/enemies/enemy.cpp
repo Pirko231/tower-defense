@@ -3,12 +3,13 @@
 Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint)
     : sprite(_texture), currentCheckpoint(_checkpoint)
 {
-    setOrigin(getGlobalBounds().getCenter());
+    setOrigin(getGlobalBounds().getCenter());;
 
-    /*moveBy =  currentCheckpoint->getGlobalBounds().getCenter() - getPosition();
-    if(moveBy != sf::Vector2f{})
-        moveBy = moveBy.normalized();
-    setRotation(moveBy.angle());*/
+    sf::Vector2f mBy = getPosition() - calculateCheckpointsHitbox().position;
+    if(mBy != sf::Vector2f{})
+        moveBy = mBy.normalized();
+
+    setRotation(moveBy.angle());
 }
 
 void Enemy::update()
@@ -22,7 +23,16 @@ void Enemy::update()
     healthBar.update(health);
 }
 
-bool Enemy::hasReachedDestination()
+void Enemy::calculateMoveBy()
+{
+    sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
+    if(mBy != sf::Vector2f{})
+        moveBy = mBy.normalized();
+
+    setRotation(moveBy.angle());
+}
+
+bool Enemy::hasReachedDestination() const
 {
     
     return (bool)getGlobalBounds().findIntersection(calculateCheckpointsHitbox());
@@ -34,11 +44,7 @@ void Enemy::nextDestination()
         return;
     currentCheckpoint++;
 
-    sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
-    if(mBy != sf::Vector2f{})
-        moveBy = mBy.normalized();
-
-    setRotation(moveBy.angle());
+    calculateMoveBy();
 }
 
 sf::FloatRect Enemy::calculateCheckpointsHitbox() const

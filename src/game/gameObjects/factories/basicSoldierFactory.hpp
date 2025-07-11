@@ -9,6 +9,11 @@ public:
     
     std::unique_ptr<Enemy> create(Checkpoint::Iterator checkpoint) const override
     {
-        return std::make_unique<Enemy>(Enemy{util::AssetLoader::get().basicSoldier, checkpoint});
+        auto s = std::make_unique<Enemy>(Enemy{util::AssetLoader::get().basicSoldier, checkpoint});
+        
+        s->setDamage(5);
+        s->calculateMoveBy();
+
+        return s;
     }
 };

@@ -9,6 +9,7 @@
 class GameScreen : public ScreenState
 {
     int money{100};
+    int health{100};
     Map map;
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;

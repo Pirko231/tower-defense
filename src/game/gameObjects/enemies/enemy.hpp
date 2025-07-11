@@ -16,6 +16,8 @@ class Enemy : public sf::Drawable, public sf::Transformable
     int maxHealth{100};
     int health{maxHealth};
     HealthBar healthBar{maxHealth};
+
+    int damage{};
 public:
     Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint);
 
@@ -24,7 +26,18 @@ public:
     /// @brief nalezy wywolywac to w glownej petli
     void update();
 
-    virtual bool hasReachedDestination();
+    bool hasNext() const {return currentCheckpoint.hasNext();}
+
+    void setDamage(int _damage) {damage = _damage;}
+
+    int getDamage() const {return damage;}
+
+    /// @brief przelicza moveBy i ustawia go
+    void calculateMoveBy();
+
+    /// @brief sprawdza kolizje z checkpointem
+    /// @return czy koliduje
+    virtual bool hasReachedDestination() const;
 
     /// @brief zmienia currentChecpoint i wylicza moveBy
     virtual void nextDestination();

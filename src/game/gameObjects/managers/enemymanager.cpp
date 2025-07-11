@@ -1,7 +1,7 @@
 #include "enemymanager.hpp"
 
-EnemyManager::EnemyManager(Map* _map)
-    : map(_map)
+EnemyManager::EnemyManager(Map* _map, int* _health)
+    : map(_map), baseHealth(_health)
 {
     // utworzenie jakiegokolwiek przeciwinika w tym momencie powoduje segfault
     // poniewaz checkpointy sa puste podczas inicjalizacji
@@ -9,8 +9,19 @@ EnemyManager::EnemyManager(Map* _map)
 
 void EnemyManager::update()
 {
-    for(auto& enemy : enemies)
+    for(auto it = enemies.begin(); it != enemies.end(); it++)
+    {
+        std::unique_ptr<Enemy>& enemy = *it;
         enemy->update();
+        if (!enemy->hasNext())
+        {
+            *baseHealth -= enemy->getDamage();
+            enemies.erase(it);
+            it--;
+        }
+    }
+
+    
 
     // wywalic kiedy bedzie powazniejszy mechanizm do dodawania przeciwnikow
     static bool v{};
@@ -19,7 +30,7 @@ void EnemyManager::update()
         BasicSoldierFactory f;
         auto e = f.create(map->getCheckpointIterator());
         e->setPosition(map->getEntrance()->getPosition());
-        e->nextDestination();
+        e->calculateMoveBy();
         enemies.push_back(std::move(e));
     }
     v = true;
