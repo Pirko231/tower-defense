@@ -17,6 +17,7 @@ set(SFML_INCLUDE_DIR "${SFML_ROOT}/include")
 set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
 
 add_compile_definitions(IMGUI)
+add_compile_definitions(DEBUG)
 
 include_directories(${SFML_INCLUDE_DIR})
 link_directories(${SFML_LIBRARY_DIR})
@@ -100,7 +101,7 @@ add_executable(main
         src/game/gameObjects/enemies/enemy.cpp
         src/game/gameObjects/enemies/enemy.hpp
         src/game/interfaces/enemyfactoryinterface.hpp
-
+        src/game/gameObjects/healthbar.cpp
 
 )
 

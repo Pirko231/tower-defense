@@ -17,6 +17,9 @@ void Enemy::update()
 
     if(hasReachedDestination())
         nextDestination();
+
+    healthBar.setPosition(getPosition());
+    healthBar.update(health);
 }
 
 bool Enemy::hasReachedDestination()
