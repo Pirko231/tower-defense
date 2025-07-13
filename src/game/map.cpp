@@ -2,10 +2,8 @@
 
 #include "base.hpp"
 
-Map::Map(const std::filesystem::path& fileName)
- //   : entrance(util::AssetLoader::get().roadTile, TileType::Entrance), exit(util::AssetLoader::get().roadTile, TileType::Exit)
+Map::Map()
 {
-    //loadMap(fileName);
 }
 
 void Map::sortCheckpoints()

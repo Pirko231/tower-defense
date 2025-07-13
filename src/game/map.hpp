@@ -71,7 +71,7 @@ class Map : public sf::Drawable
     std::vector<BuildPoint> buildPoints;
     std::vector<Checkpoint> checkpoints;
 public:
-    Map(const std::filesystem::path& fileName);
+    Map();
 
     const std::vector<Tile>& getTiles() const {return tiles;}
 

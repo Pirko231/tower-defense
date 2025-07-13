@@ -1,7 +1,7 @@
 #include "gamescreen.hpp"
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
-    : ScreenState(_stateMachine), map("empty"),
+    : ScreenState(_stateMachine), map(),
     towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     enemyManager(&map, &health), waveManager(&map, &enemyManager)
 {
