@@ -22,6 +22,11 @@ public:
         static_cast<GameScreen*>(gameScreen.get())->setCurrentMap(_mapPath);
     }
 
+    void setCurrentEnemies(const std::filesystem::path& _enemyPath) override
+    {
+        static_cast<GameScreen*>(gameScreen.get())->setCurrentEnemies(_enemyPath);
+    }
+
     void setState(ScreenState* newState) override {currentState = newState;}
     ScreenState* getMainMenuScreen() override {return mainMenuScreen.get();}
     ScreenState* getGameScreen() override {return gameScreen.get();}

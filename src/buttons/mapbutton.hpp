@@ -10,12 +10,15 @@ class MapButton : public Button
     sf::Text text;
     sf::RectangleShape background;
     std::filesystem::path mapPath;
+    std::filesystem::path enemyPath;
 public:
-    MapButton(const sf::Font& font, const std::filesystem::path& mapName);
+    MapButton(const sf::Font& font, const std::filesystem::path& mapName, const std::filesystem::path& enemyName);
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(),background.getGlobalBounds().size};}
 
     const std::filesystem::path& getMap() const {return mapPath;}
+
+    const std::filesystem::path& getEnemies() const {return enemyPath;}
 
     void update() override;
 
