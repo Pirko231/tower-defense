@@ -2,7 +2,7 @@
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), map("empty"),
-    towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money),
+    towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     enemyManager(&map, &health)
 {
     //towerManagerProxy.addTower({19,11}, TowerType::Archer);
