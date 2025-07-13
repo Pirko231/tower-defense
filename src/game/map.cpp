@@ -5,7 +5,7 @@
 Map::Map(const std::filesystem::path& fileName)
  //   : entrance(util::AssetLoader::get().roadTile, TileType::Entrance), exit(util::AssetLoader::get().roadTile, TileType::Exit)
 {
-    loadMap(fileName);
+    //loadMap(fileName);
 }
 
 void Map::sortCheckpoints()

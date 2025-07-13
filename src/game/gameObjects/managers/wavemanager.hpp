@@ -1,0 +1,33 @@
+#pragma once
+#include "enemymanager.hpp"
+#include <filesystem>
+#include <fstream>
+
+// na razie zdefiniuje tutaj potem sie przerzuci w razie potrzeby
+enum class EnemyType
+{
+    Empty = 0, // tylko dla error handling
+    BasicSoldier = 1
+};
+
+/// @brief tworzy przeciwnikow i wysyla informacje do enemyManager
+class WaveManager
+{
+    Map* map{};
+    EnemyManager* enemyManager{};
+    
+    std::vector<EnemyType> enemies;
+public:
+    WaveManager(Map* _map, EnemyManager* _enemyManager);
+
+    /// @brief wczytuje przeciwnikow z pliku
+    /// @param filePath sciezka do pliku
+    void loadEnemies(const std::filesystem::path& filePath);
+
+    void update();
+
+private:
+    /// @brief przerabia tekst na EnemyType
+    /// @param line tekst do przerobienia
+    EnemyType loadEnemy(const std::string& line);
+};

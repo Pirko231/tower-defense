@@ -3,6 +3,7 @@
 #include "screenstate.hpp"
 #include "managers/towermanagerproxy.hpp"
 #include "managers/enemymanager.hpp"
+#include "managers/wavemanager.hpp"
 #include "../map.hpp"
 #include "../../game/buildingui.hpp"
 
@@ -15,6 +16,7 @@ class GameScreen : public ScreenState
     TowerManagerProxy towerManagerProxy;
     BuildingUI buildingUI;
     EnemyManager enemyManager;
+    WaveManager waveManager;
 public:
     GameScreen(IScreenStateMachine* _machine);
 
