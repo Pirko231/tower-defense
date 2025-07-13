@@ -16,7 +16,8 @@ class WaveManager
     Map* map{};
     EnemyManager* enemyManager{};
     
-    std::vector<EnemyType> enemies;
+    std::vector<std::vector<EnemyType>> enemies;
+    std::vector<std::vector<EnemyType>>::iterator currentWave{};
 public:
     WaveManager(Map* _map, EnemyManager* _enemyManager);
 

@@ -21,19 +21,6 @@ void EnemyManager::update()
         }
     }
 
-    
-
-    // wywalic kiedy bedzie powazniejszy mechanizm do dodawania przeciwnikow
-    static bool v{};
-    if(!v)
-    {
-        BasicSoldierFactory f;
-        auto e = f.create(map->getCheckpointIterator());
-        e->setPosition(map->getEntrance()->getGlobalBounds().getCenter());
-        e->calculateMoveBy();
-        enemies.push_back(std::move(e));
-    }
-    v = true;
 }
 
 void EnemyManager::draw(sf::RenderTarget& target, sf::RenderStates states) const

@@ -18,8 +18,11 @@ void WaveManager::update()
     }
     timer = 1;
     
-    enemyManager->addEnemy(getFactory(enemies.back()).get());
-    enemies.pop_back();
+    enemyManager->addEnemy(getFactory(currentWave->back()).get());
+    currentWave->pop_back();
+    if(currentWave->size() == 0)
+        enemies.erase(enemies.begin());
+    currentWave = enemies.begin();
 }
 
 void WaveManager::loadEnemies(const std::filesystem::path &filePath)
@@ -31,17 +34,34 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
     if(file.is_open())
     {
         std::string data;
+        enemies.push_back({}); // pierwsza fala
         
         while(!file.eof())
         {
             std::getline(file, data, ' ');
+
+            // szukanie znaku nowej lini
+            if(data.find('\n') != std::string::npos)
+            {
+                std::string temp = std::to_string(data.back());
+                data.erase(data.begin() + 1, data.end());
+                auto enemy = loadEnemy(data);
+                if(enemy != EnemyType::Empty)
+                    enemies.back().emplace_back(enemy);
+
+                enemies.push_back({});
+                data = temp; // w tym wypadku ladowane sa dwie wartosci - teraz pracujemy na tej drugiej odzyskanej
+            }
+
             auto enemy = loadEnemy(data);
             if(enemy != EnemyType::Empty)
-                enemies.emplace_back(enemy);
+                enemies.back().emplace_back(enemy);
         }
     }
     else
         std::cerr << "File could not open " << filePath << '\n';
+    enemies.pop_back(); // ostatnia linia bedzie invalid
+    currentWave = enemies.begin();
 }
 
 EnemyType WaveManager::loadEnemy(const std::string &line)
