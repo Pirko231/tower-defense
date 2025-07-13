@@ -28,7 +28,7 @@ public:
     bool isVisible() const {return visible;}
 
     /// @return jezeli kliknieto w jakis produkt to zwraca produkt
-    std::optional<const Product*> click(sf::Vector2i mousePos);
+    const Product* click(sf::Vector2i mousePos);
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

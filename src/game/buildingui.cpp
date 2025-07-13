@@ -11,11 +11,9 @@ void BuildingUI::click(sf::Vector2i where)
 {
     if (towerList.isVisible())
     {
-        auto opt = towerList.click(where);
-        if (opt.has_value())
+        auto product = towerList.click(where);
+        if (product)
         {
-            auto product = opt.value();
-
             buyProduct(product);
             towerList.setVisible({0,0}, false);
             mapPointerVisible = false;

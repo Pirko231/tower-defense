@@ -49,10 +49,10 @@ void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)
     }
 }
 
-std::optional<const Product*> TowerList::click(sf::Vector2i mousePos)
+const Product* TowerList::click(sf::Vector2i mousePos)
 {
     if (!background.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
-        return std::nullopt;
+        return nullptr;
 
     for (auto& product : products)
         if (product.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
@@ -60,5 +60,5 @@ std::optional<const Product*> TowerList::click(sf::Vector2i mousePos)
             return &product;
         }
 
-    return std::nullopt;
+    return nullptr;
 }
