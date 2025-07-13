@@ -29,7 +29,7 @@ void EnemyManager::update()
     {
         BasicSoldierFactory f;
         auto e = f.create(map->getCheckpointIterator());
-        e->setPosition(map->getEntrance()->getPosition());
+        e->setPosition(map->getEntrance()->getGlobalBounds().getCenter());
         e->calculateMoveBy();
         enemies.push_back(std::move(e));
     }

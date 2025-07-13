@@ -30,7 +30,7 @@ public:
 
     TileType getType() const {return type;}
 
-
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
