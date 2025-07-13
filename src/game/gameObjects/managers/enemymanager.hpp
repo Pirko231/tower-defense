@@ -14,6 +14,13 @@ public:
 
     void update();
 
+    void addEnemy(IEnemyFactory* factory)
+    {
+        enemies.push_back(std::move(factory->create(map->getCheckpointIterator())));
+        enemies.back()->setPosition(map->getEntrance()->getGlobalBounds().getCenter());
+        enemies.back()->calculateMoveBy();
+    }
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

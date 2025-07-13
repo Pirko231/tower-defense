@@ -30,4 +30,6 @@ private:
     /// @brief przerabia tekst na EnemyType
     /// @param line tekst do przerobienia
     EnemyType loadEnemy(const std::string& line);
+
+    std::unique_ptr<IEnemyFactory> getFactory(EnemyType type);
 };
