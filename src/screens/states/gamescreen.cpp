@@ -11,6 +11,8 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
 
 void GameScreen::update()
 {
+    waveButton.update();
+
     towerManager.update();
 
     enemyManager.update();
@@ -18,12 +20,23 @@ void GameScreen::update()
     waveManager.update();
 
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
+    {
         buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
+        if (waveButton.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
+        {
+            if(!waveManager.isWaveActive())
+            {
+                waveManager.nextWave();
+            }
+        }
+    }
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(map,states);
+
+    target.draw(waveButton,states);
 
     target.draw(towerManager,states);
 

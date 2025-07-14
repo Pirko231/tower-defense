@@ -6,6 +6,7 @@
 #include "managers/wavemanager.hpp"
 #include "../map.hpp"
 #include "../../game/buildingui.hpp"
+#include "../../buttons/playbutton.hpp"
 
 class GameScreen : public ScreenState
 {
@@ -17,6 +18,8 @@ class GameScreen : public ScreenState
     BuildingUI buildingUI;
     EnemyManager enemyManager;
     WaveManager waveManager;
+
+    btn::PlayButton waveButton;
 public:
     GameScreen(IScreenStateMachine* _machine);
 

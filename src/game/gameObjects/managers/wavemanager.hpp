@@ -27,6 +27,14 @@ public:
 
     void update();
 
+    /// @brief sprawdza czy obecnie trwa jakas fala
+    bool isWaveActive() const
+    {
+        return currentWave != enemies.end() || currentWave->size() != 0;
+    }
+
+    /// @brief ustawia kolejna fale
+    void nextWave() {currentWave = enemies.begin();}
 private:
     /// @brief przerabia tekst na EnemyType
     /// @param line tekst do przerobienia
