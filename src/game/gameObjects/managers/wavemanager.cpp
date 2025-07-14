@@ -65,6 +65,9 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
         std::cerr << "File could not open " << filePath << '\n';
     enemies.pop_back(); // ostatnia linia bedzie invalid
     currentWave = enemies.begin();
+
+    maxWaves = enemies.size();
+    waves = 0;
 }
 
 EnemyType WaveManager::loadEnemy(const std::string &line)

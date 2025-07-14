@@ -18,6 +18,9 @@ class WaveManager
     
     std::vector<std::vector<EnemyType>> enemies;
     std::vector<std::vector<EnemyType>>::iterator currentWave{};
+    
+    int maxWaves{};
+    int waves{};
 public:
     WaveManager(Map* _map, EnemyManager* _enemyManager);
 
@@ -34,7 +37,16 @@ public:
     }
 
     /// @brief ustawia kolejna fale
-    void nextWave() {currentWave = enemies.begin();}
+    void nextWave()
+    {
+        if(waves + 1 >= maxWaves)
+            return;
+        currentWave = enemies.begin(); waves++;
+    }
+
+    int getMaxWaves() const {return maxWaves;}
+
+    int getWaves() const {return waves;}
 private:
     /// @brief przerabia tekst na EnemyType
     /// @param line tekst do przerobienia

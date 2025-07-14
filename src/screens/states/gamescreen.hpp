@@ -20,6 +20,7 @@ class GameScreen : public ScreenState
     WaveManager waveManager;
 
     btn::PlayButton waveButton;
+    sf::Text waveCounter;
 public:
     GameScreen(IScreenStateMachine* _machine);
 
