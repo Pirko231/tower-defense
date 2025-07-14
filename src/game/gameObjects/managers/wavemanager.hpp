@@ -32,5 +32,9 @@ private:
     /// @param line tekst do przerobienia
     EnemyType loadEnemy(const std::string& line);
 
+    /// @brief interpretuje typ i zwraca odpowiednia fabryke. Kiedy typ nie zostanie rozpoznany
+    /// zwraca BasicSoldierfactory
+    /// @param type typ do interpretacji
+    /// @return fabryka
     std::unique_ptr<IEnemyFactory> getFactory(EnemyType type);
 };

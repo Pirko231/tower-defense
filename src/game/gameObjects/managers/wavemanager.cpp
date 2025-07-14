@@ -6,7 +6,7 @@ WaveManager::WaveManager(Map *_map, EnemyManager *_enemyManager)
 
 void WaveManager::update()
 {
-    if(enemies.size() == 0)
+    if(currentWave->size() == 0 || currentWave == enemies.end())
         return;
 
     // prymitywny timer potem wywalic
@@ -21,8 +21,11 @@ void WaveManager::update()
     enemyManager->addEnemy(getFactory(currentWave->back()).get());
     currentWave->pop_back();
     if(currentWave->size() == 0)
+    {
         enemies.erase(enemies.begin());
-    currentWave = enemies.begin();
+        currentWave = enemies.end();
+    }
+    //currentWave = enemies.begin();
 }
 
 void WaveManager::loadEnemies(const std::filesystem::path &filePath)
@@ -84,5 +87,5 @@ std::unique_ptr<IEnemyFactory> WaveManager::getFactory(EnemyType type)
     if(type == EnemyType::BasicSoldier)
         return std::make_unique<BasicSoldierFactory>();
 
-    return nullptr;
+    return std::make_unique<BasicSoldierFactory>();
 }
