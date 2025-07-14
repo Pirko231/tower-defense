@@ -5,8 +5,8 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     enemyManager(&map, &health), waveManager(&map, &enemyManager)
 {
-    //towerManagerProxy.addTower({19,11}, TowerType::Archer);
-    //towerManagerProxy.addTower({12,11}, TowerType::Archer);
+    waveButton.setScale({0.2f,0.2f}); // zepsulo sie cos ze skala - manualnei pomnozylem * 0.2
+    waveButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - waveButton.getGlobalBounds().size.x * 0.2f / 2.f, 0.f});
 }
 
 void GameScreen::update()
@@ -21,7 +21,6 @@ void GameScreen::update()
 
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
     {
-        buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
         if (waveButton.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
             if(!waveManager.isWaveActive())
@@ -29,6 +28,8 @@ void GameScreen::update()
                 waveManager.nextWave();
             }
         }
+        else
+            buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
     }
 }
 
