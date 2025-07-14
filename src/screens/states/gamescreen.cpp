@@ -1,27 +1,55 @@
 #include "gamescreen.hpp"
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
-    : ScreenState(_stateMachine), map("empty"),
-    towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money),
-    enemyManager(&map, &health)
+    : ScreenState(_stateMachine), map(),
+    towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
+    enemyManager(&map, &health), waveManager(&map, &enemyManager),
+    waveCounter(util::AssetLoader::get().font)
 {
-    //towerManagerProxy.addTower({19,11}, TowerType::Archer);
-    //towerManagerProxy.addTower({12,11}, TowerType::Archer);
+    waveButton.setScale({0.2f,0.2f});
+    waveButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - waveButton.getGlobalBounds().size.x / 2.f, 0.f});
+
+    waveCounter.setString("test");
+    waveCounter.setPosition({waveButton.getPosition().x + waveButton.getGlobalBounds().size.x + 20.f, waveButton.getGlobalBounds().getCenter().y - waveCounter.getGlobalBounds().size.y / 2.f - 20.f});
 }
 
 void GameScreen::update()
 {
+    waveButton.update();
+
     towerManager.update();
 
     enemyManager.update();
 
+    waveManager.update();
+    // ustawienie licznika fal
+    {
+        sf::String waveString{std::to_string(waveManager.getWaves() + 1)};
+        waveString += '/';
+        waveString += std::to_string(waveManager.getMaxWaves());
+        waveCounter.setString(waveString);
+    }
+
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
-        buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
+    {
+        if (waveButton.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
+        {
+            if(!waveManager.isWaveActive())
+            {
+                waveManager.nextWave();
+            }
+        }
+        else
+            buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
+    }
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(map,states);
+
+    target.draw(waveButton,states);
+    target.draw(waveCounter,states);
 
     target.draw(towerManager,states);
 

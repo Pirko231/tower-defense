@@ -102,7 +102,7 @@ add_executable(main
         src/game/gameObjects/enemies/enemy.hpp
         src/game/interfaces/enemyfactoryinterface.hpp
         src/game/gameObjects/healthbar.cpp
-
+        src/game/gameObjects/managers/wavemanager.cpp
 )
 
 if(NOT MSVC)

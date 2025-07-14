@@ -17,6 +17,8 @@ public:
 
     virtual void setCurrentMap(const std::filesystem::path& _mapPath) = 0;
 
+    virtual void setCurrentEnemies(const std::filesystem::path& _enemyPath) = 0;
+
     Pressed& getPressed() { return pressed; }
 
     sf::RenderWindow* getWindow() { return window; }

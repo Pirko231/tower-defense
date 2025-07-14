@@ -30,7 +30,7 @@ public:
 
     TileType getType() const {return type;}
 
-
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -71,7 +71,7 @@ class Map : public sf::Drawable
     std::vector<BuildPoint> buildPoints;
     std::vector<Checkpoint> checkpoints;
 public:
-    Map(const std::filesystem::path& fileName);
+    Map();
 
     const std::vector<Tile>& getTiles() const {return tiles;}
 

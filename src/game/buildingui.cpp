@@ -1,7 +1,7 @@
 #include "buildingui.hpp"
 
-BuildingUI::BuildingUI(Map *_map, TowerManagerProxy* _towerManager, int* _money)
-    : map(_map), money(_money), towerManager(_towerManager), towerList(_map, money)
+BuildingUI::BuildingUI(Map *_map, TowerManagerProxy* _towerManager, int* _money, int* _health)
+    : map(_map), money(_money), health(_health), towerManager(_towerManager), towerList(_map, money, health)
 {
     mapPointer.setFillColor({20,20,100,80});
     mapPointer.setSize(static_cast<sf::Vector2f>(util::tileSize));
@@ -11,11 +11,9 @@ void BuildingUI::click(sf::Vector2i where)
 {
     if (towerList.isVisible())
     {
-        auto opt = towerList.click(where);
-        if (opt.has_value())
+        auto product = towerList.click(where);
+        if (product)
         {
-            auto product = opt.value();
-
             buyProduct(product);
             towerList.setVisible({0,0}, false);
             mapPointerVisible = false;

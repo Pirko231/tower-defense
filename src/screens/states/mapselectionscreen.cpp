@@ -4,12 +4,12 @@
 
 MapSelectionScreen::MapSelectionScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), title(util::AssetLoader::get().font),
-    mapButtons({btn::MapButton{util::AssetLoader::get().font, "resources/maps/map1.txt"},
-    btn::MapButton{util::AssetLoader::get().font, "resources/maps/map2.txt"},
-    btn::MapButton{util::AssetLoader::get().font, "resources/maps/map3.txt"},
-    btn::MapButton{util::AssetLoader::get().font, "resources/maps/map4.txt"},
-    btn::MapButton{util::AssetLoader::get().font, "resources/maps/map5.txt"},
-    btn::MapButton{util::AssetLoader::get().font, "resources/maps/map6.txt"}})
+    mapButtons({btn::MapButton{util::AssetLoader::get().font, "map1.txt", "enemies1.txt"},
+    btn::MapButton{util::AssetLoader::get().font, "map2.txt", "enemies2.txt"},
+    btn::MapButton{util::AssetLoader::get().font, "map3.txt", "enemies3.txt"},
+    btn::MapButton{util::AssetLoader::get().font, "map4.txt", "enemies4.txt"},
+    btn::MapButton{util::AssetLoader::get().font, "map5.txt", "enemies5.txt"},
+    btn::MapButton{util::AssetLoader::get().font, "map6.txt", "enemies6.txt"}})
 {
     mapButtons[0].setPosition({180.f,150.f});
     for (int i = 1; i < 3; i++)
@@ -31,6 +31,7 @@ void MapSelectionScreen::update()
             if (button.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
             {
                 stateMachine->setCurrentMap(button.getMap());
+                stateMachine->setCurrentEnemies(button.getEnemies());
                 stateMachine->setState(stateMachine->getGameScreen());
             }
 }

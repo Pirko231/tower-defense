@@ -19,7 +19,7 @@ void Enemy::update()
     if(hasReachedDestination())
         nextDestination();
 
-    healthBar.setPosition(getPosition());
+    healthBar.setPosition({getPosition().x - healthBar.getGlobalBounds().size.x / 2.f, getPosition().y - getGlobalBounds().size.y / 1.5f});
     healthBar.update(health);
 }
 
