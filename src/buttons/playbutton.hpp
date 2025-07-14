@@ -20,6 +20,10 @@ namespace btn
 
         sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
+        void setScale(sf::Vector2f factors) {sprite.setScale(factors);}
+
+        sf::Vector2f getScale() const {return sprite.getScale();}
+        
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override
         {
             states.transform *= getTransform();

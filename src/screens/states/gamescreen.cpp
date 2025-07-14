@@ -6,11 +6,11 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     enemyManager(&map, &health), waveManager(&map, &enemyManager),
     waveCounter(util::AssetLoader::get().font)
 {
-    waveButton.setScale({0.2f,0.2f}); // zepsulo sie cos ze skala - manualnei pomnozylem * 0.2
-    waveButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - waveButton.getGlobalBounds().size.x * 0.2f / 2.f, 0.f});
+    waveButton.setScale({0.2f,0.2f});
+    waveButton.setPosition({util::mapSize.x * util::tileSize.x / 2.f - waveButton.getGlobalBounds().size.x / 2.f, 0.f});
 
     waveCounter.setString("test");
-    waveCounter.setPosition({waveButton.getPosition().x + waveButton.getGlobalBounds().size.x * 0.2f + 20.f, waveButton.getGlobalBounds().getCenter().y * 0.2f - waveCounter.getGlobalBounds().size.y / 2.f - 20.f});
+    waveCounter.setPosition({waveButton.getPosition().x + waveButton.getGlobalBounds().size.x + 20.f, waveButton.getGlobalBounds().getCenter().y - waveCounter.getGlobalBounds().size.y / 2.f - 20.f});
 }
 
 void GameScreen::update()
