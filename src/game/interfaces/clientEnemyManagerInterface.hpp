@@ -4,5 +4,5 @@
 class IClientEnemyManager
 {
 public:
-    virtual Enemy& getTheMostFarEnemy(sf::FloatRect area) = 0;
+    virtual Enemy* getTheMostFarEnemy(sf::FloatRect area) = 0;
 };

@@ -13,7 +13,13 @@ void Tower::update()
     if(!enemyManager)
         return;
 
+    // przeciwnik w ktorego bedziemy strzelac
+    auto enemy = enemyManager->getTheMostFarEnemy(archer->getRange());
+    if(!enemy)
+        return; // brak celow
+
     // ustawienie rotacji wiezy
-    sf::Vector2f offset {archer->getGlobalBounds().position - enemyManager->getTheMostFarEnemy(archer->getRange()).getPosition()};
+    sf::Vector2f offset {getPosition() - enemy->getGlobalBounds().getCenter()};
+    offset = offset.normalized();
     archer->setRotation(offset.angle());
 }

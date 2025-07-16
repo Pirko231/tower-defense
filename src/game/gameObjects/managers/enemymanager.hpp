@@ -15,7 +15,7 @@ public:
 
     void update();
 
-    Enemy& getTheMostFarEnemy(sf::FloatRect area) override;
+    Enemy* getTheMostFarEnemy(sf::FloatRect area) override;
 
     void addEnemy(IEnemyFactory* factory)
     {
