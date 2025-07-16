@@ -11,6 +11,10 @@ class IArcher : public sf::Transformable, public sf::Drawable
 {
 public:
     virtual void shoot() = 0;
+
+    virtual void setRange(float) = 0;
+
+    virtual sf::FloatRect getGlobalBounds() const = 0;
 };
 
 

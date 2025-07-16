@@ -17,7 +17,8 @@ public:
     Tower(const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type)
         : sprite(towerTexture), archer(std::move(_archer)), type(_type)
     {
-
+        archer->setOrigin(archer->getGlobalBounds().getCenter());
+        archer->setPosition(getGlobalBounds().getCenter());
     }
     ~Tower() override = default;
 
