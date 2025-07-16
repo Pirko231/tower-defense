@@ -1,5 +1,4 @@
-#ifndef ARCHER_HPP
-#define ARCHER_HPP
+#pragma once
 #include "archerInterface.hpp"
 
 
@@ -28,7 +27,7 @@ public:
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
-    void shoot() override;
+    void shoot(sf::Vector2f where) override;
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -37,7 +36,3 @@ public:
         target.draw(sprite, states);
     }
 };
-
-
-
-#endif //ARCHER_HPP

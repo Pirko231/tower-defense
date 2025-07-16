@@ -23,6 +23,12 @@ void EnemyManager::update()
 
 }
 
+Enemy &EnemyManager::getTheMostFarEnemy(sf::FloatRect area)
+{
+    // TODO ogarnac to
+    return **enemies.begin();
+}
+
 void EnemyManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     for (auto& enemy : enemies)

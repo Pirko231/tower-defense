@@ -2,8 +2,9 @@
 #include "../../map.hpp"
 #include "enemyfactoryinterface.hpp"
 #include "../factories/basicSoldierFactory.hpp"
+#include "clientEnemyManagerInterface.hpp"
 
-class EnemyManager : public sf::Drawable
+class EnemyManager : public sf::Drawable, public IClientEnemyManager
 {
     Map* map{};
     int* baseHealth{};
@@ -13,6 +14,8 @@ public:
     EnemyManager(Map* _map, int* _health);
 
     void update();
+
+    Enemy& getTheMostFarEnemy(sf::FloatRect area) override;
 
     void addEnemy(IEnemyFactory* factory)
     {

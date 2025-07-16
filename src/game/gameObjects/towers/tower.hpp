@@ -1,5 +1,6 @@
 #pragma once
 #include  "archerInterface.hpp"
+#include "clientEnemyManagerInterface.hpp"
 #include <memory>
 
 enum class TowerType
@@ -9,6 +10,8 @@ enum class TowerType
 
 class Tower : public sf::Drawable, public sf::Transformable
 {
+    IClientEnemyManager* enemyManager{};
+
     sf::Sprite sprite;
     std::unique_ptr<IArcher> archer;
 
