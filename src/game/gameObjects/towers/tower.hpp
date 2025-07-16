@@ -17,16 +17,12 @@ class Tower : public sf::Drawable, public sf::Transformable
 
     TowerType type;
 public:
-    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type)
-        : enemyManager(_enemyManager), sprite(towerTexture), archer(std::move(_archer)), type(_type)
-    {
-        archer->setOrigin(archer->getGlobalBounds().getCenter());
-        archer->setPosition(getGlobalBounds().getCenter());
-    }
+    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type);
     ~Tower() override = default;
 
     Tower(Tower& tower)
-        : sprite(tower.sprite), archer(std::move(tower.archer))
+        : enemyManager(tower.enemyManager), sprite(tower.sprite), archer(std::move(tower.archer)),
+        type(tower.type)
     {}
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}

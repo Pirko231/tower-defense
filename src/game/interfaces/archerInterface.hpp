@@ -15,6 +15,8 @@ public:
     virtual void setRange(float) = 0;
 
     virtual sf::FloatRect getGlobalBounds() const = 0;
+
+    virtual sf::FloatRect getRange() const = 0;
 };
 
 

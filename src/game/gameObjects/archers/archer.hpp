@@ -25,6 +25,8 @@ public:
         range.size.x = _range; range.size.y = _range;
     }
 
+    sf::FloatRect getRange() const override {return range;}
+
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
     void shoot(sf::Vector2f where) override;

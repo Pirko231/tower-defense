@@ -11,7 +11,7 @@ public:
     ~ArcherFactory() override = default;
 
 
-    std::unique_ptr<Tower> create(IClientEnemyManager* eManager) override
+    std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr) override
     {
         std::unique_ptr<IArcher> archer = std::make_unique<Archer>(util::AssetLoader::get().cannon1);
         archer->setRange(250.f);
