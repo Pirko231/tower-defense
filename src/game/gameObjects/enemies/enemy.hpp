@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../map.hpp"
+#include "../../checkpoint.hpp"
 #include "../healthbar.hpp"
 
 /// @class klasa abstrakcyjna do przeciwnikow

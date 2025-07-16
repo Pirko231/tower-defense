@@ -17,8 +17,8 @@ class Tower : public sf::Drawable, public sf::Transformable
 
     TowerType type;
 public:
-    Tower(const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type)
-        : sprite(towerTexture), archer(std::move(_archer)), type(_type)
+    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type)
+        : enemyManager(_enemyManager), sprite(towerTexture), archer(std::move(_archer)), type(_type)
     {
         archer->setOrigin(archer->getGlobalBounds().getCenter());
         archer->setPosition(getGlobalBounds().getCenter());

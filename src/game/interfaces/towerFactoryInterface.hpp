@@ -6,5 +6,5 @@ class ITowerFactory
 public:
     virtual ~ITowerFactory() = default;
 
-    virtual std::unique_ptr<Tower> create() = 0;
+    virtual std::unique_ptr<Tower> create(IClientEnemyManager* eManager) = 0;
 };
