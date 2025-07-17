@@ -1,5 +1,5 @@
 #pragma once
-#include  "archerInterface.hpp"
+#include  "turretInterface.hpp"
 #include "clientEnemyManagerInterface.hpp"
 #include <memory>
 
@@ -13,15 +13,15 @@ class Tower : public sf::Drawable, public sf::Transformable
     IClientEnemyManager* enemyManager{};
 
     sf::Sprite sprite;
-    std::unique_ptr<IArcher> archer;
+    std::unique_ptr<ITurret> turret;
 
     TowerType type;
 public:
-    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<IArcher>&& _archer, TowerType _type);
+    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<ITurret>&& _turret, TowerType _type);
     ~Tower() override = default;
 
     Tower(Tower& tower)
-        : enemyManager(tower.enemyManager), sprite(tower.sprite), archer(std::move(tower.archer)),
+        : enemyManager(tower.enemyManager), sprite(tower.sprite), turret(std::move(tower.turret)),
         type(tower.type)
     {}
 
@@ -36,6 +36,6 @@ public:
         states.transform *= getTransform();
         target.draw(sprite, states);
 
-        target.draw(*archer, states);
+        target.draw(*turret, states);
     }
 };

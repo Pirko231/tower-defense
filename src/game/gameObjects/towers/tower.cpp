@@ -1,10 +1,10 @@
 #include  "tower.hpp"
 
-Tower::Tower(IClientEnemyManager *_enemyManager, const sf::Texture &towerTexture, std::unique_ptr<IArcher> &&_archer, TowerType _type)
-    : enemyManager(_enemyManager), sprite(towerTexture), archer(std::move(_archer)), type(_type)
+Tower::Tower(IClientEnemyManager *_enemyManager, const sf::Texture &towerTexture, std::unique_ptr<ITurret> &&_turret, TowerType _type)
+    : enemyManager(_enemyManager), sprite(towerTexture), turret(std::move(_turret)), type(_type)
 {
-    archer->setOrigin(archer->getGlobalBounds().getCenter());
-    archer->setPosition(getGlobalBounds().getCenter());
+    turret->setOrigin(turret->getGlobalBounds().getCenter());
+    turret->setPosition(getGlobalBounds().getCenter());
 }
 
 void Tower::update()
@@ -14,7 +14,7 @@ void Tower::update()
         return;
 
     // zasieg wiezy
-    sf::FloatRect range{{0.f,0.f}, {archer->getRange(),archer->getRange()}};
+    sf::FloatRect range{{0.f,0.f}, {turret->getRange(),turret->getRange()}};
     range.position = getGlobalBounds().getCenter() - range.size / 2.f;
 
     // przeciwnik w ktorego bedziemy strzelac
@@ -25,5 +25,5 @@ void Tower::update()
     // ustawienie rotacji wiezy
     sf::Vector2f offset {getPosition() - enemy->getGlobalBounds().getCenter()};
     offset = offset.normalized();
-    archer->setRotation(offset.angle());
+    turret->setRotation(offset.angle());
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "towerFactoryInterface.hpp"
-#include "archers/archer.hpp"
+#include "turrets/turret.hpp"
 #include "assetloader.hpp"
 
 class ArcherFactory : public ITowerFactory
@@ -13,7 +13,7 @@ public:
 
     std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr) override
     {
-        std::unique_ptr<IArcher> archer = std::make_unique<Archer>(util::AssetLoader::get().cannon1);
+        std::unique_ptr<ITurret> archer = std::make_unique<Turret>(util::AssetLoader::get().cannon1);
         archer->setRange(250.f);
         Tower tower(eManager, util::AssetLoader::get().towerBase, std::move(archer), TowerType::Archer);
         return std::make_unique<Tower>(tower);

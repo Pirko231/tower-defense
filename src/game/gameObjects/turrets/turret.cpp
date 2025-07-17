@@ -1,6 +1,6 @@
-#include "archer.hpp"
+#include "turret.hpp"
 
-void Archer::shoot(sf::Vector2f where)
+void Turret::shoot(sf::Vector2f where)
 {
     sf::Vector2f offset {getPosition() - where};
     if(offset != sf::Vector2f{})

@@ -1,22 +1,22 @@
 #pragma once
-#include "archerInterface.hpp"
+#include "turretInterface.hpp"
 
 
-class Archer : public IArcher
+class Turret : public ITurret
 {
     sf::Sprite sprite;
 
     float range{};
 public:
-    explicit Archer(const sf::Texture& _texture)
+    explicit Turret(const sf::Texture& _texture)
         : sprite(_texture)
     {
 
     }
 
-    Archer(const Archer& archer) = default;
-    Archer(Archer&&) = default;
-    ~Archer() override = default;
+    Turret(const Turret& Turret) = default;
+    Turret(Turret&&) = default;
+    ~Turret() override = default;
 
     void setRange(float _range) override{ range = _range;}
 

@@ -60,9 +60,9 @@ add_executable(main
     src/main.cpp 
     src/program.cpp
         src/game/gameObjects/towers/tower.cpp
-        src/game/gameObjects/archers/archer.cpp
-        src/game/gameObjects/archers/archer.hpp
-        src/game/interfaces/archerInterface.hpp
+        src/game/gameObjects/turrets/turret.cpp
+        src/game/gameObjects/turrets/turret.hpp
+        src/game/interfaces/turretInterface.hpp
         src/game/map.cpp
         src/game/map.hpp
         src/game/interfaces/towerFactoryInterface.hpp

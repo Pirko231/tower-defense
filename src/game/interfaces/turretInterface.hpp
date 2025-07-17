@@ -1,13 +1,7 @@
-//
-// Created by szymek on 27.06.25.
-//
-
-#ifndef IARCHER_HPP
-#define IARCHER_HPP
-
+#pragma once
 #include  <SFML/Graphics.hpp>
 
-class IArcher : public sf::Transformable, public sf::Drawable
+class ITurret : public sf::Transformable, public sf::Drawable
 {
 public:
     virtual void shoot(sf::Vector2f where) = 0;
@@ -18,7 +12,3 @@ public:
 
     virtual float getRange() const = 0;
 };
-
-
-
-#endif //IARCHER_HPP
