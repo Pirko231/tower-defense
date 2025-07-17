@@ -60,11 +60,16 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
             if(enemy != EnemyType::Empty)
                 enemies.back().emplace_back(enemy);
         }
+
+        enemies.pop_back(); // ostatnia linia bedzie invalid
+        currentWave = enemies.begin();
     }
     else
+    {
         std::cerr << "File could not open " << filePath << '\n';
-    enemies.pop_back(); // ostatnia linia bedzie invalid
-    currentWave = enemies.begin();
+        loadEnemies("resources/maps/defaultEnemies.txt");
+    }
+
 
     maxWaves = enemies.size();
     waves = 0;
