@@ -6,7 +6,7 @@ class Archer : public IArcher
 {
     sf::Sprite sprite;
 
-    sf::FloatRect range;
+    float range{};
 public:
     explicit Archer(const sf::Texture& _texture)
         : sprite(_texture)
@@ -14,18 +14,13 @@ public:
 
     }
 
-    Archer(const Archer& archer)
-        : sprite(archer.sprite)
-    {}
+    Archer(const Archer& archer) = default;
     Archer(Archer&&) = default;
     ~Archer() override = default;
 
-    void setRange(float _range) override
-    {
-        range.size.x = _range; range.size.y = _range;
-    }
+    void setRange(float _range) override{ range = _range;}
 
-    sf::FloatRect getRange() const override {return range;}
+    float getRange() const override {return range;}
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 

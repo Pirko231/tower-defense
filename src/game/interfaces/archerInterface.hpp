@@ -16,7 +16,7 @@ public:
 
     virtual sf::FloatRect getGlobalBounds() const = 0;
 
-    virtual sf::FloatRect getRange() const = 0;
+    virtual float getRange() const = 0;
 };
 
 

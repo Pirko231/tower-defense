@@ -13,8 +13,12 @@ void Tower::update()
     if(!enemyManager)
         return;
 
+    // zasieg wiezy
+    sf::FloatRect range{{0.f,0.f}, {archer->getRange(),archer->getRange()}};
+    range.position = getGlobalBounds().getCenter() - range.size / 2.f;
+
     // przeciwnik w ktorego bedziemy strzelac
-    auto enemy = enemyManager->getTheMostFarEnemy(archer->getRange());
+    auto enemy = enemyManager->getTheMostFarEnemy(range);
     if(!enemy)
         return; // brak celow
 
