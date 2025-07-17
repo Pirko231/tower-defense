@@ -53,8 +53,8 @@ private:
         background.loadFromFile("resources/textures/background.jpg");
         playButton.loadFromFile("resources/textures/Play.png");
 
-        towerBase.loadFromFile("resources/textures/archers/towerBase.png");
-        cannon1.loadFromFile("resources/textures/archers/cannon1.png");
+        towerBase.loadFromFile("resources/textures/turrets/towerBase.png");
+        cannon1.loadFromFile("resources/textures/turrets/cannon1.png");
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
 
