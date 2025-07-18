@@ -7,17 +7,17 @@
 /// @brief wzorzec metoda szablonowa (funkcja update)
 class Enemy : public sf::Drawable, public sf::Transformable
 {
-    sf::Sprite sprite;
-
-    Checkpoint::Iterator currentCheckpoint;
-
-    sf::Vector2f moveBy{};
-
     int maxHealth{100};
     int health{maxHealth};
     HealthBar healthBar{maxHealth};
 
     int damage{};
+protected:
+    sf::Sprite sprite;
+
+    Checkpoint::Iterator currentCheckpoint;
+
+    sf::Vector2f moveBy{};
 public:
     Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint);
 
@@ -41,7 +41,7 @@ public:
 
     /// @brief zmienia currentChecpoint i wylicza moveBy
     virtual void nextDestination();
-private:
+protected:
 
     sf::FloatRect calculateCheckpointsHitbox() const;
     
