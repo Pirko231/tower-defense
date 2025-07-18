@@ -36,6 +36,8 @@ public:
 
     sf::Texture basicSoldier;
 
+    sf::Texture basicBullet;
+
     sf::Texture grassTile;
     sf::Texture dirtTile;
     sf::Texture sandTile;
