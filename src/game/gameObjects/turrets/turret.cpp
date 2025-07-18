@@ -2,8 +2,17 @@
 
 void Turret::update()
 {
-    for(auto& bullet : bullets)
-        bullet.update();
+
+    std::remove_if(bullets.begin(), bullets.end(), [](BasicBullet& b)->bool{b.update(); return b.shouldDelete();});
+
+    /*for(auto bullet = bullets.begin(); bullet != bullets.end(); bullet++)
+    {
+        bullet->update();
+        if(bullet->shouldDelete())
+        {
+            bullet = bullets.erase(bullet);
+        }
+    }*/
 }
 
 void Turret::shoot(sf::Vector2f from, Enemy *target)

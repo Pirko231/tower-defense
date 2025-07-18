@@ -13,6 +13,8 @@ void Tower::update()
     if(!enemyManager)
         return;
 
+    turret->update(); // szybki update pociskow
+
     // zasieg wiezy
     sf::FloatRect range{{0.f,0.f}, {turret->getRange(),turret->getRange()}};
     range.position = getGlobalBounds().getCenter() - range.size / 2.f;
@@ -21,8 +23,6 @@ void Tower::update()
     auto enemy = enemyManager->getTheMostFarEnemy(range);
     if(!enemy)
         return; // brak celow
-
-    turret->update(); // szybki update pociskow
 
     // ustawienie rotacji wiezy
     sf::Vector2f offset {getPosition() - enemy->getGlobalBounds().getCenter()};
