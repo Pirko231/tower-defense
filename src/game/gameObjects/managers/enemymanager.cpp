@@ -25,9 +25,17 @@ void EnemyManager::update()
 
 Enemy* EnemyManager::getTheMostFarEnemy(sf::FloatRect area)
 {
-    // TODO ogarnac to
-    if(enemies.size() > 0)
-        return (*enemies.begin()).get();
+    // Algorytm na razie bedzie dzialal troche inaczej.
+    // Ciezko bedzie to zrobic aby brac przeciwnika ktory jest pierwszy.
+    // Zrobimy tak ze bedzie bral przeciwnika ktory jest pierwszy w wektorze,
+    // bedzie to jednak robilo problemy kiedy przeciwnicy beda zmieniac predkosc.
+    // Wtedy bedzie trzeba prawdopodobnie uzywac iterator_swap.
+    
+    for(auto& enemy : enemies)
+    {
+        if(enemy->getGlobalBounds().findIntersection(area))
+            return enemy.get();
+    }
     return nullptr;
 }
 

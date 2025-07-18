@@ -113,5 +113,8 @@ endif()
 # Ustawienie wersji standardu C++
 target_compile_features(main PRIVATE cxx_std_20)
 
+# kolorki w terminalu
+add_compile_options(-fdiagnostics-color=always)
+
 # Linkowanie SFML
 target_link_libraries(main PRIVATE ${SFML_LIBS} imgui OpenGL::GL)
