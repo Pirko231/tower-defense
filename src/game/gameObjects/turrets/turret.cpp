@@ -1,8 +1,14 @@
 #include "turret.hpp"
 
-void Turret::shoot(sf::Vector2f where)
+void Turret::update()
 {
-    sf::Vector2f offset {getPosition() - where};
-    if(offset != sf::Vector2f{})
-        setRotation(offset.angle());
+    for(auto& bullet : bullets)
+        bullet.update();
+}
+
+void Turret::shoot(sf::Vector2f from, Enemy *target)
+{
+    BasicBullet bullet{target};
+    bullet.launch(from, target->getPosition());
+    bullets.push_back(bullet);
 }

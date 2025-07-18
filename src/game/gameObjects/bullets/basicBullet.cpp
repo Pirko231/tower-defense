@@ -1,8 +1,8 @@
 #include "basicBullet.hpp"
 
-BasicBullet::BasicBullet(float _speed, Enemy* _target)
+BasicBullet::BasicBullet(Enemy* _target)
     : sprite(util::AssetLoader::get().basicBullet), 
-    speed(_speed), target{_target}, damage(10), timerMax{480}, timer{timerMax}
+    speed(2.f), target{_target}, damage(10), timerMax{480}, timer{timerMax}
 {
 }
 
@@ -21,4 +21,6 @@ void BasicBullet::launch(sf::Vector2f from, sf::Vector2f where)
     hitTimer = (int)moveBy.length();
     if(moveBy != sf::Vector2f{})
         moveBy = moveBy.normalized();
+    setPosition(from);
+    setRotation(moveBy.angle());
 }

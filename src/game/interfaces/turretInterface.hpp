@@ -1,10 +1,13 @@
 #pragma once
 #include  <SFML/Graphics.hpp>
+#include "../gameObjects/enemies/enemy.hpp"
 
 class ITurret : public sf::Transformable, public sf::Drawable
 {
 public:
-    virtual void shoot(sf::Vector2f where) = 0;
+    virtual void shoot(sf::Vector2f from, Enemy* what) = 0;
+
+    virtual void update() = 0;
 
     virtual void setRange(float) = 0;
 

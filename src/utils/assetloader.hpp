@@ -60,6 +60,8 @@ private:
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
 
+        basicBullet.loadFromFile("resources/textures/bullets/basicBullet.png");
+
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");
         sandTile.loadFromFile("resources/textures/tiles/sand.png");

@@ -15,7 +15,7 @@ class BasicBullet : public IBullet
     int timer;
     int hitTimer{};
 public:
-    BasicBullet(float _speed, Enemy* _target);
+    BasicBullet(Enemy* _target);
 
     void update() override;
 
@@ -30,4 +30,10 @@ public:
     bool shouldDelete() const override {return timer <= 0;}
 
     bool hasHitTarget() const override {return hitTimer <= 0;}
+private:
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
+    {
+        states.transform *= getTransform();
+        target.draw(sprite, states);
+    }
 };

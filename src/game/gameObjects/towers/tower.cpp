@@ -22,8 +22,12 @@ void Tower::update()
     if(!enemy)
         return; // brak celow
 
+    turret->update(); // szybki update pociskow
+
     // ustawienie rotacji wiezy
     sf::Vector2f offset {getPosition() - enemy->getGlobalBounds().getCenter()};
     offset = offset.normalized();
     turret->setRotation(offset.angle());
+
+    turret->shoot(getPosition(),enemy);
 }
