@@ -11,9 +11,12 @@ class Turret : public ITurret
     float range{};
 
     std::vector<BasicBullet> bullets;
+
+    int maxCooldown{100};
+    int cooldown{};
 public:
     explicit Turret(const sf::Texture& _texture)
-        : sprite(_texture)
+        : sprite(_texture), cooldown{maxCooldown}
     {
 
     }
@@ -32,8 +35,8 @@ public:
     {
         states.transform *= getTransform();
 
-        target.draw(sprite, states);
         for(auto& bullet : bullets)
             target.draw(bullet);
+        target.draw(sprite, states);
     }
 };

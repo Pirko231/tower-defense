@@ -11,8 +11,7 @@ class BasicBullet : public IBullet
     Enemy* target{};
 
     int damage;
-    int timerMax;
-    int timer;
+    bool shouldDelete_{};
     int hitTimer{};
 public:
     BasicBullet(Enemy* _target);
@@ -27,7 +26,7 @@ public:
 
     int getDamage() const override {return damage;}
 
-    bool shouldDelete() const override {return timer <= 0;}
+    bool shouldDelete() const override {return shouldDelete_;}
 
     /// @brief sprawdza czy trafil w cel, jesli tak to wykonuje cala prace (zadanie obraze)
     /// potem oznacza sie jako pocisk do usuniecia

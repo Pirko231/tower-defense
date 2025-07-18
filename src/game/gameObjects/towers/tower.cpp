@@ -29,5 +29,5 @@ void Tower::update()
     offset = offset.normalized();
     turret->setRotation(offset.angle());
 
-    turret->shoot(getPosition(),enemy);
+    turret->shoot(getGlobalBounds().getCenter(),enemy);
 }
