@@ -17,5 +17,7 @@ public:
 
     virtual bool shouldDelete() const = 0;
 
-    virtual bool hasHitTarget() const = 0;
+    /// @brief sprawdza czy trafil w cel, jesli tak to wykonuje cala prace (zadanie obraze)
+    /// potem oznacza sie jako pocisk do usuniecia
+    virtual void hitTarget() = 0;
 };

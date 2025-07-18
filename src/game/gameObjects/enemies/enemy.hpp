@@ -28,6 +28,8 @@ public:
 
     bool hasNext() const {return currentCheckpoint.hasNext();}
 
+    void dealDamage(int damageToDeal) {health -= damageToDeal;}
+
     void setDamage(int _damage) {damage = _damage;}
 
     int getDamage() const {return damage;}

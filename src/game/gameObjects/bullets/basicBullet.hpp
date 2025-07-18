@@ -29,7 +29,9 @@ public:
 
     bool shouldDelete() const override {return timer <= 0;}
 
-    bool hasHitTarget() const override {return hitTimer <= 0;}
+    /// @brief sprawdza czy trafil w cel, jesli tak to wykonuje cala prace (zadanie obraze)
+    /// potem oznacza sie jako pocisk do usuniecia
+    void hitTarget() override;
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

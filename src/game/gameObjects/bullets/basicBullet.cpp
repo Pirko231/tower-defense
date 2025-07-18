@@ -24,3 +24,12 @@ void BasicBullet::launch(sf::Vector2f from, sf::Vector2f where)
     setPosition(from);
     setRotation(moveBy.angle());
 }
+
+void BasicBullet::hitTarget()
+{
+    if(hitTimer > 0)
+        return; // jeszcze nie dolecial
+
+    target->dealDamage(getDamage());
+    timer = -1; // kasujemy obiekt
+}
