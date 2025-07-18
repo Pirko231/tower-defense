@@ -1,8 +1,8 @@
 #include "basicBullet.hpp"
 
-BasicBullet::BasicBullet(float _speed)
-    : sprite(util::AssetLoader::get().basicBullet),
-    speed(_speed), timerMax{480}, timer{timerMax}
+BasicBullet::BasicBullet(float _speed, Enemy* _target)
+    : sprite(util::AssetLoader::get().basicBullet), 
+    speed(_speed), target{_target}, damage(10), timerMax{480}, timer{timerMax}
 {
 }
 

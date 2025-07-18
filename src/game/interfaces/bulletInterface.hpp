@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../enemies/enemy.hpp"
+#include "../gameObjects/enemies/enemy.hpp"
 
 class IBullet : public sf::Drawable, public sf::Transformable
 {
@@ -13,9 +13,9 @@ public:
 
     virtual int getDamage() const = 0;
 
-
+    virtual Enemy* getTarget() const = 0;
 
     virtual bool shouldDelete() const = 0;
 
-    virtual bool hitTarget() const = 0;
+    virtual bool hasHitTarget() const = 0;
 };
