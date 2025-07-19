@@ -17,6 +17,9 @@ protected:
 public:
     void update();
 
+    /// @brief oblicza i zwraca obrazenia na klatke
+    virtual float getDPS() const {return (float)damage / (float)maxCooldown;}
+
     float getRange() const {return range;}
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}

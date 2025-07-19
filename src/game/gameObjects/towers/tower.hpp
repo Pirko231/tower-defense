@@ -29,6 +29,8 @@ public:
 
     TowerType getType() const {return type;}
 
+    float getDPS() const {return turret->getDPS();}
+
     void update();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override

@@ -8,6 +8,8 @@ class DoubleCannon : public Turret
 public:
     DoubleCannon();
     void shoot(sf::Vector2f, Enemy*) override;
+
+    float getDPS() const override {return Turret::getDPS() + ((float)damage / (float)maxCooldown2);}
 private:
     /// @brief pierwszy strzal
     void barrelOneShoot(sf::Vector2f from, Enemy * target);
