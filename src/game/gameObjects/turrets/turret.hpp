@@ -1,10 +1,9 @@
 #pragma once
-#include "turretInterface.hpp"
 #include "../bullets/basicBullet.hpp"
 #include "../enemies/enemy.hpp"
 
 
-class Turret : public ITurret
+class Turret : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
 
@@ -15,11 +14,11 @@ protected:
     int maxCooldown{100};
     int cooldown{};
 public:
-    void update() override;
+    void update();
 
-    float getRange() const override {return range;}
+    float getRange() const {return range;}
 
-    sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
     virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
 protected:
@@ -27,7 +26,7 @@ protected:
         : sprite(_texture), range{_range}, cooldown{maxCooldown}
     {}
 
-    void setRange(float _range) override {range = _range;}
+    void setRange(float _range) {range = _range;}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
