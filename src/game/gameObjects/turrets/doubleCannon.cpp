@@ -1,7 +1,13 @@
 #include "doubleCannon.hpp"
 
+namespace
+{
+    constexpr float range = 200.f;
+    constexpr int damage = 10;
+}
+
 DoubleCannon::DoubleCannon()
-    : Turret(util::AssetLoader::get().doubleCannon, 200.f)
+    : Turret(util::AssetLoader::get().doubleCannon, ::range, ::damage)
 {
     maxCooldown = 80;
 }
@@ -21,7 +27,7 @@ void DoubleCannon::barrelOneShoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
 
-    BasicBullet bullet{target};
+    BasicBullet bullet{target, damage};
     bullet.launch(from, target->getPosition());
     bullets.push_back(bullet);
 }
@@ -32,7 +38,7 @@ void DoubleCannon::barrelSecondShoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown2 = maxCooldown2;
 
-    BasicBullet bullet{target};
+    BasicBullet bullet{target,damage};
     bullet.launch(from, target->getPosition());
     bullets.push_back(bullet);
 }

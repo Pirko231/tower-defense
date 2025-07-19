@@ -13,6 +13,7 @@ protected:
 
     int maxCooldown{100};
     int cooldown{};
+    int damage{};
 public:
     void update();
 
@@ -22,8 +23,8 @@ public:
 
     virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
 protected:
-    explicit Turret(const sf::Texture& _texture, float _range)
-        : sprite(_texture), range{_range}, cooldown{maxCooldown}
+    explicit Turret(const sf::Texture& _texture, float _range, int _damage)
+        : sprite(_texture), range{_range}, cooldown{maxCooldown}, damage{_damage}
     {}
 
     void setRange(float _range) {range = _range;}

@@ -4,7 +4,7 @@
 class DoubleCannon : public Turret
 {
     int maxCooldown2{80};
-    int cooldown2{maxCooldown - 20}; // cooldown2 odpowiada za drugi strzal
+    int cooldown2{maxCooldown - 15}; // cooldown2 odpowiada za drugi strzal
 public:
     DoubleCannon();
     void shoot(sf::Vector2f, Enemy*) override;
