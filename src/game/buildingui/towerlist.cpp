@@ -9,8 +9,8 @@ TowerList::TowerList(Map* _map, const int* _money, const int* _health)
     background.setSize({size.x / 3.f, size.y});
     background.setFillColor({255,255,255,120});
 
-    ArcherFactory archerFactory;
-    products.push_back(Product(std::make_unique<ArcherFactory>(), 20, {0.f,50.f}));
+    SingleCannonFactory singleCannonFactory;
+    products.push_back(Product(std::make_unique<SingleCannonFactory>(), 20, {0.f,50.f}));
 
     moneyIcon.setPosition({0.f,-10.f});
     moneyText.setPosition({moneyIcon.getPosition().x + moneyIcon.getGlobalBounds().size.x * 1.2f,moneyIcon.getPosition().y + 10.f});

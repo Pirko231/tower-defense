@@ -9,27 +9,25 @@ class Turret : public ITurret
     sf::Sprite sprite;
 
     float range{};
-
+protected:
     std::vector<BasicBullet> bullets;
 
     int maxCooldown{100};
     int cooldown{};
 public:
-    explicit Turret(const sf::Texture& _texture)
-        : sprite(_texture), cooldown{maxCooldown}
-    {
-
-    }
-
     void update() override;
-
-    void setRange(float _range) override{ range = _range;}
 
     float getRange() const override {return range;}
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
-    void shoot(sf::Vector2f from, Enemy* target) override;
+    virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
+protected:
+    explicit Turret(const sf::Texture& _texture, float _range)
+        : sprite(_texture), range{_range}, cooldown{maxCooldown}
+    {}
+
+    void setRange(float _range) override {range = _range;}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

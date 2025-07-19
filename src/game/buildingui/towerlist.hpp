@@ -1,7 +1,7 @@
 #pragma once
 #include "product.hpp"
 #include "../map.hpp"
-#include "../gameObjects/factories/archerFactory.hpp"
+#include "../gameObjects/factories/singleCannonFactory.hpp"
 #include "managers/towermanagerproxy.hpp"
 
 class TowerList : public sf::Drawable

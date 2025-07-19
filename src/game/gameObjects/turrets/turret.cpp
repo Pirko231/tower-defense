@@ -10,15 +10,3 @@ void Turret::update()
     }
 }
 
-void Turret::shoot(sf::Vector2f from, Enemy *target)
-{
-    cooldown--;
-    if(cooldown > 0)
-        return; // cooldown nie minal
-    cooldown = maxCooldown;
-    
-
-    BasicBullet bullet{target};
-    bullet.launch(from, target->getPosition());
-    bullets.push_back(bullet);
-}

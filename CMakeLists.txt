@@ -66,7 +66,7 @@ add_executable(main
         src/game/map.cpp
         src/game/map.hpp
         src/game/interfaces/towerFactoryInterface.hpp
-        src/game/gameObjects/factories/archerFactory.hpp
+        src/game/gameObjects/factories/singleCannonFactory.hpp
         src/utils/assetloader.hpp
         src/game/gameObjects/managers/towermanager.cpp
         src/game/gameObjects/managers/towermanager.hpp
@@ -108,6 +108,7 @@ add_executable(main
         src/game/gameObjects/enemies/eliteSoldier.cpp
         src/game/gameObjects/enemies/mechaSoldier.cpp
         src/game/gameObjects/enemies/superSoldier.cpp
+        src/game/gameObjects/turrets/singleCannon.cpp
 )
 
 if(NOT MSVC)
