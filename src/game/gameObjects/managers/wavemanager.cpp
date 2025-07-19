@@ -100,6 +100,8 @@ std::unique_ptr<IEnemyFactory> WaveManager::getFactory(EnemyType type)
         return std::make_unique<BasicSoldierFactory>();
     else if(type == EnemyType::EliteSoldier)
         return std::make_unique<EliteSoldierFactory>();
+    else if(type == EnemyType::MechaSoldier)
+        return std::make_unique<MechaSoldierFactory>();
 
     return std::make_unique<BasicSoldierFactory>();
 }

@@ -105,6 +105,8 @@ add_executable(main
         src/game/gameObjects/managers/wavemanager.cpp
         src/game/gameObjects/enemies/basicSoldier.cpp
         src/game/gameObjects/bullets/basicBullet.cpp
+        src/game/gameObjects/enemies/eliteSoldier.cpp
+        src/game/gameObjects/enemies/mechaSoldier.cpp
 )
 
 if(NOT MSVC)
