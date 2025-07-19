@@ -1,7 +1,7 @@
 #include "enemymanager.hpp"
 
-EnemyManager::EnemyManager(Map* _map, int* _health)
-    : map(_map), baseHealth(_health)
+EnemyManager::EnemyManager(Map* _map, int* _health, int* _money)
+    : map(_map), baseHealth(_health), money(_money)
 {
     // utworzenie jakiegokolwiek przeciwinika w tym momencie powoduje segfault
     // poniewaz checkpointy sa puste podczas inicjalizacji
@@ -9,7 +9,8 @@ EnemyManager::EnemyManager(Map* _map, int* _health)
 
 void EnemyManager::update()
 {
-    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& e)->bool{return e->shouldDelete();});
+    std::erase_if(enemies, [this](const std::unique_ptr<Enemy>& e)->bool
+        {if (e->shouldDelete()) {*money += e->getMoney(); return true;} return false;});
     for(auto it = enemies.begin(); it != enemies.end(); it++)
     {
         std::unique_ptr<Enemy>& enemy = *it;

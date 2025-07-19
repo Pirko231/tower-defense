@@ -2,7 +2,7 @@
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), map(),
-    enemyManager(&map, &health), waveManager(&map, &enemyManager),
+    enemyManager(&map, &health, &money), waveManager(&map, &enemyManager),
     towerManager(&map, &enemyManager), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     waveCounter(util::AssetLoader::get().font)
 {

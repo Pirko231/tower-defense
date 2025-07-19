@@ -8,10 +8,11 @@ class EnemyManager : public sf::Drawable, public IClientEnemyManager
 {
     Map* map{};
     int* baseHealth{};
+    int* money{};
 
     std::vector<std::unique_ptr<Enemy>> enemies;
 public:
-    EnemyManager(Map* _map, int* _health);
+    EnemyManager(Map* _map, int* _health, int* _money);
 
     void update();
 

@@ -12,6 +12,7 @@ class Enemy : public sf::Drawable, public sf::Transformable
     HealthBar healthBar{maxHealth};
 
     int damage{};
+    int moneyValue{};
 protected:
     sf::Sprite sprite;
 
@@ -19,7 +20,7 @@ protected:
 
     sf::Vector2f moveBy{};
 public:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint);
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue);
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
@@ -33,6 +34,8 @@ public:
     void setDamage(int _damage) {damage = _damage;}
 
     int getDamage() const {return damage;}
+
+    int getMoney() const {return moneyValue;}
 
     bool shouldDelete() const {return health <= 0;}
 
