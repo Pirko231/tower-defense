@@ -60,9 +60,9 @@ add_executable(main
     src/main.cpp 
     src/program.cpp
         src/game/gameObjects/towers/tower.cpp
-        src/game/gameObjects/archers/archer.cpp
-        src/game/gameObjects/archers/archer.hpp
-        src/game/interfaces/archerInterface.hpp
+        src/game/gameObjects/turrets/turret.cpp
+        src/game/gameObjects/turrets/turret.hpp
+        src/game/interfaces/turretInterface.hpp
         src/game/map.cpp
         src/game/map.hpp
         src/game/interfaces/towerFactoryInterface.hpp
@@ -103,6 +103,8 @@ add_executable(main
         src/game/interfaces/enemyfactoryinterface.hpp
         src/game/gameObjects/healthbar.cpp
         src/game/gameObjects/managers/wavemanager.cpp
+        src/game/gameObjects/enemies/basicSoldier.cpp
+        src/game/gameObjects/bullets/basicBullet.cpp
 )
 
 if(NOT MSVC)
@@ -112,6 +114,9 @@ endif()
 
 # Ustawienie wersji standardu C++
 target_compile_features(main PRIVATE cxx_std_20)
+
+# kolorki w terminalu
+add_compile_options(-fdiagnostics-color=always)
 
 # Linkowanie SFML
 target_link_libraries(main PRIVATE ${SFML_LIBS} imgui OpenGL::GL)

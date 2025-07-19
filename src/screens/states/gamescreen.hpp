@@ -13,11 +13,11 @@ class GameScreen : public ScreenState
     int money{100};
     int health{100};
     Map map;
+    EnemyManager enemyManager;
+    WaveManager waveManager;
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
     BuildingUI buildingUI;
-    EnemyManager enemyManager;
-    WaveManager waveManager;
 
     btn::PlayButton waveButton;
     sf::Text waveCounter;

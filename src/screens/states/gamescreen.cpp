@@ -2,8 +2,8 @@
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), map(),
-    towerManager(&map), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     enemyManager(&map, &health), waveManager(&map, &enemyManager),
+    towerManager(&map, &enemyManager), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     waveCounter(util::AssetLoader::get().font)
 {
     waveButton.setScale({0.2f,0.2f});
