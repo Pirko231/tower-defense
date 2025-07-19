@@ -2,6 +2,7 @@
 #include "product.hpp"
 #include "../map.hpp"
 #include "../gameObjects/factories/singleCannonFactory.hpp"
+#include "../gameObjects/factories/doubleCannonFactory.hpp"
 #include "managers/towermanagerproxy.hpp"
 
 class TowerList : public sf::Drawable

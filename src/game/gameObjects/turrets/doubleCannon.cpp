@@ -1,18 +1,17 @@
-#include "singleCannon.hpp"
+#include "doubleCannon.hpp"
 
-SingleCannon::SingleCannon()
-    : Turret(util::AssetLoader::get().singleCannon, 350.f)
+DoubleCannon::DoubleCannon()
+    : Turret(util::AssetLoader::get().doubleCannon, 200.f)
 {
 }
 
-void SingleCannon::shoot(sf::Vector2f from, Enemy *target)
+void DoubleCannon::shoot(sf::Vector2f from, Enemy * target)
 {
     cooldown--;
     if(cooldown > 0)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-
     BasicBullet bullet{target};
     bullet.launch(from, target->getPosition());
     bullets.push_back(bullet);

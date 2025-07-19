@@ -32,7 +32,8 @@ public:
     sf::Texture healthIcon;
 
     sf::Texture towerBase;
-    sf::Texture cannon1;
+    sf::Texture singleCannon;
+    sf::Texture doubleCannon;
 
     sf::Texture basicSoldier;
     sf::Texture eliteSoldier;
@@ -59,7 +60,8 @@ private:
         playButton.loadFromFile("resources/textures/Play.png");
 
         towerBase.loadFromFile("resources/textures/turrets/towerBase.png");
-        cannon1.loadFromFile("resources/textures/turrets/cannon1.png");
+        singleCannon.loadFromFile("resources/textures/turrets/cannon1.png");
+        doubleCannon.loadFromFile("resources/textures/turrets/cannon2.png");
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
         eliteSoldier.loadFromFile("resources/textures/enemies/eliteSoldier.png");

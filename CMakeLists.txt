@@ -62,7 +62,6 @@ add_executable(main
         src/game/gameObjects/towers/tower.cpp
         src/game/gameObjects/turrets/turret.cpp
         src/game/gameObjects/turrets/turret.hpp
-        src/game/interfaces/turretInterface.hpp
         src/game/map.cpp
         src/game/map.hpp
         src/game/interfaces/towerFactoryInterface.hpp
@@ -109,6 +108,7 @@ add_executable(main
         src/game/gameObjects/enemies/mechaSoldier.cpp
         src/game/gameObjects/enemies/superSoldier.cpp
         src/game/gameObjects/turrets/singleCannon.cpp
+        src/game/gameObjects/turrets/doubleCannon.cpp
 )
 
 if(NOT MSVC)
