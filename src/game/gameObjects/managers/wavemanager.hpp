@@ -9,7 +9,8 @@ enum class EnemyType
     Empty = 0, // tylko dla error handling
     BasicSoldier = 1,
     EliteSoldier = 2,
-    MechaSoldier = 3
+    MechaSoldier = 3,
+    SuperSoldier = 4
 };
 
 /// @brief tworzy przeciwnikow i wysyla informacje do enemyManager

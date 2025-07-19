@@ -107,6 +107,7 @@ add_executable(main
         src/game/gameObjects/bullets/basicBullet.cpp
         src/game/gameObjects/enemies/eliteSoldier.cpp
         src/game/gameObjects/enemies/mechaSoldier.cpp
+        src/game/gameObjects/enemies/superSoldier.cpp
 )
 
 if(NOT MSVC)
