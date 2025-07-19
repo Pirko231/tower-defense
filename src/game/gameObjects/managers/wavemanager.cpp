@@ -50,7 +50,7 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
             // szukanie znaku nowej lini
             if(data.find('\n') != std::string::npos)
             {
-                std::string temp = std::to_string(data.back());
+                std::string temp = std::to_string(static_cast<char>(data.back()) - 48);
                 data.erase(data.begin() + 1, data.end());
                 auto enemy = loadEnemy(data);
                 if(enemy != EnemyType::Empty)
