@@ -14,7 +14,7 @@ class BasicBullet : public IBullet
     bool shouldDelete_{};
     int hitTimer{};
 public:
-    BasicBullet(Enemy* _target);
+    BasicBullet(Enemy* _target, int _damage);
 
     void update() override;
 

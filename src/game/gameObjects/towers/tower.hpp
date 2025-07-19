@@ -1,11 +1,11 @@
 #pragma once
-#include  "turretInterface.hpp"
+#include  "../turrets/turret.hpp"
 #include "clientEnemyManagerInterface.hpp"
 #include <memory>
 
 enum class TowerType
 {
-    Archer = 0
+    SingleCannon = 1
 };
 
 class Tower : public sf::Drawable, public sf::Transformable
@@ -13,11 +13,11 @@ class Tower : public sf::Drawable, public sf::Transformable
     IClientEnemyManager* enemyManager{};
 
     sf::Sprite sprite;
-    std::unique_ptr<ITurret> turret;
+    std::unique_ptr<Turret> turret;
 
     TowerType type;
 public:
-    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<ITurret>&& _turret, TowerType _type);
+    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<Turret>&& _turret, TowerType _type);
     ~Tower() override = default;
 
     Tower(Tower& tower)
@@ -28,6 +28,8 @@ public:
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}
 
     TowerType getType() const {return type;}
+
+    float getDPS() const {return turret->getDPS();}
 
     void update();
 

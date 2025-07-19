@@ -62,11 +62,10 @@ add_executable(main
         src/game/gameObjects/towers/tower.cpp
         src/game/gameObjects/turrets/turret.cpp
         src/game/gameObjects/turrets/turret.hpp
-        src/game/interfaces/turretInterface.hpp
         src/game/map.cpp
         src/game/map.hpp
         src/game/interfaces/towerFactoryInterface.hpp
-        src/game/gameObjects/factories/archerFactory.hpp
+        src/game/gameObjects/factories/singleCannonFactory.hpp
         src/utils/assetloader.hpp
         src/game/gameObjects/managers/towermanager.cpp
         src/game/gameObjects/managers/towermanager.hpp
@@ -105,6 +104,11 @@ add_executable(main
         src/game/gameObjects/managers/wavemanager.cpp
         src/game/gameObjects/enemies/basicSoldier.cpp
         src/game/gameObjects/bullets/basicBullet.cpp
+        src/game/gameObjects/enemies/eliteSoldier.cpp
+        src/game/gameObjects/enemies/mechaSoldier.cpp
+        src/game/gameObjects/enemies/superSoldier.cpp
+        src/game/gameObjects/turrets/singleCannon.cpp
+        src/game/gameObjects/turrets/doubleCannon.cpp
 )
 
 if(NOT MSVC)

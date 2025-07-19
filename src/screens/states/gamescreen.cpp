@@ -2,7 +2,7 @@
 
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), map(),
-    enemyManager(&map, &health), waveManager(&map, &enemyManager),
+    enemyManager(&map, &health, &money), waveManager(&map, &enemyManager),
     towerManager(&map, &enemyManager), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     waveCounter(util::AssetLoader::get().font)
 {
@@ -24,7 +24,7 @@ void GameScreen::update()
     waveManager.update();
     // ustawienie licznika fal
     {
-        sf::String waveString{std::to_string(waveManager.getWaves() + 1)};
+        sf::String waveString{std::to_string(waveManager.getWaves())};
         waveString += '/';
         waveString += std::to_string(waveManager.getMaxWaves());
         waveCounter.setString(waveString);

@@ -1,35 +1,36 @@
 #pragma once
-#include "turretInterface.hpp"
 #include "../bullets/basicBullet.hpp"
 #include "../enemies/enemy.hpp"
 
 
-class Turret : public ITurret
+class Turret : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
 
     float range{};
-
+protected:
     std::vector<BasicBullet> bullets;
 
     int maxCooldown{100};
     int cooldown{};
+    int damage{};
 public:
-    explicit Turret(const sf::Texture& _texture)
-        : sprite(_texture), cooldown{maxCooldown}
-    {
+    void update();
 
-    }
+    /// @brief oblicza i zwraca obrazenia na klatke
+    virtual float getDPS() const {return (float)damage / (float)maxCooldown;}
 
-    void update() override;
+    float getRange() const {return range;}
 
-    void setRange(float _range) override{ range = _range;}
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
-    float getRange() const override {return range;}
+    virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
+protected:
+    explicit Turret(const sf::Texture& _texture, float _range, int _damage)
+        : sprite(_texture), range{_range}, cooldown{maxCooldown}, damage{_damage}
+    {}
 
-    sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
-
-    void shoot(sf::Vector2f from, Enemy* target) override;
+    void setRange(float _range) {range = _range;}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

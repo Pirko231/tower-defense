@@ -3,7 +3,7 @@
 //
 
 #include "product.hpp"
-
+#include <format>
 #include "assetloader.hpp"
 #include "base.hpp"
 
@@ -19,6 +19,9 @@ Product::Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::V
 
     attackIcon.setScale({0.7f, 0.7f});
     attackIcon.setPosition({tower->getGlobalBounds().size.x, background.getSize().y / 2.f - attackIcon.getGlobalBounds().size.y / 2.f});
+
+    attackText.setString(std::format("{0:.2f}/s", tower->getDPS()));
+    attackText.setPosition({attackIcon.getPosition().x + attackIcon.getGlobalBounds().size.x * 1.2f, background.getSize().y / 2.f - attackIcon.getGlobalBounds().size.y / 2.f});
 
     coinIcon.setPosition({attackIcon.getPosition().x + attackIcon.getGlobalBounds().size.x * 2.5f, background.getSize().y / 2.f - coinIcon.getGlobalBounds().size.y / 2.f});
 

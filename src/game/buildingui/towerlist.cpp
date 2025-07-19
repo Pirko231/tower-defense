@@ -9,14 +9,17 @@ TowerList::TowerList(Map* _map, const int* _money, const int* _health)
     background.setSize({size.x / 3.f, size.y});
     background.setFillColor({255,255,255,120});
 
-    ArcherFactory archerFactory;
-    products.push_back(Product(std::make_unique<ArcherFactory>(), 20, {0.f,50.f}));
-
     moneyIcon.setPosition({0.f,-10.f});
     moneyText.setPosition({moneyIcon.getPosition().x + moneyIcon.getGlobalBounds().size.x * 1.2f,moneyIcon.getPosition().y + 10.f});
 
     healthIcon.setPosition({220.f, 5.f});
     healthText.setPosition({healthIcon.getPosition().x + healthIcon.getGlobalBounds().size.x * 1.5f, healthIcon.getPosition().y});
+
+
+
+    products.push_back(Product(std::make_unique<SingleCannonFactory>(), 30, {0.f,50.f}));
+
+    products.push_back(Product(std::make_unique<DoubleCannonFactory>(), 40, {0.f, 120.f}));
 }
 
 void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)

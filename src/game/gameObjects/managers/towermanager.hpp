@@ -2,7 +2,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <vector>
 #include "towerFactoryInterface.hpp"
-#include "factories/archerFactory.hpp"
+#include "factories/singleCannonFactory.hpp"
 #include "../managers/enemymanager.hpp"
 #include "../map.hpp"
 

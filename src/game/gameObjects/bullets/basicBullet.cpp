@@ -1,8 +1,8 @@
 #include "basicBullet.hpp"
 
-BasicBullet::BasicBullet(Enemy* _target)
+BasicBullet::BasicBullet(Enemy* _target, int _damage)
     : sprite(util::AssetLoader::get().basicBullet), 
-    speed(12.f), target{_target}, damage(10)
+    speed(12.f), target{_target}, damage(_damage)
 {
     setOrigin(getGlobalBounds().getCenter());
     setScale({0.5f,0.5f});

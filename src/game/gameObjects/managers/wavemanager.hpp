@@ -7,7 +7,10 @@
 enum class EnemyType
 {
     Empty = 0, // tylko dla error handling
-    BasicSoldier = 1
+    BasicSoldier = 1,
+    EliteSoldier = 2,
+    MechaSoldier = 3,
+    SuperSoldier = 4
 };
 
 /// @brief tworzy przeciwnikow i wysyla informacje do enemyManager
@@ -19,6 +22,7 @@ class WaveManager
     std::vector<std::vector<EnemyType>> enemies;
     std::vector<std::vector<EnemyType>>::iterator currentWave{};
     
+    bool firstWave{}; // gra pauzuje przed pierwsza fala
     int maxWaves{};
     int waves{};
 public:
@@ -33,15 +37,19 @@ public:
     /// @brief sprawdza czy obecnie trwa jakas fala
     bool isWaveActive() const
     {
+        if(firstWave)
+            return false;
+
         return currentWave != enemies.end() || currentWave->size() != 0;
     }
 
     /// @brief ustawia kolejna fale
     void nextWave()
     {
-        if(waves + 1 >= maxWaves)
+        if(waves >= maxWaves)
             return;
         currentWave = enemies.begin(); waves++;
+        firstWave = false;
     }
 
     int getMaxWaves() const {return maxWaves;}
