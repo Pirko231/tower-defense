@@ -9,6 +9,7 @@ EnemyManager::EnemyManager(Map* _map, int* _health)
 
 void EnemyManager::update()
 {
+    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& e)->bool{return e->shouldDelete();});
     for(auto it = enemies.begin(); it != enemies.end(); it++)
     {
         std::unique_ptr<Enemy>& enemy = *it;

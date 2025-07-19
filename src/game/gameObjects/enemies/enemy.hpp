@@ -34,6 +34,8 @@ public:
 
     int getDamage() const {return damage;}
 
+    bool shouldDelete() const {return health <= 0;}
+
     /// @brief przelicza moveBy i ustawia go
     void calculateMoveBy();
 
