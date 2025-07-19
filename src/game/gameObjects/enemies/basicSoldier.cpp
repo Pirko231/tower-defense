@@ -1,6 +1,12 @@
 #include "basicSoldier.hpp"
 
-BasicSoldier::BasicSoldier(const sf::Texture &_texture, Checkpoint::Iterator _checkpoint)
-    : Enemy(_texture, _checkpoint, 5)
+namespace
 {
+    constexpr int maxSoldierHealth = 50;
+    constexpr int soldierMoneyValue = 5;
+    constexpr int soldierDamage = 5;
 }
+
+BasicSoldier::BasicSoldier(Checkpoint::Iterator _checkpoint)
+    : Enemy(util::AssetLoader::get().basicSoldier, _checkpoint, soldierMoneyValue, maxSoldierHealth, soldierDamage)
+{}

@@ -1,7 +1,7 @@
 #include "enemy.hpp"
 
-Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue)
-    : moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
+Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage)
+    : maxHealth(_maxHealth), damage(_damage), moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
 {
     setOrigin(getGlobalBounds().getCenter());;
 

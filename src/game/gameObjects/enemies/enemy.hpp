@@ -19,9 +19,9 @@ protected:
     Checkpoint::Iterator currentCheckpoint;
 
     sf::Vector2f moveBy{};
+protected:
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage);
 public:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue);
-
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
     /// @brief nalezy wywolywac to w glownej petli
