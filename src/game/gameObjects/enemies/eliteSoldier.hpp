@@ -1,0 +1,20 @@
+#pragma once
+#include "enemy.hpp"
+
+namespace
+{
+    constexpr int soldierMoneyValue = 20;
+    constexpr int maxSoldierHealth = 150;
+    constexpr int soldierDamage = 15;
+    constexpr float soldierSpeed = 1.f;
+}
+
+class EliteSoldier : public Enemy
+{
+public:
+    EliteSoldier(Checkpoint::Iterator checkpoint)
+        : Enemy(util::AssetLoader::get().eliteSoldier, checkpoint, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierSpeed)
+    {
+        setScale({0.7f,0.7f});
+    }
+};

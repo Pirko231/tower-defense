@@ -10,6 +10,7 @@ class Enemy : public sf::Drawable, public sf::Transformable
     int maxHealth{100};
     int health{maxHealth};
     HealthBar healthBar{maxHealth};
+    float speed{};
 
     int damage{};
     int moneyValue{};
@@ -20,7 +21,7 @@ protected:
 
     sf::Vector2f moveBy{};
 protected:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage);
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, float _speed);
 public:
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
@@ -55,16 +56,7 @@ protected:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         states.transform *= getTransform();
-#ifdef DEBUG
-        sf::RectangleShape shape(calculateCheckpointsHitbox().size);
-        shape.setPosition(calculateCheckpointsHitbox().position);
-        target.draw(shape);
 
-        sf::RectangleShape hitbox{getGlobalBounds().size};
-        hitbox.setPosition(getPosition() - getGlobalBounds().size / 2.f);
-        hitbox.setFillColor(sf::Color{0,0,255,100});
-        target.draw(hitbox);
-#endif
         target.draw(sprite, states);
         target.draw(healthBar);
     }

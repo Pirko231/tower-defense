@@ -1,7 +1,7 @@
 #include "enemy.hpp"
 
-Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage)
-    : maxHealth(_maxHealth), damage(_damage), moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
+Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, float _speed)
+    : maxHealth(_maxHealth), speed(_speed), damage(_damage), moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
 {
     setOrigin(getGlobalBounds().getCenter());;
 
@@ -27,7 +27,7 @@ void Enemy::calculateMoveBy()
 {
     sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
     if(mBy != sf::Vector2f{})
-        moveBy = mBy.normalized();
+        moveBy = mBy.normalized() * speed;
 
     setRotation(moveBy.angle());
 }

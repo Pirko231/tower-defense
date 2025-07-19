@@ -35,6 +35,9 @@ public:
     sf::Texture cannon1;
 
     sf::Texture basicSoldier;
+    sf::Texture eliteSoldier;
+    sf::Texture mechaSoldier;
+    sf::Texture superSoldier;
 
     sf::Texture basicBullet;
 
@@ -59,6 +62,9 @@ private:
         cannon1.loadFromFile("resources/textures/turrets/cannon1.png");
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
+        eliteSoldier.loadFromFile("resources/textures/enemies/eliteSoldier.png");
+        mechaSoldier.loadFromFile("resources/textures/enemies/mechaSoldier.png");
+        superSoldier.loadFromFile("resources/textures/enemies/superSoldier.png");
 
         basicBullet.loadFromFile("resources/textures/bullets/basicBullet.png");
 
