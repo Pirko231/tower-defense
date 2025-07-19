@@ -24,7 +24,7 @@ void GameScreen::update()
     waveManager.update();
     // ustawienie licznika fal
     {
-        sf::String waveString{std::to_string(waveManager.getWaves() + 1)};
+        sf::String waveString{std::to_string(waveManager.getWaves())};
         waveString += '/';
         waveString += std::to_string(waveManager.getMaxWaves());
         waveCounter.setString(waveString);

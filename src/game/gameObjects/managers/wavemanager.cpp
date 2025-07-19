@@ -6,6 +6,9 @@ WaveManager::WaveManager(Map *_map, EnemyManager *_enemyManager)
 
 void WaveManager::update()
 {
+    if(firstWave)
+        return;
+
     if(currentWave->size() == 0 || currentWave == enemies.end())
         return;
 
@@ -31,6 +34,7 @@ void WaveManager::update()
 void WaveManager::loadEnemies(const std::filesystem::path &filePath)
 {
     enemies.clear();
+    firstWave = true;
 
     std::fstream file;
     file.open(filePath, std::ios::in);
