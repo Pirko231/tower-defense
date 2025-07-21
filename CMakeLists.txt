@@ -104,12 +104,14 @@ add_executable(main
         src/game/gameObjects/managers/wavemanager.cpp
         src/game/gameObjects/enemies/basicSoldier.cpp
         src/game/gameObjects/bullets/basicBullet.cpp
+        src/game/gameObjects/bullets/rocket.cpp
         src/game/gameObjects/enemies/eliteSoldier.cpp
         src/game/gameObjects/enemies/mechaSoldier.cpp
         src/game/gameObjects/enemies/superSoldier.cpp
         src/game/gameObjects/turrets/singleCannon.cpp
         src/game/gameObjects/turrets/doubleCannon.cpp
         src/game/gameObjects/turrets/machineGun.cpp
+        src/game/gameObjects/turrets/rocketLauncher.cpp
 )
 
 if(NOT MSVC)

@@ -4,6 +4,7 @@
 #include "../gameObjects/factories/singleCannonFactory.hpp"
 #include "../gameObjects/factories/doubleCannonFactory.hpp"
 #include "../gameObjects/factories/machineGunFactory.hpp"
+#include "../gameObjects/factories/rocketLauncherFactory.hpp"
 #include "managers/towermanagerproxy.hpp"
 
 class TowerList : public sf::Drawable
