@@ -3,7 +3,7 @@
 namespace
 {
     constexpr float range = 250.f;
-    constexpr int damage = 10;
+    constexpr int damage = 14;
 }
 
 DoubleCannon::DoubleCannon()

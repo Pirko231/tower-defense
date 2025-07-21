@@ -3,9 +3,9 @@
 namespace
 {
     static constexpr int soldierMoneyValue = 15;
-    static constexpr int maxSoldierHealth = 120;
+    static constexpr int maxSoldierHealth = 150;
     static constexpr int soldierDamage = 20;
-    static constexpr float soldierSpeed = 1.f;
+    static constexpr float soldierSpeed = 2.f;
 }
 
 SuperSoldier::SuperSoldier(Checkpoint::Iterator checkpoint)
