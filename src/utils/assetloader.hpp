@@ -34,6 +34,7 @@ public:
     sf::Texture towerBase;
     sf::Texture singleCannon;
     sf::Texture doubleCannon;
+    sf::Texture machineGun;
 
     sf::Texture basicSoldier;
     sf::Texture eliteSoldier;
@@ -62,6 +63,7 @@ private:
         towerBase.loadFromFile("resources/textures/turrets/towerBase.png");
         singleCannon.loadFromFile("resources/textures/turrets/cannon1.png");
         doubleCannon.loadFromFile("resources/textures/turrets/cannon2.png");
+        machineGun.loadFromFile("resources/textures/turrets/MG.png");
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
         eliteSoldier.loadFromFile("resources/textures/enemies/eliteSoldier.png");
