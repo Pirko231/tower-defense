@@ -2,10 +2,10 @@
 
 namespace
 {
-    static constexpr int soldierMoneyValue = 50;
+    static constexpr int soldierMoneyValue = 20;
     static constexpr int maxSoldierHealth = 300;
     static constexpr int soldierDamage = 50;
-    static constexpr float soldierSpeed = 1.f;
+    static constexpr float soldierSpeed = 0.5f;
 }
 
 MechaSoldier::MechaSoldier(Checkpoint::Iterator checkpoint)

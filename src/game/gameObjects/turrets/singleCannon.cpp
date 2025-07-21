@@ -3,7 +3,7 @@
 namespace
 {
     constexpr float range = 400.f;
-    constexpr int damage = 15;
+    constexpr int damage = 25;
 }
 
 SingleCannon::SingleCannon()

@@ -2,7 +2,7 @@
 
 namespace
 {
-    constexpr int soldierMoneyValue = 5;
+    constexpr int soldierMoneyValue = 2;
     constexpr int maxSoldierHealth = 50;
     constexpr int soldierDamage = 5;
     constexpr float soldierSpeed = 1.f;
