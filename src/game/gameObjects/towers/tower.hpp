@@ -8,7 +8,8 @@ enum class TowerType
 {
     SingleCannon = 1,
     DoubleCannon = 2,
-    MachineGun = 3
+    MachineGun = 3,
+    RocketLauncher = 4
 };
 
 class Tower : public sf::Drawable, public sf::Transformable

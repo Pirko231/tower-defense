@@ -35,6 +35,7 @@ public:
     sf::Texture singleCannon;
     sf::Texture doubleCannon;
     sf::Texture machineGun;
+    sf::Texture rocketLauncher;
 
     sf::Texture basicSoldier;
     sf::Texture eliteSoldier;
@@ -42,6 +43,7 @@ public:
     sf::Texture superSoldier;
 
     sf::Texture basicBullet;
+    sf::Texture rocket;
 
     sf::Texture grassTile;
     sf::Texture dirtTile;
@@ -64,6 +66,7 @@ private:
         singleCannon.loadFromFile("resources/textures/turrets/cannon1.png");
         doubleCannon.loadFromFile("resources/textures/turrets/cannon2.png");
         machineGun.loadFromFile("resources/textures/turrets/MG.png");
+        rocketLauncher.loadFromFile("resources/textures/turrets/rocketLauncher.png");
 
         basicSoldier.loadFromFile("resources/textures/enemies/basicSoldier.png");
         eliteSoldier.loadFromFile("resources/textures/enemies/eliteSoldier.png");
@@ -71,6 +74,7 @@ private:
         superSoldier.loadFromFile("resources/textures/enemies/superSoldier.png");
 
         basicBullet.loadFromFile("resources/textures/bullets/basicBullet.png");
+        rocket.loadFromFile("resources/textures/bullets/rocket.png");
 
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");

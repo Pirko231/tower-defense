@@ -15,7 +15,7 @@ protected:
     int cooldown{};
     int damage{};
 public:
-    void update();
+    virtual void update();
 
     /// @brief oblicza i zwraca obrazenia na klatke
     virtual float getDPS() const {return (float)damage / (float)maxCooldown;}
@@ -32,7 +32,7 @@ protected:
 
     void setRange(float _range) {range = _range;}
 
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         states.transform *= getTransform();
 
