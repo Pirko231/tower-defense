@@ -3,9 +3,12 @@
 #include "clientEnemyManagerInterface.hpp"
 #include <memory>
 
+// to jest nieuzywane?
 enum class TowerType
 {
-    SingleCannon = 1
+    SingleCannon = 1,
+    DoubleCannon = 2,
+    MachineGun = 3
 };
 
 class Tower : public sf::Drawable, public sf::Transformable

@@ -3,6 +3,11 @@
 #include <filesystem>
 #include <fstream>
 
+#include "../factories/basicSoldierFactory.hpp"
+#include "../factories/eliteSoldierFactory.hpp"
+#include "../factories/mechaSoldierFactory.hpp"
+#include "../factories/superSoldierFactory.hpp"
+
 // na razie zdefiniuje tutaj potem sie przerzuci w razie potrzeby
 enum class EnemyType
 {

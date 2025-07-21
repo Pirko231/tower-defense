@@ -109,6 +109,7 @@ add_executable(main
         src/game/gameObjects/enemies/superSoldier.cpp
         src/game/gameObjects/turrets/singleCannon.cpp
         src/game/gameObjects/turrets/doubleCannon.cpp
+        src/game/gameObjects/turrets/machineGun.cpp
 )
 
 if(NOT MSVC)

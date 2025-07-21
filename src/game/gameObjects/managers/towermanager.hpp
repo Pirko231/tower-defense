@@ -3,6 +3,7 @@
 #include <vector>
 #include "towerFactoryInterface.hpp"
 #include "factories/singleCannonFactory.hpp"
+#include "factories/machineGunFactory.hpp"
 #include "../managers/enemymanager.hpp"
 #include "../map.hpp"
 

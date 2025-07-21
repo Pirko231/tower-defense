@@ -20,6 +20,8 @@ TowerList::TowerList(Map* _map, const int* _money, const int* _health)
     products.push_back(Product(std::make_unique<SingleCannonFactory>(), 30, {0.f,50.f}));
 
     products.push_back(Product(std::make_unique<DoubleCannonFactory>(), 40, {0.f, 120.f}));
+
+    products.push_back(Product(std::make_unique<MachineGunFactory>(), 60, {0.f,190.f}));    
 }
 
 void TowerList::setVisible(sf::Vector2i mousePos, bool _visible)

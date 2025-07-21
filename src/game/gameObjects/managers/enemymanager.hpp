@@ -1,10 +1,6 @@
 #pragma once
 #include "../../map.hpp"
 #include "enemyfactoryinterface.hpp"
-#include "../factories/basicSoldierFactory.hpp"
-#include "../factories/eliteSoldierFactory.hpp"
-#include "../factories/mechaSoldierFactory.hpp"
-#include "../factories/superSoldierFactory.hpp"
 #include "clientEnemyManagerInterface.hpp"
 
 class EnemyManager : public sf::Drawable, public IClientEnemyManager
