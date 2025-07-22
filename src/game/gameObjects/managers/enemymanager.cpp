@@ -41,7 +41,17 @@ Enemy* EnemyManager::getTheMostFarEnemy(sf::FloatRect area)
     return nullptr;
 }
 
-void EnemyManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
+bool EnemyManager::findAdress(Enemy* adress)
+{
+    for(auto& enemy : enemies)
+    {
+        if(enemy.get() == adress)
+            return true;
+    }
+    return false;
+}
+
+void EnemyManager::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     for (auto& enemy : enemies)
         target.draw(*enemy,states);

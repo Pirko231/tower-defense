@@ -37,9 +37,6 @@ void Rocket::launch(sf::Vector2f from, sf::Vector2f where)
 
 void Rocket::hitTarget()
 {
-    if(!getGlobalBounds().findIntersection(target->getGlobalBounds()))
-        return;
-
     target->dealDamage(getDamage());
     shouldDelete_ = true;
 }

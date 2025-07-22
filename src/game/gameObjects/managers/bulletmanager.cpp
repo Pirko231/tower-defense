@@ -11,7 +11,13 @@ void BulletManager::update()
     for(auto& bullet : bullets)
     {
         bullet->update();
-        bullet->hitTarget();
+        if(bullet->hasHitTarget())
+        {
+            if(enemyManager->findAdress(bullet->getTarget()))
+                bullet->hitTarget();
+            else
+                bullet->setDelete(true);
+        }
     }
 }
 
