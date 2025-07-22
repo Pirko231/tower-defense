@@ -3,19 +3,23 @@
 namespace
 {
     constexpr float range = 700.f;
-    constexpr int damage = 15;
+    constexpr int damage = 150;
 }
 
 RocketLauncher::RocketLauncher()
     : Turret(util::AssetLoader::get().rocketLauncher, ::range, ::damage)
 {
-    cooldown = 100;
+    maxCooldown = 400;
 }
 
 void RocketLauncher::update()
 {
+    std::erase_if(rockets, [](const Rocket& b)->bool{return b.shouldDelete();});
     for(auto& rocket : rockets)
+    {
         rocket.update();
+        rocket.hitTarget();
+    }
 }
 
 void RocketLauncher::shoot(sf::Vector2f from, Enemy *target)
