@@ -32,9 +32,6 @@ void BasicBullet::launch(sf::Vector2f from, sf::Vector2f where)
 
 void BasicBullet::hitTarget()
 {
-    if(hitTimer > 0)
-        return; // jeszcze nie dolecial
-
     target->dealDamage(getDamage());
     shouldDelete_ = true;
 }

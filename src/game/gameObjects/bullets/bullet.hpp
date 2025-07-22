@@ -25,6 +25,8 @@ public:
 
     bool shouldDelete() const {return shouldDelete_;}
 
+    void setDelete(bool value) {shouldDelete_ = value;}
+
     /// @brief sprawdz czy pocisk obecnie trafil w cel
     virtual bool hasHitTarget() const = 0;
 

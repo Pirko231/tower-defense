@@ -24,6 +24,9 @@ public:
         enemies.back()->calculateMoveBy();
     }
 
+    /// @brief przeszukuje przeciwnikow czy istnieje jakis z podanym adresem
+    bool findAdress(Enemy* _adress);
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

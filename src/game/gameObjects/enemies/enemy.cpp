@@ -27,9 +27,10 @@ void Enemy::calculateMoveBy()
 {
     sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
     if(mBy != sf::Vector2f{})
+    {
         moveBy = mBy.normalized() * speed;
-
-    setRotation(moveBy.angle());
+        setRotation(moveBy.angle());
+    }
 }
 
 bool Enemy::hasReachedDestination() const
