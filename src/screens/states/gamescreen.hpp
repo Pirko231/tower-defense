@@ -4,6 +4,7 @@
 #include "managers/towermanagerproxy.hpp"
 #include "managers/enemymanager.hpp"
 #include "managers/wavemanager.hpp"
+#include "managers/bulletmanager.hpp"
 #include "../map.hpp"
 #include "../../game/buildingui.hpp"
 #include "../../buttons/playbutton.hpp"
@@ -15,6 +16,7 @@ class GameScreen : public ScreenState
     Map map;
     EnemyManager enemyManager;
     WaveManager waveManager;
+    BulletManager bulletManager;
     TowerManager towerManager;
     TowerManagerProxy towerManagerProxy;
     BuildingUI buildingUI;

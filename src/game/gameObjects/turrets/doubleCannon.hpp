@@ -6,7 +6,7 @@ class DoubleCannon : public Turret
     int maxCooldown2{80};
     int cooldown2{maxCooldown - 15}; // cooldown2 odpowiada za drugi strzal
 public:
-    DoubleCannon();
+    DoubleCannon(IBulletManager* _bulletManager);
     void shoot(sf::Vector2f, Enemy*) override;
 
     float getDPS() const override {return Turret::getDPS() + ((float)damage / (float)maxCooldown2);}

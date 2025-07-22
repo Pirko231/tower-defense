@@ -6,8 +6,8 @@ namespace
     constexpr int damage = 14;
 }
 
-DoubleCannon::DoubleCannon()
-    : Turret(util::AssetLoader::get().doubleCannon, ::range, ::damage)
+DoubleCannon::DoubleCannon(IBulletManager* _bulletManager)
+    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, ::range, ::damage)
 {
     maxCooldown = 80;
 }

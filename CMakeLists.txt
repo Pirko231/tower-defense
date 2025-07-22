@@ -102,6 +102,7 @@ add_executable(main
         src/game/interfaces/enemyfactoryinterface.hpp
         src/game/gameObjects/healthbar.cpp
         src/game/gameObjects/managers/wavemanager.cpp
+        src/game/gameObjects/managers/bulletmanager.cpp
         src/game/gameObjects/enemies/basicSoldier.cpp
         src/game/gameObjects/bullets/bullet.cpp
         src/game/gameObjects/bullets/basicBullet.cpp

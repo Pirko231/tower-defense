@@ -6,8 +6,8 @@ namespace
     constexpr int damage = 25;
 }
 
-SingleCannon::SingleCannon()
-    : Turret(util::AssetLoader::get().singleCannon, ::range, ::damage)
+SingleCannon::SingleCannon(IBulletManager* _bulletManager)
+    : Turret(util::AssetLoader::get().singleCannon, _bulletManager , ::range, ::damage)
 {
 }
 
