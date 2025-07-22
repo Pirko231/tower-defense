@@ -1,8 +1,12 @@
 #include "basicBullet.hpp"
 
+namespace
+{
+    constexpr float speed = 12.f;
+}
+
 BasicBullet::BasicBullet(Enemy* _target, int _damage)
-    : sprite(util::AssetLoader::get().basicBullet), 
-    speed(12.f), target{_target}, damage(_damage)
+    : Bullet(util::AssetLoader::get().basicBullet, ::speed, _damage, _target)
 {
     setOrigin(getGlobalBounds().getCenter());
     setScale({0.5f,0.5f});
@@ -10,7 +14,7 @@ BasicBullet::BasicBullet(Enemy* _target, int _damage)
 
 void BasicBullet::update()
 {
-    move(moveBy);
+    Bullet::update();
 
     hitTimer--;
 }
