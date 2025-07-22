@@ -4,7 +4,7 @@
 
 void TowerManager::addTower(sf::Vector2i where, ITowerFactory* towerFactory)
 {
-    auto tower = towerFactory->create(static_cast<IClientEnemyManager*>(enemyManager));
+    auto tower = towerFactory->create(static_cast<IClientEnemyManager*>(enemyManager), bulletManager);
     tower->setPosition(util::calculatePosition(where));
     towers.push_back(std::move(tower));
 

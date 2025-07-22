@@ -19,8 +19,7 @@ void MachineGun::shoot(sf::Vector2f from, Enemy * target)
     if(cooldown > 0)
         return;
     cooldown = maxCooldown;
+
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, damage);
     
-    BasicBullet bullet{target, damage};
-    bullet.launch(from, target->getPosition());
-    bullets.push_back(bullet);
 }

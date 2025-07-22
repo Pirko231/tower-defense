@@ -14,12 +14,6 @@ RocketLauncher::RocketLauncher(IBulletManager* _bulletManager)
 
 void RocketLauncher::update()
 {
-    std::erase_if(rockets, [](const Rocket& b)->bool{return b.shouldDelete();});
-    for(auto& rocket : rockets)
-    {
-        rocket.update();
-        rocket.hitTarget();
-    }
 }
 
 void RocketLauncher::shoot(sf::Vector2f from, Enemy *target)
@@ -29,8 +23,5 @@ void RocketLauncher::shoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-
-    Rocket rocket{target, damage};
-    rocket.launch(from, target->getPosition());
-    rockets.push_back(rocket);
+    bulletManager->launchRocket(from, target->getPosition(), target, damage);
 }
