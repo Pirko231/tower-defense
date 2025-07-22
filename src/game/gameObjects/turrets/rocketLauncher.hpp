@@ -8,13 +8,13 @@ class RocketLauncher : public Turret
 public:
     RocketLauncher();
     void update() override;
-    void shoot(sf::Vector2f, Enemy*);
+    void shoot(sf::Vector2f, Enemy*) override;
 protected:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         Turret::draw(target,states);
         states.transform *= getTransform();
         for(auto& rocket : rockets)
-            target.draw(rocket,states);
+            target.draw(rocket);
     }
 };
