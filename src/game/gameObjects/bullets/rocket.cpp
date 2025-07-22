@@ -1,8 +1,12 @@
 #include "rocket.hpp"
 
+namespace
+{
+    constexpr float speed = 6.f;
+}
+
 Rocket::Rocket(Enemy *_target, int _damage)
-    : sprite(util::AssetLoader::get().rocket), 
-    speed(6.f), target{_target}, damage(_damage)
+    : Bullet(util::AssetLoader::get().rocket, ::speed, _damage, _target)
 {
     setOrigin(getGlobalBounds().getCenter());
     setScale({0.5f,0.5f});
