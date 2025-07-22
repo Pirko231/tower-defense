@@ -7,8 +7,12 @@ BulletManager::BulletManager(EnemyManager* _enemyManager)
 
 void BulletManager::update()
 {
+    std::erase_if(bullets, [](const std::unique_ptr<Bullet>& b)->bool{return b->shouldDelete();});
     for(auto& bullet : bullets)
+    {
         bullet->update();
+        bullet->hitTarget();
+    }
 }
 
 void BulletManager::launchBasicBullet(sf::Vector2f from, sf::Vector2f where, Enemy *target, int damage)

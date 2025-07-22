@@ -27,9 +27,7 @@ void DoubleCannon::barrelOneShoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
 
-    BasicBullet bullet{target, damage};
-    bullet.launch(from, target->getPosition());
-    bullets.push_back(bullet);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, damage);
 }
 
 void DoubleCannon::barrelSecondShoot(sf::Vector2f from, Enemy *target)
@@ -38,7 +36,6 @@ void DoubleCannon::barrelSecondShoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown2 = maxCooldown2;
 
-    BasicBullet bullet{target,damage};
-    bullet.launch(from, target->getPosition());
-    bullets.push_back(bullet);
+
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, damage);
 }

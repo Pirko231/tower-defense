@@ -7,10 +7,9 @@
 class Turret : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
-    IBulletManager* bulletManager{};
     float range{};
 protected:
-    std::vector<BasicBullet> bullets;
+    IBulletManager* bulletManager{};
 
     int maxCooldown{100};
     int cooldown{};
@@ -28,7 +27,7 @@ public:
     virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
 protected:
     explicit Turret(const sf::Texture& _texture, IBulletManager* _bulletManager, float _range, int _damage)
-        : sprite(_texture), bulletManager(_bulletManager), range{_range}, cooldown{maxCooldown}, damage{_damage}
+        : sprite(_texture), range{_range}, bulletManager(_bulletManager),  cooldown{maxCooldown}, damage{_damage}
     {}
 
     void setRange(float _range) {range = _range;}
@@ -37,8 +36,6 @@ protected:
     {
         states.transform *= getTransform();
 
-        for(auto& bullet : bullets)
-            target.draw(bullet);
         target.draw(sprite, states);
     }
 };
