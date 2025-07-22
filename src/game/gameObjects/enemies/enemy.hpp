@@ -13,6 +13,7 @@ class Enemy : public sf::Drawable, public sf::Transformable
     float speed{};
 
     int damage{};
+    int shield{};
     int moneyValue{};
 protected:
     sf::Sprite sprite;
@@ -21,7 +22,7 @@ protected:
 
     sf::Vector2f moveBy{};
 protected:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, float _speed);
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed);
 public:
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 
@@ -30,7 +31,12 @@ public:
 
     bool hasNext() const {return currentCheckpoint.hasNext();}
 
-    void dealDamage(int damageToDeal) {health -= damageToDeal;}
+    /// @brief zadaje obrazenia uwzgledniajac tarcze. Kiedy obrazenia mniejsze od tarczy to zdadaje 1
+    void dealDamage(int damageToDeal)
+    {
+        damageToDeal < shield ? damageToDeal = 1 : damageToDeal -= shield;
+        health -= damageToDeal;
+    }
 
     void setDamage(int _damage) {damage = _damage;}
 

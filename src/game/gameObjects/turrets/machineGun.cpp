@@ -3,7 +3,7 @@
 namespace
 {
     constexpr float range = 180.f;
-    constexpr int damage = 4;
+    constexpr int damage = 6;
 }
 
 MachineGun::MachineGun(IBulletManager* _bulletManager)
