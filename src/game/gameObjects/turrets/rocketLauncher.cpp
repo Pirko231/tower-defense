@@ -6,8 +6,8 @@ namespace
     constexpr int damage = 150;
 }
 
-RocketLauncher::RocketLauncher()
-    : Turret(util::AssetLoader::get().rocketLauncher, ::range, ::damage)
+RocketLauncher::RocketLauncher(IBulletManager* _bulletManager)
+    : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, ::range, ::damage)
 {
     maxCooldown = 400;
 }

@@ -12,9 +12,9 @@ public:
     ~RocketLauncherFactory() override = default;
 
 
-    std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr) override
+    std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr, IBulletManager* bManager = nullptr) override
     {
-        std::unique_ptr<Turret> turret = std::make_unique<RocketLauncher>();
+        std::unique_ptr<Turret> turret = std::make_unique<RocketLauncher>(bManager);
         Tower tower(eManager, util::AssetLoader::get().towerBase, std::move(turret), TowerType::RocketLauncher);
         return std::make_unique<Tower>(tower);
     }

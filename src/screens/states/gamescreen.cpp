@@ -3,7 +3,8 @@
 GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), map(),
     enemyManager(&map, &health, &money), waveManager(&map, &enemyManager),
-    towerManager(&map, &enemyManager), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
+    bulletManager(&enemyManager),
+    towerManager(&map, &enemyManager, &bulletManager), towerManagerProxy(&towerManager), buildingUI(&map, &towerManagerProxy, &money, &health),
     waveCounter(util::AssetLoader::get().font)
 {
     waveButton.setScale({0.2f,0.2f});
@@ -18,6 +19,8 @@ void GameScreen::update()
     waveButton.update();
 
     towerManager.update();
+
+    bulletManager.update();
 
     enemyManager.update();
 
@@ -54,6 +57,8 @@ void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(towerManager,states);
 
     target.draw(enemyManager,states);
+
+    target.draw(bulletManager,states);
 
     target.draw(buildingUI,states);
 }

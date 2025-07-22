@@ -4,6 +4,6 @@
 class MachineGun : public Turret
 {
 public:
-    MachineGun();
+    MachineGun(IBulletManager* _bulletManager);
     void shoot(sf::Vector2f, Enemy*) override;
 };

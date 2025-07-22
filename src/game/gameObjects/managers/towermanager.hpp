@@ -6,6 +6,7 @@
 #include "factories/machineGunFactory.hpp"
 #include "../managers/enemymanager.hpp"
 #include "../map.hpp"
+#include "bulletmanager.hpp"
 
 
 class TowerManager : public sf::Drawable
@@ -15,8 +16,10 @@ class TowerManager : public sf::Drawable
     std::vector<std::unique_ptr<Tower>> towers;
     Map* map{};
     EnemyManager* enemyManager{};
+    BulletManager* bulletManager{};
 public:
-    explicit TowerManager(Map* _map, EnemyManager* _enemyManager) : map(_map), enemyManager(_enemyManager)
+    explicit TowerManager(Map* _map, EnemyManager* _enemyManager, BulletManager* _bulletManager)
+        : map(_map), enemyManager(_enemyManager), bulletManager(_bulletManager)
     {}
 
     void update();

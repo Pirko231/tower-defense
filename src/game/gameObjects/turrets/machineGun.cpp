@@ -6,8 +6,8 @@ namespace
     constexpr int damage = 4;
 }
 
-MachineGun::MachineGun()
-    : Turret(util::AssetLoader::get().machineGun, ::range, ::damage)
+MachineGun::MachineGun(IBulletManager* _bulletManager)
+    : Turret(util::AssetLoader::get().machineGun, _bulletManager, ::range, ::damage)
 {
     maxCooldown = 10;
     cooldown = maxCooldown;

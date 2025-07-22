@@ -1,12 +1,13 @@
 #pragma once
 #include "../bullets/basicBullet.hpp"
 #include "../enemies/enemy.hpp"
+#include "bulletManagerInterface.hpp"
 
 
 class Turret : public sf::Drawable, public sf::Transformable
 {
     sf::Sprite sprite;
-
+    IBulletManager* bulletManager{};
     float range{};
 protected:
     std::vector<BasicBullet> bullets;
@@ -26,8 +27,8 @@ public:
 
     virtual void shoot(sf::Vector2f from, Enemy* target) = 0;
 protected:
-    explicit Turret(const sf::Texture& _texture, float _range, int _damage)
-        : sprite(_texture), range{_range}, cooldown{maxCooldown}, damage{_damage}
+    explicit Turret(const sf::Texture& _texture, IBulletManager* _bulletManager, float _range, int _damage)
+        : sprite(_texture), bulletManager(_bulletManager), range{_range}, cooldown{maxCooldown}, damage{_damage}
     {}
 
     void setRange(float _range) {range = _range;}

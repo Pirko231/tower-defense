@@ -4,6 +4,6 @@
 class SingleCannon : public Turret
 {
 public:
-    SingleCannon();
+    SingleCannon(IBulletManager* _bulletManager);
     void shoot(sf::Vector2f, Enemy*) override;
 };

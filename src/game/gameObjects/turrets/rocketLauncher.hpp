@@ -6,7 +6,7 @@ class RocketLauncher : public Turret
 {
     std::vector<Rocket> rockets;
 public:
-    RocketLauncher();
+    RocketLauncher(IBulletManager* _bulletManager);
     void update() override;
     void shoot(sf::Vector2f, Enemy*) override;
 protected:

@@ -11,9 +11,9 @@ public:
     ~MachineGunFactory() override = default;
 
 
-    std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr) override
+    std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr, IBulletManager* bManager = nullptr) override
     {
-        std::unique_ptr<Turret> turret = std::make_unique<MachineGun>();
+        std::unique_ptr<Turret> turret = std::make_unique<MachineGun>(bManager);
         Tower tower(eManager, util::AssetLoader::get().towerBase, std::move(turret), TowerType::SingleCannon);
         return std::make_unique<Tower>(tower);
     }
