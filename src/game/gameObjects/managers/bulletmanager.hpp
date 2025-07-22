@@ -8,6 +8,10 @@ class BulletManager : public sf::Drawable, public IBulletManager
 {
     EnemyManager* enemyManager{};
     std::vector<std::unique_ptr<Bullet>> bullets;
+
+    // prechowuje tutaj info o rakietach, jako ze one potrzebuja
+    // miec inne zabezpieczenia
+    std::vector<Rocket*> rockets;
 public:
     BulletManager(EnemyManager* _enemyManager);
 
