@@ -24,7 +24,9 @@ public:
 
     void update();
 
-    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+    void destructTowers(sf::Vector2f mapPointerPos);
 private:
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
     void addTower(sf::Vector2i where, ITowerFactory* towerFactory);
 };

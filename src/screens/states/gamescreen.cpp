@@ -54,6 +54,9 @@ void GameScreen::update()
         
     if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
         buildingUI.leaveBuildMode();
+
+    if(stateMachine->getPressed()[sf::Keyboard::Key::Backspace].released)
+        towerManager.destructTowers(buildingUI.getMapPointerPosition());
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const

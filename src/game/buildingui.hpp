@@ -22,6 +22,8 @@ public:
 
     void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false);}
 
+    sf::Vector2f getMapPointerPosition() const {return mapPointer.getPosition();}
+private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         if (mapPointerVisible)
@@ -30,6 +32,6 @@ public:
         }
         target.draw(towerList, states);
     }
-private:
+
     void buyProduct(const Product* product);
 };
