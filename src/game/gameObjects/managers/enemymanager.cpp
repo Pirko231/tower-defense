@@ -35,7 +35,7 @@ Enemy* EnemyManager::getTheMostFarEnemy(sf::FloatRect area)
     
     for(auto& enemy : enemies)
     {
-        if(enemy->getGlobalBounds().findIntersection(area))
+        if(area.contains(enemy->getPosition()))
             return enemy.get();
     }
     return nullptr;
