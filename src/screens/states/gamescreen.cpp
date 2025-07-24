@@ -47,6 +47,9 @@ void GameScreen::update()
             buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
     }
 
+    if (stateMachine->getPressed()[sf::Mouse::Button::Right].released)
+        buildingUI.leaveBuildMode();
+
     // skroty klawiaturowe
     if(stateMachine->getPressed()[sf::Keyboard::Key::Space].released)
         if(!waveManager.isWaveActive())
@@ -54,6 +57,12 @@ void GameScreen::update()
         
     if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
         buildingUI.leaveBuildMode();
+
+    if(stateMachine->getPressed()[sf::Keyboard::Key::Backspace].released)
+    {
+        money += towerManager.destructTowers(buildingUI.getMapPointerPosition()) / 2;
+        buildingUI.leaveBuildMode();
+    }
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const

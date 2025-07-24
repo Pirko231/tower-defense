@@ -1,7 +1,7 @@
 #include  "tower.hpp"
 
-Tower::Tower(IClientEnemyManager *_enemyManager, const sf::Texture &towerTexture, std::unique_ptr<Turret> &&_turret, TowerType _type)
-    : enemyManager(_enemyManager), sprite(towerTexture), turret(std::move(_turret)), type(_type)
+Tower::Tower(IClientEnemyManager *_enemyManager, const sf::Texture &towerTexture, std::unique_ptr<Turret> &&_turret, TowerType _type, int _price)
+    : enemyManager(_enemyManager), sprite(towerTexture), turret(std::move(_turret)), type(_type), price(_price)
 {
     turret->setOrigin(turret->getGlobalBounds().getCenter());
     turret->setPosition(getGlobalBounds().getCenter());

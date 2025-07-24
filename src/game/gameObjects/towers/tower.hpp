@@ -20,14 +20,13 @@ class Tower : public sf::Drawable, public sf::Transformable
     std::unique_ptr<Turret> turret;
 
     TowerType type;
+    int price;
 public:
-    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<Turret>&& _turret, TowerType _type);
+    Tower(IClientEnemyManager* _enemyManager, const sf::Texture& towerTexture, std::unique_ptr<Turret>&& _turret, TowerType _type, int _price);
     ~Tower() override = default;
 
-    Tower(Tower& tower)
-        : enemyManager(tower.enemyManager), sprite(tower.sprite), turret(std::move(tower.turret)),
-        type(tower.type)
-    {}
+    //Tower(Tower&) = default;
+    Tower(Tower&&) = default;
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}
 
@@ -36,6 +35,8 @@ public:
     TowerType getType() const {return type;}
 
     float getDPS() const {return turret->getDPS();}
+
+    int getPrice() const {return price;}
 
     void update();
 
