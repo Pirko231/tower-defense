@@ -29,6 +29,7 @@ public:
 
     sf::Texture attackIcon;
     sf::Texture coinIcon;
+    sf::Texture rangeIcon;
     sf::Texture healthIcon;
 
     sf::Texture towerBase;
@@ -57,6 +58,7 @@ private:
 
         attackIcon.loadFromFile("resources/textures/attackIcon.png");
         coinIcon.loadFromFile("resources/textures/coinIcon.png");
+        rangeIcon.loadFromFile("resources/textures/rangeIcon.png");
         healthIcon.loadFromFile("resources/textures/healthIcon.png");
 
         background.loadFromFile("resources/textures/background.jpg");

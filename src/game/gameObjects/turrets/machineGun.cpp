@@ -2,7 +2,7 @@
 
 namespace
 {
-    constexpr float range = 180.f;
+    constexpr float range = 1.f;
     constexpr int damage = 6;
 }
 

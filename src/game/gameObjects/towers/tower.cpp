@@ -16,7 +16,7 @@ void Tower::update()
     turret->update(); // szybki update pociskow
 
     // zasieg wiezy
-    sf::FloatRect range{{0.f,0.f}, {turret->getRange(),turret->getRange()}};
+    sf::FloatRect range{{0.f,0.f}, {turret->getRange() * util::tileSize.x * 2.f + util::tileSize.x,turret->getRange() * util::tileSize.y * 2.f + util::tileSize.y}};
     range.position = getGlobalBounds().getCenter() - range.size / 2.f;
 
     // przeciwnik w ktorego bedziemy strzelac

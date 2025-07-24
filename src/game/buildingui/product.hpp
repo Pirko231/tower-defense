@@ -14,6 +14,8 @@ class Product : public sf::Drawable, public sf::Transformable
     sf::Text attackText;
     sf::Sprite coinIcon;
     sf::Text coinText;
+    sf::Sprite rangeIcon;
+    sf::Text rangeText;
 public:
     Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::Vector2f position);
 
@@ -32,5 +34,7 @@ public:
         target.draw(attackText, states);
         target.draw(coinIcon, states);
         target.draw(coinText, states);
+        target.draw(rangeIcon, states);
+        target.draw(rangeText,states);
     }
 };

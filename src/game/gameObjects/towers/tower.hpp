@@ -31,6 +31,8 @@ public:
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), sprite.getGlobalBounds().size);}
 
+    float getRange() const {return turret->getRange();}
+    
     TowerType getType() const {return type;}
 
     float getDPS() const {return turret->getDPS();}
