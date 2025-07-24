@@ -24,7 +24,10 @@ public:
 
     void update();
 
-    void destructTowers(sf::Vector2f mapPointerPos);
+    /// @brief usuwa wieze i zwraca jej cene
+    /// @param mapPointerPos pozycja wiezy
+    /// @return cena wiezy
+    int destructTowers(sf::Vector2f mapPointerPos);
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

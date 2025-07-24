@@ -5,9 +5,9 @@
 
 class Product : public sf::Drawable, public sf::Transformable
 {
-    int price;
     std::unique_ptr<Tower> tower;
     std::unique_ptr<ITowerFactory> towerFactory;
+    int price;
 
     sf::RectangleShape background;
     sf::Sprite attackIcon;
@@ -17,7 +17,7 @@ class Product : public sf::Drawable, public sf::Transformable
     sf::Sprite rangeIcon;
     sf::Text rangeText;
 public:
-    Product(std::unique_ptr<ITowerFactory> _towerFactory, int _price, sf::Vector2f position);
+    Product(std::unique_ptr<ITowerFactory> _towerFactory, sf::Vector2f position);
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), background.getSize()};}
 

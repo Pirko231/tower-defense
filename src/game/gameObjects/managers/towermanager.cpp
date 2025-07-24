@@ -18,27 +18,21 @@ void TowerManager::update()
         i->update();
 }
 
-void TowerManager::destructTowers(sf::Vector2f mapPointerPos)
+int TowerManager::destructTowers(sf::Vector2f mapPointerPos)
 {
-    std::erase_if(towers, [mapPointerPos, this](const auto& tower)
+    int moneyValue{};
+    std::erase_if(towers, [&moneyValue, mapPointerPos, this](const auto& tower)
     {
         if(tower->getPosition() == mapPointerPos)
         {
             if(auto bp = map->getBuildPoint(util::calculatePosition(mapPointerPos)))
                 bp->setTower(nullptr);
-            
+            moneyValue = tower->getPrice();
             return true;
         }
         return false;
     });
-    /*for(auto it = towers.begin(); it != towers.end(); it++)
-    {
-        auto& tower = *it;
-        if(tower->getPosition() == mapPointerPos)
-        {
-
-        }
-    }*/
+    return moneyValue;
 }
 
 void TowerManager::draw(sf::RenderTarget &target, sf::RenderStates states) const

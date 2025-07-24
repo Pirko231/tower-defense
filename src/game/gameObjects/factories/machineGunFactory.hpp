@@ -14,8 +14,9 @@ public:
     std::unique_ptr<Tower> create(IClientEnemyManager* eManager = nullptr, IBulletManager* bManager = nullptr) override
     {
         std::unique_ptr<Turret> turret = std::make_unique<MachineGun>(bManager);
-        Tower tower(eManager, util::AssetLoader::get().towerBase, std::move(turret), TowerType::SingleCannon);
-        return std::make_unique<Tower>(tower);
+        Tower tower(eManager, util::AssetLoader::get().towerBase, std::move(turret), TowerType::SingleCannon, price);
+        return std::make_unique<Tower>(std::move(tower));
     }
-
+private:
+    constexpr static int price = 60;
 };
