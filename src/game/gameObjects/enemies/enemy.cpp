@@ -16,6 +16,7 @@ void Enemy::update()
 {
     move(moveBy);
 
+    arrivalTimer--;
     if(hasReachedDestination())
         nextDestination();
 
@@ -28,15 +29,17 @@ void Enemy::calculateMoveBy()
     sf::Vector2f mBy = calculateCheckpointsHitbox().position - getPosition();
     if(mBy != sf::Vector2f{})
     {
+        arrivalTimer = mBy.length() / speed;
         moveBy = mBy.normalized() * speed;
         setRotation(moveBy.angle());
     }
+    else
+        arrivalTimer = 0;
 }
 
 bool Enemy::hasReachedDestination() const
 {
-    
-    return (bool)getGlobalBounds().findIntersection(calculateCheckpointsHitbox());
+    return arrivalTimer <= 0;
 }
 
 void Enemy::nextDestination()

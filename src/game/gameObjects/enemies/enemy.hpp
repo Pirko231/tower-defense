@@ -15,6 +15,8 @@ class Enemy : public sf::Drawable, public sf::Transformable
     int damage{};
     int shield{};
     int moneyValue{};
+
+    int arrivalTimer{}; // timer do dojsca do kolejnego checkpointa
 protected:
     sf::Sprite sprite;
 
