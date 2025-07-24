@@ -8,11 +8,11 @@ namespace btn
 class MapButton : public Button
 {
     sf::Text text;
-    sf::RectangleShape background;
+    sf::Sprite background;
     std::filesystem::path mapPath;
     std::filesystem::path enemyPath;
 public:
-    MapButton(const sf::Font& font, const std::filesystem::path& mapName, const std::filesystem::path& enemyName);
+    MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName);
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(),background.getGlobalBounds().size};}
 

@@ -1,23 +1,22 @@
-//
-// Created by szymek on 01.07.25.
-//
-
 #include "mapbutton.hpp"
+#include "assetloader.hpp"
 
 namespace btn
 {
-    MapButton::MapButton(const sf::Font &font, const std::filesystem::path& _mapName, const std::filesystem::path& _enemyName)
-        : text(font), mapPath(_mapName)
+    MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath)
+        : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath)
     {
         mapPath = "resources/maps/";
-        mapPath += _mapName;
+        mapPath += _mapPath;
 
         enemyPath = "resources/maps/";
-        enemyPath += _enemyName;
+        enemyPath += _enemyPath;
 
-        background.setFillColor(sf::Color::Green);
+        background.setScale({4.f,18.f});
 
-        background.setSize({220.f,240.f});
+        text.setString(_mapName);
+        text.setCharacterSize(40.f);
+        text.setPosition({getGlobalBounds().getCenter().x - text.getGlobalBounds().size.x / 2.f, getGlobalBounds().getCenter().y - text.getGlobalBounds().size.y / 1.f});
     }
 
     void MapButton::update()

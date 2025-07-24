@@ -4,6 +4,7 @@
 
 class MapSelectionScreen : public ScreenState
 {
+    sf::Sprite background;
     sf::Text title;
     std::array<btn::MapButton, 6> mapButtons;
 public:
