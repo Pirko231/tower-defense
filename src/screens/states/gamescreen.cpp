@@ -33,6 +33,7 @@ void GameScreen::update()
         waveCounter.setString(waveString);
     }
 
+    // klikanie myszki
     if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
     {
         if (waveButton.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
@@ -45,6 +46,14 @@ void GameScreen::update()
         else
             buildingUI.click(sf::Mouse::getPosition(*stateMachine->getWindow()));
     }
+
+    // skroty klawiaturowe
+    if(stateMachine->getPressed()[sf::Keyboard::Key::Space].released)
+        if(!waveManager.isWaveActive())
+            waveManager.nextWave();
+        
+    if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
+        buildingUI.leaveBuildMode();
 }
 
 void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const

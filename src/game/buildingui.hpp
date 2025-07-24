@@ -20,6 +20,8 @@ public:
     /// @brief przyjmuje pozycje myszy i ustawia kwadrat do klikneicia
     void click(sf::Vector2i where);
 
+    void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false);}
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         if (mapPointerVisible)
