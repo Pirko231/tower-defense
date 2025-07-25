@@ -86,6 +86,8 @@ public:
             target.draw(buildPoint,states);
         for (auto& checkpoint : checkpoints)
             target.draw(checkpoint,states);
+        for(auto& decoration : decorations)
+            target.draw(decoration,states);
     }
 
     BuildPoint* getBuildPoint(sf::Vector2i pos)
@@ -128,7 +130,14 @@ private:
     Tile createTile(TileType type);
 
     /// @brief uzywa mapy i umieszcza na niej dekoracje
-    void placeDecorations();
+    void placeDecorations(int amount);
 
+    /// @brief zwraca zestaw dekoracji w zaleznosci od podanego typu
+    /// @param type najczejsciej wystepujacy typ pola
+    /// @return zestaw tekstur zawierajacy dekoracje
+    std::vector<const sf::Texture*> getDecorationSet(TileType type) const;
+
+    /// @brief znajduje najczesciej wystepujace pole na mapie z wykluczeniem drog, checkopintow wejscia i wyjsia
+    /// @return rodzaj tego pola
     TileType determineMainTileType() const;
 };

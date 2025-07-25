@@ -200,7 +200,7 @@ void Map::loadMap(const std::filesystem::path &path)
         }
     }
     sortCheckpoints();
-    placeDecorations();
+    placeDecorations(5);
 }
 
 Tile Map::createTile(TileType type)
@@ -223,9 +223,23 @@ Tile Map::createTile(TileType type)
     return Tile{util::AssetLoader::get().emptyTexture, type};
 }
 
-void Map::placeDecorations()
+void Map::placeDecorations(int amount)
 {
+    auto textures = getDecorationSet(determineMainTileType());
+
+    for(int i = 0; i < amount; i++)
+    {
+        decorations.push_back(static_cast<sf::Sprite>(*(*(textures.begin() + std::rand() % textures.size()))));
+        decorations.back().setPosition({float(std::rand() % util::mapSize.x * util::tileSize.x), float(std::rand() % util::mapSize.y * util::tileSize.y)});
+    }
+}
+
+std::vector<const sf::Texture*> Map::getDecorationSet(TileType type) const
+{
+    if(type == TileType::Grass)
+        return {&util::AssetLoader::get().summerBush, &util::AssetLoader::get().summerTree};
     
+    return {};
 }
 
 TileType Map::determineMainTileType() const
