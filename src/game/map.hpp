@@ -117,7 +117,9 @@ private:
     void sortCheckpoints();
 
     /// @brief zwraca kolejne pole ktore jest trasa przeciwnikow i obok obecnego
-    Tile* findNextPath(Tile* tile);
+    /// @param tile obecnie sprawdzane pola
+    /// @param previousTiles poprzednie pola unikajace kopii
+    Tile* findNextPath(Tile* tile, std::vector<Tile*>& previousTiles);
 
     /// @brief zwraca odpowiedni tile do podanego typu. Kiedy typ sie nie zgadza zwraca Tile bez tekstury
     Tile createTile(TileType type);

@@ -11,10 +11,11 @@ void Map::sortCheckpoints()
     std::vector<Checkpoint> newCheckpoints;
     int foundCheckpoints{};
     Tile* currentTile{entrance};
+    std::vector<Tile*> previousTiles{};
 
     while(foundCheckpoints != (int)checkpoints.size())
     {
-        currentTile = findNextPath(currentTile);
+        currentTile = findNextPath(currentTile, previousTiles);
         if(!currentTile)
             break;
         for(auto& checkpoint : checkpoints)
@@ -29,12 +30,10 @@ void Map::sortCheckpoints()
         checkpoints.push_back(Checkpoint{exit->getPosition()});
 }
 
-Tile *Map::findNextPath(Tile *tile)
+Tile *Map::findNextPath(Tile *tile, std::vector<Tile*>& previousTiles)
 {
     // jest 4 pol do przeszukania
     constexpr int directions{4};
-
-    static std::vector<Tile*> previousTiles{};
 
     Tile* result{};
 
