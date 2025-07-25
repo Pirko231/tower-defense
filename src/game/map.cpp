@@ -200,6 +200,7 @@ void Map::loadMap(const std::filesystem::path &path)
         }
     }
     sortCheckpoints();
+    placeDecorations();
 }
 
 Tile Map::createTile(TileType type)
@@ -220,4 +221,24 @@ Tile Map::createTile(TileType type)
         return Tile{util::AssetLoader::get().buildPoint, type};
 
     return Tile{util::AssetLoader::get().emptyTexture, type};
+}
+
+void Map::placeDecorations()
+{
+    
+}
+
+TileType Map::determineMainTileType() const
+{
+    std::unordered_map<TileType, /*amount*/int> tileAmount;
+    
+    for(auto& tile : tiles)
+    {
+        if(tile.getType() != TileType::Road && tile.getType() != TileType::Entrance && tile.getType() != TileType::Exit && tile.getType() != TileType::BuildPoint)
+            tileAmount[tile.getType()]++;
+    }
+
+    return std::max_element(tileAmount.begin(), tileAmount.end(), []
+    (const auto &p1, const auto &p2){return p1.second < p2.second;})->first;
+
 }

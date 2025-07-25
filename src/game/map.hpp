@@ -63,7 +63,6 @@ public:
 };
 
 
-
 /// @brief wczytuje mape z pliku i przechowuje ja
 class Map : public sf::Drawable
 {
@@ -72,6 +71,8 @@ class Map : public sf::Drawable
     Tile* exit{};
     std::vector<BuildPoint> buildPoints;
     std::vector<Checkpoint> checkpoints;
+
+    std::vector<sf::Sprite> decorations;
 public:
     Map();
 
@@ -125,4 +126,9 @@ private:
 
     /// @brief zwraca odpowiedni tile do podanego typu. Kiedy typ sie nie zgadza zwraca Tile bez tekstury
     Tile createTile(TileType type);
+
+    /// @brief uzywa mapy i umieszcza na niej dekoracje
+    void placeDecorations();
+
+    TileType determineMainTileType() const;
 };

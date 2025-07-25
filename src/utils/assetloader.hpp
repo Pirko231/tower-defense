@@ -48,6 +48,11 @@ public:
     sf::Texture iceTile;
     sf::Texture roadTile;
     sf::Texture buildPoint;
+
+    sf::Texture springTree;
+    sf::Texture summerTree;
+    sf::Texture summerBush;
+    sf::Texture winterTree;
 private:
     AssetLoader()
     {
@@ -83,6 +88,11 @@ private:
         iceTile.loadFromFile("resources/textures/tiles/ice.png");
         roadTile.loadFromFile("resources/textures/tiles/road.png");
         buildPoint.loadFromFile("resources/textures/tiles/build.png");
+
+        springTree.loadFromFile("resources/textures/decorations/springTree.png");
+        summerTree.loadFromFile("resources/textures/decorations/summerTree.png");
+        summerBush.loadFromFile("resources/textures/decorations/summerBerryBush.png");
+        winterTree.loadFromFile("resources/textures/decorations/winterTree.png");
     }
 };
 
