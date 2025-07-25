@@ -107,6 +107,7 @@ Tile *Map::findNextPath(Tile *tile)
 void Map::loadMap(const std::filesystem::path &path)
 {
     tiles.clear();
+    tiles.reserve(600);
     buildPoints.clear();
 
     std::fstream file(path, std::ios::in);
