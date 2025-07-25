@@ -19,7 +19,6 @@ void WaveManager::update()
         timer--;
         return;
     }
-    timer = currentWave->back().timer;
     
     enemyManager->addEnemy(getFactory(currentWave->back().type).get());
     currentWave->pop_back();
@@ -28,7 +27,8 @@ void WaveManager::update()
         enemies.erase(enemies.begin());
         currentWave = enemies.end();
     }
-    //currentWave = enemies.begin();
+    if(currentWave->size() > 0)
+        timer = currentWave->back().timer;
 }
 
 void WaveManager::loadEnemies(const std::filesystem::path &filePath)
