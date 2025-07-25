@@ -210,6 +210,10 @@ Tile Map::createTile(TileType type)
         return Tile{util::AssetLoader::get().dirtTile, type};
     else if (type == TileType::Sand)
         return Tile{util::AssetLoader::get().sandTile, type};
+    else if (type == TileType::PinkGrass)
+        return Tile{util::AssetLoader::get().pinkGrassTile, type};
+    else if (type == TileType::Ice)
+        return Tile{util::AssetLoader::get().iceTile, type};
     else if (type == TileType::Road || type == TileType::Checkpoint || type == TileType::Entrance || type == TileType::Exit)
         return Tile{util::AssetLoader::get().roadTile, type};
     else if (type == TileType::BuildPoint)

@@ -4,12 +4,6 @@
 
 #pragma GCC diagnostic ignored "-Wunused-result"
 
-struct TowerTexture
-{
-    sf::Texture tower;
-    sf::Texture archer;
-};
-
 namespace util
 {
 
@@ -50,6 +44,8 @@ public:
     sf::Texture grassTile;
     sf::Texture dirtTile;
     sf::Texture sandTile;
+    sf::Texture pinkGrassTile;
+    sf::Texture iceTile;
     sf::Texture roadTile;
     sf::Texture buildPoint;
 private:
@@ -83,6 +79,8 @@ private:
         grassTile.loadFromFile("resources/textures/tiles/grass.png");
         dirtTile.loadFromFile("resources/textures/tiles/dirt.png");
         sandTile.loadFromFile("resources/textures/tiles/sand.png");
+        pinkGrassTile.loadFromFile("resources/textures/tiles/pinkGrass.png");
+        iceTile.loadFromFile("resources/textures/tiles/ice.png");
         roadTile.loadFromFile("resources/textures/tiles/road.png");
         buildPoint.loadFromFile("resources/textures/tiles/build.png");
     }
