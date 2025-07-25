@@ -12,16 +12,16 @@ void WaveManager::update()
     if(currentWave->size() == 0 || currentWave == enemies.end())
         return;
 
-    // prymitywny timer potem wywalic
-    static int timer{1};
-    if(timer % 120 != 0)
+    // timer do odmierzania czasu do pojawiania sie kolejnych przeciwnikow
+    static int timer{0};
+    if(timer > 0)
     {
-        timer++;
+        timer--;
         return;
     }
-    timer = 1;
+    timer = currentWave->back().timer;
     
-    enemyManager->addEnemy(getFactory(currentWave->back()).get());
+    enemyManager->addEnemy(getFactory(currentWave->back().type).get());
     currentWave->pop_back();
     if(currentWave->size() == 0)
     {
@@ -48,24 +48,24 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
             std::getline(file, data, ' ');
 
             // szukanie znaku nowej lini
-            if(data.find('\n') != std::string::npos)
+            if(std::size_t pos = data.find('\n'); pos != std::string::npos)
             {
-                std::string temp = std::to_string(static_cast<char>(data.back()) - 48);
-                data.erase(data.begin() + 1, data.end());
-                auto enemy = loadEnemy(data);
-                if(enemy != EnemyType::Empty)
+                std::string temp = std::string(data.begin(), data.begin() + pos);
+                data.erase(data.begin() , data.begin() + pos + 1);
+                auto enemy = loadEnemy(temp);
+                if(enemy.type != EnemyType::Empty)
                     enemies.back().emplace_back(enemy);
 
                 enemies.push_back({});
-                data = temp; // w tym wypadku ladowane sa dwie wartosci - teraz pracujemy na tej drugiej odzyskanej
+                //data = temp; // w tym wypadku ladowane sa dwie wartosci - teraz pracujemy na tej drugiej odzyskanej
             }
 
             auto enemy = loadEnemy(data);
-            if(enemy != EnemyType::Empty)
+            if(enemy.type != EnemyType::Empty)
                 enemies.back().emplace_back(enemy);
         }
 
-        enemies.pop_back(); // ostatnia linia bedzie invalid
+        //enemies.pop_back(); // ostatnia linia bedzie invalid
         currentWave = enemies.begin();
     }
     else
@@ -79,19 +79,32 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
     waves = 0;
 }
 
-EnemyType WaveManager::loadEnemy(const std::string &line)
+PackedEnemy WaveManager::loadEnemy(std::string &line)
 {
+    PackedEnemy result{EnemyType::Empty, 0};
+    std::string timer = std::string(line.begin() + line.find(',') + 1, line.end());
+    line.erase(line.begin() + line.find(','), line.end());
     try
     {
-        int val = std::stoi(line);
-        return static_cast<EnemyType>(val);
+        int val = std::stoi(timer);
+        result.timer = val;
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Timer loading " << e.what() << '\n';
     }
     
-    return EnemyType::Empty;
+    try
+    {
+        int val = std::stoi(line);
+        result.type = static_cast<EnemyType>(val);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Type loading " << e.what() << '\n';
+    }
+    
+    return result;
 }
 
 std::unique_ptr<IEnemyFactory> WaveManager::getFactory(EnemyType type)

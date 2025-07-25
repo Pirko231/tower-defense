@@ -18,14 +18,21 @@ enum class EnemyType
     SuperSoldier = 4
 };
 
+/// @brief przechowuje typ i timer do wyjscia
+struct PackedEnemy
+{
+    EnemyType type; // typ przeciwnika
+    int timer; // ilosc klatek do wyjscia
+};
+
 /// @brief tworzy przeciwnikow i wysyla informacje do enemyManager
 class WaveManager
 {
     Map* map{};
     EnemyManager* enemyManager{};
     
-    std::vector<std::vector<EnemyType>> enemies;
-    std::vector<std::vector<EnemyType>>::iterator currentWave{};
+    std::vector<std::vector<PackedEnemy>> enemies;
+    std::vector<std::vector<PackedEnemy>>::iterator currentWave{};
     
     bool firstWave{}; // gra pauzuje przed pierwsza fala
     int maxWaves{};
@@ -63,7 +70,7 @@ public:
 private:
     /// @brief przerabia tekst na EnemyType
     /// @param line tekst do przerobienia
-    EnemyType loadEnemy(const std::string& line);
+    PackedEnemy loadEnemy(std::string& line);
 
     /// @brief interpretuje typ i zwraca odpowiednia fabryke. Kiedy typ nie zostanie rozpoznany
     /// zwraca BasicSoldierfactory
