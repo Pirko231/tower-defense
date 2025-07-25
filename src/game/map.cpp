@@ -268,7 +268,7 @@ void Map::placeDecorations(int amount)
 
     for(int i = 0; i < amount; i++)
     {
-        decorations.push_back(static_cast<sf::Sprite>(*(*(textures.begin() + std::rand() % textures.size()))));
+        decorations.push_back(static_cast<sf::Sprite>((*(textures.begin() + std::rand() % textures.size()))));
         
         sf::Vector2f position = randPosition();
         while(!checkNearbyTypes(position))
@@ -279,12 +279,17 @@ void Map::placeDecorations(int amount)
     }
 }
 
-std::vector<const sf::Texture*> Map::getDecorationSet(TileType type) const
+std::vector<sf::Sprite> Map::getDecorationSet(TileType type) const
 {
     if(type == TileType::Grass)
-        return {&util::AssetLoader::get().summerBush, &util::AssetLoader::get().summerTree};
+        return {static_cast<sf::Sprite>(util::AssetLoader::get().summerBush), static_cast<sf::Sprite>(util::AssetLoader::get().summerTree)};
     if(type == TileType::Sand)
-        return {&util::AssetLoader::get().cactus1};
+    {
+        sf::Sprite cactus1 {util::AssetLoader::get().cactus1};
+        cactus1.setScale({2.8f,3.2f});
+        return {cactus1};
+    }
+        
     return {};
 }
 
