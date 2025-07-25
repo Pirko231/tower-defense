@@ -200,7 +200,7 @@ void Map::loadMap(const std::filesystem::path &path)
         }
     }
     sortCheckpoints();
-    placeDecorations(5);
+    placeDecorations(30);
 }
 
 Tile Map::createTile(TileType type)
@@ -227,10 +227,57 @@ void Map::placeDecorations(int amount)
 {
     auto textures = getDecorationSet(determineMainTileType());
 
+    auto randPosition = [&]()->sf::Vector2f
+    {
+        sf::Vector2f position = {static_cast<float>(std::rand() % util::mapSize.x), static_cast<float>(std::rand() % util::mapSize.y)};
+        position = sf::Vector2f{position.x * (float)util::tileSize.x, position.y * (float)util::tileSize.y};
+        position += {static_cast<float>(std::rand() % util::tileSize.x), static_cast<float>(std::rand() % util::tileSize.y)};
+        return position;
+    };
+
+    auto checkNearbyTypes = [&](sf::Vector2f pos)->bool
+    {
+        // sprawdzamy 8 pol obok siebie
+        sf::Vector2i mapPos = util::calculatePosition(pos);
+        mapPos.x -= 1; mapPos.y -= 1;
+        pos -= (sf::Vector2f)util::tileSize;
+        if(mapPos.x < 0 || mapPos.y < 0 || mapPos.x + 2 > util::mapSize.x || mapPos.y + 2 > util::mapSize.y)
+        {
+            mapPos.x += 1; mapPos.y += 1; // przywracamy do poprzedniego stanu i odzyszkujemy gwarancje popprawnych koordynatow
+            pos += (sf::Vector2f)util::tileSize;
+            TileType type = findTile((sf::Vector2i)pos)->getType();
+            if(type == TileType::Road || type == TileType::Checkpoint || type == TileType::BuildPoint)
+                    return false;
+            else
+                return true;
+        }
+        for(int i = 0; i < 3; i++, pos.y += util::tileSize.y)
+        {
+            for(int j = 0; j < 3; j++, pos.x += util::tileSize.x)
+            {
+                TileType type = findTile((sf::Vector2i)pos)->getType();
+                if(type == TileType::Road || type == TileType::Checkpoint || type == TileType::BuildPoint)
+                    return false;
+            }
+            pos.x -= util::tileSize.x * 3;
+        }
+        return true;
+    };
+
     for(int i = 0; i < amount; i++)
     {
         decorations.push_back(static_cast<sf::Sprite>(*(*(textures.begin() + std::rand() % textures.size()))));
-        decorations.back().setPosition({float(std::rand() % util::mapSize.x * util::tileSize.x), float(std::rand() % util::mapSize.y * util::tileSize.y)});
+        
+        sf::Vector2f position = randPosition();
+        //TileType type = findTile(util::calculatePosition(position))->getType();
+        do
+        {
+            position = randPosition();
+            //type = findTile(util::calculatePosition(position))->getType();
+        } while (!checkNearbyTypes(position));
+        
+        //type == TileType::Road && type == TileType::Checkpoint && type == TileType::BuildPoint
+        decorations.back().setPosition(randPosition());
     }
 }
 
@@ -238,7 +285,8 @@ std::vector<const sf::Texture*> Map::getDecorationSet(TileType type) const
 {
     if(type == TileType::Grass)
         return {&util::AssetLoader::get().summerBush, &util::AssetLoader::get().summerTree};
-    
+    if(type == TileType::Sand)
+        return {&util::AssetLoader::get().cactus1};
     return {};
 }
 

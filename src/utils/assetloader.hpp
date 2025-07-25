@@ -53,6 +53,7 @@ public:
     sf::Texture summerTree;
     sf::Texture summerBush;
     sf::Texture winterTree;
+    sf::Texture cactus1;
 private:
     AssetLoader()
     {
@@ -93,6 +94,7 @@ private:
         summerTree.loadFromFile("resources/textures/decorations/summerTree.png");
         summerBush.loadFromFile("resources/textures/decorations/summerBerryBush.png");
         winterTree.loadFromFile("resources/textures/decorations/winterTree.png");
+        cactus1.loadFromFile("resources/textures/decorations/cactus1.png");
     }
 };
 
