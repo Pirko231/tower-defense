@@ -31,7 +31,8 @@ void Enemy::calculateMoveBy()
     {
         arrivalTimer = mBy.length() / speed;
         moveBy = mBy.normalized() * speed;
-        setRotation(moveBy.angle());
+        if(moveBy != sf::Vector2f{})
+            setRotation(moveBy.angle());
     }
     else
         arrivalTimer = 0;

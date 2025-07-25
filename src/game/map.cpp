@@ -282,15 +282,34 @@ void Map::placeDecorations(int amount)
 std::vector<sf::Sprite> Map::getDecorationSet(TileType type) const
 {
     if(type == TileType::Grass)
-        return {static_cast<sf::Sprite>(util::AssetLoader::get().summerBush), static_cast<sf::Sprite>(util::AssetLoader::get().summerTree)};
+    {
+        sf::Sprite summerBush{util::AssetLoader::get().summerBush};
+        summerBush.setScale({0.7f,0.7f});
+        sf::Sprite summerTree{util::AssetLoader::get().summerTree};
+        return {summerBush, summerTree};
+    }
     if(type == TileType::Sand)
     {
         sf::Sprite cactus1 {util::AssetLoader::get().cactus1};
         cactus1.setScale({2.8f,3.2f});
-        return {cactus1};
+        sf::Sprite cactus2 {util::AssetLoader::get().cactus2};
+        cactus2.setScale({4.f,4.f});
+        return {cactus1, cactus2};
+    }
+    if(type == TileType::Ice)
+    {
+        sf::Sprite winterTree{util::AssetLoader::get().winterTree};
+        sf::Sprite winterTrunk{util::AssetLoader::get().winterTrunk};
+        return {winterTree, winterTrunk};
+    }
+    if(type == TileType::PinkGrass)
+    {
+        sf::Sprite moldTree1{util::AssetLoader::get().moldTree1};
+        sf::Sprite moldTree2{util::AssetLoader::get().moldTree2};
+        return {moldTree1, moldTree2};
     }
         
-    return {};
+    return {(sf::Sprite)util::AssetLoader::get().attackIcon};
 }
 
 TileType Map::determineMainTileType() const

@@ -53,7 +53,11 @@ public:
     sf::Texture summerTree;
     sf::Texture summerBush;
     sf::Texture winterTree;
+    sf::Texture winterTrunk;
     sf::Texture cactus1;
+    sf::Texture cactus2;
+    sf::Texture moldTree1;
+    sf::Texture moldTree2;
 private:
     AssetLoader()
     {
@@ -94,7 +98,11 @@ private:
         summerTree.loadFromFile("resources/textures/decorations/summerTree.png");
         summerBush.loadFromFile("resources/textures/decorations/summerBerryBush.png");
         winterTree.loadFromFile("resources/textures/decorations/winterTree.png");
+        winterTrunk.loadFromFile("resources/textures/decorations/winterTrunk.png");
         cactus1.loadFromFile("resources/textures/decorations/cactus1.png");
+        cactus2.loadFromFile("resources/textures/decorations/cactus2.png");
+        moldTree1.loadFromFile("resources/textures/decorations/moldTree1.png");
+        moldTree2.loadFromFile("resources/textures/decorations/moldTree2.png");
     }
 };
 

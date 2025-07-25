@@ -21,7 +21,8 @@ void Rocket::update()
     if(moveBy != sf::Vector2f{})
     {
         moveBy = moveBy.normalized() * speed;
-        setRotation(moveBy.angle());
+        if(moveBy != sf::Vector2f{})
+            setRotation(moveBy.angle());
     }
 }
 
