@@ -200,7 +200,7 @@ void Map::loadMap(const std::filesystem::path &path)
         }
     }
     sortCheckpoints();
-    placeDecorations(30);
+    placeDecorations(15);
 }
 
 Tile Map::createTile(TileType type)
@@ -231,7 +231,7 @@ void Map::placeDecorations(int amount)
     {
         sf::Vector2f position = {static_cast<float>(std::rand() % util::mapSize.x), static_cast<float>(std::rand() % util::mapSize.y)};
         position = sf::Vector2f{position.x * (float)util::tileSize.x, position.y * (float)util::tileSize.y};
-        position += {static_cast<float>(std::rand() % util::tileSize.x), static_cast<float>(std::rand() % util::tileSize.y)};
+        //position += {static_cast<float>(std::rand() % util::tileSize.x), static_cast<float>(std::rand() % util::tileSize.y)};
         return position;
     };
 
@@ -241,25 +241,27 @@ void Map::placeDecorations(int amount)
         sf::Vector2i mapPos = util::calculatePosition(pos);
         mapPos.x -= 1; mapPos.y -= 1;
         pos -= (sf::Vector2f)util::tileSize;
-        if(mapPos.x < 0 || mapPos.y < 0 || mapPos.x + 2 > util::mapSize.x || mapPos.y + 2 > util::mapSize.y)
+        if(mapPos.x < 0 || mapPos.y < 0 || mapPos.x + 3 > util::mapSize.x || mapPos.y + 3 > util::mapSize.y)
         {
             mapPos.x += 1; mapPos.y += 1; // przywracamy do poprzedniego stanu i odzyszkujemy gwarancje popprawnych koordynatow
             pos += (sf::Vector2f)util::tileSize;
             TileType type = findTile((sf::Vector2i)pos)->getType();
-            if(type == TileType::Road || type == TileType::Checkpoint || type == TileType::BuildPoint)
-                    return false;
+            if(type == TileType::Road || getCheckpoint(mapPos) || getBuildPoint(mapPos))
+                return false;
             else
-                return true;
+                return false; // true
         }
-        for(int i = 0; i < 3; i++, pos.y += util::tileSize.y)
+
+        for(int i = 0; i < 3; i++, pos.y += util::tileSize.y, mapPos.y++)
         {
-            for(int j = 0; j < 3; j++, pos.x += util::tileSize.x)
+            for(int j = 0; j < 3; j++, pos.x += util::tileSize.x, mapPos.x++)
             {
                 TileType type = findTile((sf::Vector2i)pos)->getType();
-                if(type == TileType::Road || type == TileType::Checkpoint || type == TileType::BuildPoint)
+                if(type == TileType::Road || getCheckpoint(mapPos) || getBuildPoint(mapPos))
                     return false;
             }
             pos.x -= util::tileSize.x * 3;
+            mapPos.x -= 3;
         }
         return true;
     };
@@ -269,15 +271,12 @@ void Map::placeDecorations(int amount)
         decorations.push_back(static_cast<sf::Sprite>(*(*(textures.begin() + std::rand() % textures.size()))));
         
         sf::Vector2f position = randPosition();
-        //TileType type = findTile(util::calculatePosition(position))->getType();
-        do
-        {
+        while(!checkNearbyTypes(position))
             position = randPosition();
-            //type = findTile(util::calculatePosition(position))->getType();
-        } while (!checkNearbyTypes(position));
+        
         
         //type == TileType::Road && type == TileType::Checkpoint && type == TileType::BuildPoint
-        decorations.back().setPosition(randPosition());
+        decorations.back().setPosition(position);
     }
 }
 

@@ -87,7 +87,13 @@ public:
         for (auto& checkpoint : checkpoints)
             target.draw(checkpoint,states);
         for(auto& decoration : decorations)
+        {
             target.draw(decoration,states);
+            sf::RectangleShape shape{{64.f,64.f}};
+            shape.setPosition(decoration.getPosition());
+            shape.setFillColor(sf::Color{255,255,255,100});
+            target.draw(shape);
+        }
     }
 
     BuildPoint* getBuildPoint(sf::Vector2i pos)
@@ -106,6 +112,15 @@ public:
         mousePos.y /= util::tileSize.y;
 
         return &tiles[(mousePos.y * util::mapSize.x) + mousePos.x];
+    }
+
+    Checkpoint* getCheckpoint(sf::Vector2i pos)
+    {
+        auto result = std::find_if(checkpoints.begin(), checkpoints.end(),
+            [&pos](const auto& checkpoint)->bool{return util::calculatePosition(checkpoint.getPosition()) == pos;});
+        if (result != checkpoints.end())
+            return &(*result);
+        return nullptr;
     }
 
     Tile* getEntrance() {return entrance;}
