@@ -30,7 +30,7 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-    void setCurrentMap(const std::filesystem::path& _mapPath) {map.loadMap(_mapPath);}
+    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) {map.loadMap(_mapPath, decorAmount);}
 
     void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath);}
 };

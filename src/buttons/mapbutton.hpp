@@ -11,14 +11,17 @@ class MapButton : public Button
     sf::Sprite background;
     std::filesystem::path mapPath;
     std::filesystem::path enemyPath;
+    int decorationAmount;
 public:
-    MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName);
+    MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName, int decorationAmount);
 
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(),background.getGlobalBounds().size};}
 
     const std::filesystem::path& getMap() const {return mapPath;}
 
     const std::filesystem::path& getEnemies() const {return enemyPath;}
+
+    int getDecorationAmount() const {return decorationAmount;}
 
     void update() override;
 

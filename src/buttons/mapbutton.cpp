@@ -3,8 +3,8 @@
 
 namespace btn
 {
-    MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath)
-        : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath)
+    MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath, int _decorationAmount)
+        : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath), decorationAmount(_decorationAmount)
     {
         mapPath = "resources/maps/";
         mapPath += _mapPath;

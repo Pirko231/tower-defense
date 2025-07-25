@@ -130,7 +130,7 @@ public:
     Checkpoint::Iterator getCheckpointIterator() {return Checkpoint::Iterator{checkpoints.begin(), checkpoints};}
 
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
-    void loadMap(const std::filesystem::path& path);
+    void loadMap(const std::filesystem::path& path, int numberOfDecorations);
 
 private:
     /// @brief sortuje checkpointy przygotowujac je do stanu uzywalnosci. Wywolywane w loadMap

@@ -103,7 +103,7 @@ Tile *Map::findNextPath(Tile *tile, std::vector<Tile*>& previousTiles)
     return nullptr;
 }
 
-void Map::loadMap(const std::filesystem::path &path)
+void Map::loadMap(const std::filesystem::path &path, int numberOfDecorations)
 {
     tiles.clear();
     tiles.reserve(600);
@@ -200,7 +200,7 @@ void Map::loadMap(const std::filesystem::path &path)
         }
     }
     sortCheckpoints();
-    placeDecorations(15);
+    placeDecorations(numberOfDecorations);
 }
 
 Tile Map::createTile(TileType type)
@@ -231,7 +231,7 @@ void Map::placeDecorations(int amount)
     {
         sf::Vector2f position = {static_cast<float>(std::rand() % util::mapSize.x), static_cast<float>(std::rand() % util::mapSize.y)};
         position = sf::Vector2f{position.x * (float)util::tileSize.x, position.y * (float)util::tileSize.y};
-        //position += {static_cast<float>(std::rand() % util::tileSize.x), static_cast<float>(std::rand() % util::tileSize.y)};
+        position += {static_cast<float>(std::rand() % util::tileSize.x), static_cast<float>(std::rand() % util::tileSize.y)};
         return position;
     };
 
@@ -275,7 +275,6 @@ void Map::placeDecorations(int amount)
             position = randPosition();
         
         
-        //type == TileType::Road && type == TileType::Checkpoint && type == TileType::BuildPoint
         decorations.back().setPosition(position);
     }
 }
