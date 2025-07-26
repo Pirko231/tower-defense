@@ -3,6 +3,7 @@
 #include "map.hpp"
 #include "buildingui/towerlist.hpp"
 #include "gameObjects/managers/towermanagerproxy.hpp"
+#include "buildingui/upgradeGUI.hpp"
 
 class BuildingUI : public sf::Drawable
 {
@@ -11,6 +12,7 @@ class BuildingUI : public sf::Drawable
     int* health{};
     TowerManagerProxy* towerManager{};
     TowerList towerList;
+    UpgradeGUI upgradeGUI;
 
     sf::RectangleShape mapPointer;
     bool mapPointerVisible{};
@@ -20,7 +22,7 @@ public:
     /// @brief przyjmuje pozycje myszy i ustawia kwadrat do klikneicia
     void click(sf::Vector2i where);
 
-    void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false);}
+    void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false); upgradeGUI.setVisible(false);}
 
     sf::Vector2f getMapPointerPosition() const {return mapPointer.getPosition();}
 private:
@@ -31,6 +33,7 @@ private:
             target.draw(mapPointer, states);
         }
         target.draw(towerList, states);
+        target.draw(upgradeGUI, states);
     }
 
     void buyProduct(const Product* product);

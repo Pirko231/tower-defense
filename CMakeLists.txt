@@ -93,6 +93,7 @@ add_executable(main
         src/game/buildingui/towerlist.hpp
         src/game/buildingui/product.cpp
         src/game/buildingui/product.hpp
+        src/game/buildingui/upgradeGUI.cpp
         src/buttons/playbutton.cpp
         src/buttons/playbutton.hpp
         src/game/gameObjects/managers/enemymanager.cpp

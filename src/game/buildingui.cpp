@@ -1,7 +1,8 @@
 #include "buildingui.hpp"
 
 BuildingUI::BuildingUI(Map *_map, TowerManagerProxy* _towerManager, int* _money, int* _health)
-    : map(_map), money(_money), health(_health), towerManager(_towerManager), towerList(_map, money, health)
+    : map(_map), money(_money), health(_health), towerManager(_towerManager),
+    towerList(_map, money, health), upgradeGUI(map,towerManager)
 {
     mapPointer.setFillColor({20,20,100,80});
     mapPointer.setSize(static_cast<sf::Vector2f>(util::tileSize));
@@ -21,9 +22,17 @@ void BuildingUI::click(sf::Vector2i where)
         }
     }
 
+    if(upgradeGUI.isVisible())
+        upgradeGUI.click(where);
+    
+
     auto tile = map->findTile(where);
 
     mapPointer.setPosition(tile->getPosition());
+
+    if(BuildPoint* bp = map->getBuildPoint(util::calculatePosition(static_cast<sf::Vector2f>(where))))
+        if(bp->getTower())
+            upgradeGUI.setVisible(true);
 
     towerList.setVisible(where, true);
 
