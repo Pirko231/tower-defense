@@ -26,6 +26,7 @@ public:
     sf::Texture coinIcon;
     sf::Texture rangeIcon;
     sf::Texture healthIcon;
+    sf::Texture binIcon;
 
     sf::Texture towerBase;
     sf::Texture singleCannon;
@@ -70,6 +71,7 @@ private:
         coinIcon.loadFromFile("resources/textures/coinIcon.png");
         rangeIcon.loadFromFile("resources/textures/rangeIcon.png");
         healthIcon.loadFromFile("resources/textures/healthIcon.png");
+        binIcon.loadFromFile("resources/textures/binIcon.png");
 
         background.loadFromFile("resources/textures/background.jpg");
         playButton.loadFromFile("resources/textures/Play.png");

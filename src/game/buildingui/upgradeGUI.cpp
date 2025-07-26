@@ -1,10 +1,13 @@
 #include "upgradeGUI.hpp"
 
 UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
-    : map(_map), towerManager(_towerManager), money(_money), upgradeButton(util::AssetLoader::get().font)
+    : map(_map), towerManager(_towerManager), money(_money),
+    upgradeButton(util::AssetLoader::get().font), bin(util::AssetLoader::get().binIcon)
 {
     background.setSize({320.f,150.f});
     background.setFillColor(sf::Color{51,204,255});
+
+    bin.setPosition({getGlobalBounds().size.x - bin.getGlobalBounds().size.x, 0.f});
 
     upgradeButton.setString("UPGRADE");
     upgradeButton.setBackgroundSize({upgradeButton.getGlobalBounds().size.x, upgradeButton.getGlobalBounds().size.y * 2.f});
@@ -14,7 +17,7 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
 
 }
 
-bool UpgradeGUI::click(sf::Vector2i mousePos)
+bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 {
     if(!tower)
         return false;
@@ -24,6 +27,12 @@ bool UpgradeGUI::click(sf::Vector2i mousePos)
         return false; // kliknieto nie w przycisk
 
     pos -= getPosition(); // przechodzimy na lokalne koordynaty
+
+    if(bin.getGlobalBounds().contains(pos))
+    {
+        *money += towerManager->destructTowers(mapPointerPos) / 2;
+    }
+
     if(upgradeButton.getGlobalBounds().contains(pos))
     {
         Turret::Stats stats{1.f, 1.5f};
@@ -32,9 +41,8 @@ bool UpgradeGUI::click(sf::Vector2i mousePos)
         {
             *money -= tower->getUpgradePrice();
             tower->upgrade(stats, 1.5f);
-            return true;
         }
     }
     
-    return false;
+    return true;
 }

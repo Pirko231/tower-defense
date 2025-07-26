@@ -14,6 +14,7 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
     Tower* tower{};
     sf::RectangleShape background;
     btn::TextButton upgradeButton;
+    sf::Sprite bin;
 public:
     UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money);
 
@@ -21,8 +22,8 @@ public:
 
     /// @brief 
     /// @param mousePos 
-    /// @return czy operacja sie udala
-    bool click(sf::Vector2i mousePos);
+    /// @return czy kliknieto w kwadrat
+    bool click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos);
 
     bool isVisible() const {return visible;}
 
@@ -35,5 +36,6 @@ public:
             return;
         target.draw(background,states);
         target.draw(upgradeButton, states);
+        target.draw(bin,states);
     }
 };

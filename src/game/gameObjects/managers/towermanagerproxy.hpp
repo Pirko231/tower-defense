@@ -14,4 +14,9 @@ public:
     {}
 
     bool addTower(sf::Vector2i where, ITowerFactory* towerFactory);
+
+    /// @brief usuwa wieze i zwraca jej cene
+    /// @param mapPointerPos pozycja wiezy
+    /// @return cena wiezy
+    int destructTowers(sf::Vector2f mapPointerPos) {return towerManager->destructTowers(mapPointerPos);}
 };
