@@ -19,11 +19,12 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
 
 bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 {
+    // ustawienie pozycji interfejsu
+    setPosition(setInterfacePosition(mapPointerPos));
+
     if(!tower)
         return false;
 
-    // ustawienie pozycji interfejsu
-    setPosition(setInterfacePosition(mapPointerPos));
 
     sf::Vector2f pos = static_cast<sf::Vector2f>(mousePos);
     if(!getGlobalBounds().contains(pos))
