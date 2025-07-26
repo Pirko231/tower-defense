@@ -22,6 +22,9 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
     if(!tower)
         return false;
 
+    // ustawienie pozycji interfejsu
+    setPosition(setInterfacePosition(mapPointerPos));
+
     sf::Vector2f pos = static_cast<sf::Vector2f>(mousePos);
     if(!getGlobalBounds().contains(pos))
         return false; // kliknieto nie w przycisk
@@ -45,4 +48,15 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
     }
     
     return true;
+}
+
+sf::Vector2f UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
+{
+    sf::Vector2f pos;
+    if(mapPointerPos.x < util::mapSize.x * util::tileSize.x / 2)
+        pos.x = 0.f;
+    else
+        pos.x = util::mapSize.x * util::tileSize.x - getGlobalBounds().size.x;
+
+    return pos;
 }
