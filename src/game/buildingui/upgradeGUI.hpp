@@ -8,23 +8,29 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
 {
     Map* map{};
     TowerManagerProxy* towerManager{};
+    int* money{};
 
     bool visible{};
+    Tower* tower{};
     sf::RectangleShape background;
     btn::TextButton upgradeButton;
 public:
-    UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager);
+    UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money);
+
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), background.getSize()};}
 
     /// @brief 
     /// @param mousePos 
-    void click(sf::Vector2i mousePos);
+    /// @return czy operacja sie udala
+    bool click(sf::Vector2i mousePos);
 
     bool isVisible() const {return visible;}
 
-    void setVisible(bool value) {visible = value;}
+    void setVisible(bool value, Tower* _tower) {visible = value; tower = _tower;}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
+        states.transform *= getTransform();
         if(!visible)
             return;
         target.draw(background,states);

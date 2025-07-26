@@ -22,7 +22,7 @@ public:
     /// @brief przyjmuje pozycje myszy i ustawia kwadrat do klikneicia
     void click(sf::Vector2i where);
 
-    void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false); upgradeGUI.setVisible(false);}
+    void leaveBuildMode() {mapPointerVisible = false; towerList.setVisible({},false); upgradeGUI.setVisible(false, nullptr);}
 
     sf::Vector2f getMapPointerPosition() const {return mapPointer.getPosition();}
 private:

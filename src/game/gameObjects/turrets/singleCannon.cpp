@@ -18,5 +18,5 @@ void SingleCannon::shoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-    bulletManager->launchBasicBullet(from, target->getPosition(), target, damage);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, stats.damage);
 }

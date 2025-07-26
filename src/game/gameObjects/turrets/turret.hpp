@@ -10,7 +10,7 @@ public:
     struct Stats
     {
         float range{};
-        int damage{};
+        float damage{};
     };
 private:
     sf::Sprite sprite;

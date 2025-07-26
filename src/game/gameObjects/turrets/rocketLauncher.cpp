@@ -23,5 +23,5 @@ void RocketLauncher::shoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-    bulletManager->launchRocket(from, target->getPosition(), target, damage);
+    bulletManager->launchRocket(from, target->getPosition(), target, stats.damage);
 }
