@@ -46,6 +46,7 @@ public:
     sf::Texture sandTile;
     sf::Texture pinkGrassTile;
     sf::Texture iceTile;
+    sf::Texture hellTile;
     sf::Texture roadTile;
     sf::Texture buildPoint;
 
@@ -58,6 +59,8 @@ public:
     sf::Texture cactus2;
     sf::Texture moldTree1;
     sf::Texture moldTree2;
+    sf::Texture hellTree;
+    sf::Texture hellTrunk;
 private:
     AssetLoader()
     {
@@ -91,6 +94,7 @@ private:
         sandTile.loadFromFile("resources/textures/tiles/sand.png");
         pinkGrassTile.loadFromFile("resources/textures/tiles/pinkGrass.png");
         iceTile.loadFromFile("resources/textures/tiles/ice.png");
+        hellTile.loadFromFile("resources/textures/tiles/hellGrass.png");
         roadTile.loadFromFile("resources/textures/tiles/road.png");
         buildPoint.loadFromFile("resources/textures/tiles/build.png");
 
@@ -103,6 +107,8 @@ private:
         cactus2.loadFromFile("resources/textures/decorations/cactus2.png");
         moldTree1.loadFromFile("resources/textures/decorations/moldTree1.png");
         moldTree2.loadFromFile("resources/textures/decorations/moldTree2.png");
+        hellTree.loadFromFile("resources/textures/decorations/hellTree.png");
+        hellTrunk.loadFromFile("resources/textures/decorations/hellTrunk.png");
     }
 };
 

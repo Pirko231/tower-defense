@@ -14,6 +14,7 @@ enum class TileType
     Sand = 12,
     PinkGrass = 13,
     Ice = 14,
+    HellGrass = 15,
     Road = 30,
     Checkpoint = 31,
     Entrance = 32,

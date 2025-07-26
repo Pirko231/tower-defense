@@ -215,6 +215,8 @@ Tile Map::createTile(TileType type)
         return Tile{util::AssetLoader::get().pinkGrassTile, type};
     else if (type == TileType::Ice)
         return Tile{util::AssetLoader::get().iceTile, type};
+    else if (type == TileType::HellGrass)
+        return Tile{util::AssetLoader::get().hellTile, type};
     else if (type == TileType::Road || type == TileType::Checkpoint || type == TileType::Entrance || type == TileType::Exit)
         return Tile{util::AssetLoader::get().roadTile, type};
     else if (type == TileType::BuildPoint)
@@ -307,6 +309,12 @@ std::vector<sf::Sprite> Map::getDecorationSet(TileType type) const
         sf::Sprite moldTree1{util::AssetLoader::get().moldTree1};
         sf::Sprite moldTree2{util::AssetLoader::get().moldTree2};
         return {moldTree1, moldTree2};
+    }
+    if(type == TileType::HellGrass)
+    {
+        sf::Sprite hellTree{util::AssetLoader::get().hellTree};
+        sf::Sprite hellTrunk{util::AssetLoader::get().hellTrunk};
+        return {hellTree, hellTrunk};
     }
         
     return {(sf::Sprite)util::AssetLoader::get().attackIcon};
