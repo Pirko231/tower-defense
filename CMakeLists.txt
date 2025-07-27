@@ -22,12 +22,11 @@ add_compile_definitions(DEBUG)
 include_directories(${SFML_INCLUDE_DIR})
 link_directories(${SFML_LIBRARY_DIR})
 
-include_directories(${CMAKE_SOURCE_DIR}/lib/imgui)
-include_directories(${CMAKE_SOURCE_DIR}/lib/imgui/backends)
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 include_directories(${CMAKE_SOURCE_DIR}/src/game/interfaces)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects/obj)
+include_directories(${CMAKE_SOURCE_DIR}/lib)
 
 find_package(OpenGL REQUIRED)
 
@@ -40,6 +39,13 @@ add_library(imgui
     ${IMGUI_DIR}/backends/imgui-SFML.cpp  # albo sfml, glfw, itd.
     ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
         src/utils/base.hpp
+)
+
+set(XML_DIR "${CMAKE_SOURCE_DIR}/lib")
+add_library(tinyxml2
+    ${XML_DIR}/tinyxml2.cpp
+    ${XML_DIR}/tinyxml2.hpp
+    ${XML_DIR}/srlzio.hpp
 )
 
 target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
@@ -96,6 +102,7 @@ add_executable(main
         src/game/buildingui/upgradeGUI.cpp
         src/buttons/playbutton.cpp
         src/buttons/playbutton.hpp
+        src/game/gameObjects/levels.cpp
         src/game/gameObjects/managers/enemymanager.cpp
         src/game/gameObjects/managers/enemymanager.hpp
         src/game/gameObjects/enemies/enemy.cpp
@@ -129,4 +136,4 @@ target_compile_features(main PRIVATE cxx_std_20)
 add_compile_options(-fdiagnostics-color=always)
 
 # Linkowanie SFML
-target_link_libraries(main PRIVATE ${SFML_LIBS} imgui OpenGL::GL)
+target_link_libraries(main PRIVATE ${SFML_LIBS} tinyxml2 imgui OpenGL::GL)

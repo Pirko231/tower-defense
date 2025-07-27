@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<levels>
+  <level number="1">
+    <price>30</price>
+    <damage>25</damage>
+    <range>4</range>
+  </level>
+  <level number="2">
+    <price>50</price>
+    <damage>40</damage>
+    <range>5</range>
+  </level>
+  <level number="3">
+    <price>80</price>
+    <damage>60</damage>
+    <range>6</range>
+  </level>
+</levels>

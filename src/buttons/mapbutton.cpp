@@ -6,10 +6,10 @@ namespace btn
     MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath, int _decorationAmount)
         : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath), decorationAmount(_decorationAmount)
     {
-        mapPath = "resources/maps/";
+        mapPath = "resources/data/maps/";
         mapPath += _mapPath;
 
-        enemyPath = "resources/maps/";
+        enemyPath = "resources/data/maps/";
         enemyPath += _enemyPath;
 
         background.setScale({4.f,18.f});
