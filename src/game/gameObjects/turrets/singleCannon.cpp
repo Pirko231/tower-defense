@@ -1,11 +1,5 @@
 #include "singleCannon.hpp"
 
-/*namespace
-{
-    constexpr float range = 4.f;
-    constexpr int damage = 25;
-}*/
-
 SingleCannon::SingleCannon(IBulletManager* _bulletManager)
     : Turret(util::AssetLoader::get().singleCannon, _bulletManager , "resources/data/turrets/singleCannon.xml")
 {

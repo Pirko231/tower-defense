@@ -1,13 +1,7 @@
 #include "doubleCannon.hpp"
 
-namespace
-{
-    constexpr float range = 2.f;
-    constexpr int damage = 14;
-}
-
 DoubleCannon::DoubleCannon(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, "resources/data/turrets/singleCannon.xml")
+    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, "resources/data/turrets/doubleCannon.xml")
 {
     maxCooldown = 80;
 }

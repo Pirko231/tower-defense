@@ -1,13 +1,7 @@
 #include "rocketLauncher.hpp"
 
-namespace
-{
-    constexpr float range = 6.f;
-    constexpr int damage = 150;
-}
-
 RocketLauncher::RocketLauncher(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, "resources/data/turrets/singleCannon.xml")
+    : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, "resources/data/turrets/rocketLauncher.xml")
 {
     maxCooldown = 400;
 }

@@ -1,13 +1,7 @@
 #include "machineGun.hpp"
 
-namespace
-{
-    constexpr float range = 1.f;
-    constexpr int damage = 6;
-}
-
 MachineGun::MachineGun(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().machineGun, _bulletManager, "resources/data/turrets/singleCannon.xml")
+    : Turret(util::AssetLoader::get().machineGun, _bulletManager, "resources/data/turrets/machineGun.xml")
 {
     maxCooldown = 10;
     cooldown = maxCooldown;
