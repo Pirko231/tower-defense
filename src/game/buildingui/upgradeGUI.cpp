@@ -2,7 +2,8 @@
 
 UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     : map(_map), towerManager(_towerManager), money(_money),
-    upgradeButton(util::AssetLoader::get().font), bin(util::AssetLoader::get().binIcon)
+    upgradeButton(util::AssetLoader::get().font), bin(util::AssetLoader::get().binIcon),
+    moneyBinIcon(util::AssetLoader::get().coinIcon), moneyBinText(util::AssetLoader::get().font)
 {
     background.setSize({320.f,150.f});
     background.setFillColor(sf::Color{51,204,255});
@@ -15,6 +16,9 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     upgradeButton.setPosition({background.getSize().x / 2.f - upgradeButton.getGlobalBounds().size.x / 2.f,background.getSize().y - upgradeButton.getGlobalBounds().size.y * 2.f});
     upgradeButton.setFillColor(sf::Color::Red);
 
+    moneyBinIcon.setPosition({bin.getPosition().x - moneyBinIcon.getGlobalBounds().size.x * 1.8f, 0.f - 10.f});
+    moneyBinText.setString("test");
+    moneyBinText.setPosition({moneyBinIcon.getPosition().x + 60.f, 0.f});
 }
 
 bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
@@ -59,4 +63,9 @@ void UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
         pos.x = util::mapSize.x * util::tileSize.x - getGlobalBounds().size.x;
 
     setPosition(pos);
+}
+
+void UpgradeGUI::setTextsData()
+{
+    moneyBinText.setString(std::to_string(tower->getPrice() / 2));
 }

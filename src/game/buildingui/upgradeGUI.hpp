@@ -15,6 +15,8 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
     sf::RectangleShape background;
     btn::TextButton upgradeButton;
     sf::Sprite bin;
+    sf::Sprite moneyBinIcon;
+    sf::Text moneyBinText;
 public:
     UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money);
 
@@ -27,13 +29,15 @@ public:
 
     bool isVisible() const {return visible;}
 
-    void setVisible(bool value, Tower* _tower) {visible = value; tower = _tower;}
+    void setVisible(bool value, Tower* _tower)
+    {visible = value; tower = _tower; if(tower) setTextsData();}
 
     Tower* getCurrentTower() const {return tower;}
 
 
     void setInterfacePosition(sf::Vector2f mapPointerPos);
 private:
+    void setTextsData();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -43,5 +47,7 @@ private:
         target.draw(background,states);
         target.draw(upgradeButton, states);
         target.draw(bin,states);
+        target.draw(moneyBinIcon,states);
+        target.draw(moneyBinText,states);
     }
 };
