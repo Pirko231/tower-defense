@@ -71,7 +71,7 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
     else
     {
         std::cerr << "File could not open " << filePath << '\n';
-        loadEnemies("resources/maps/defaultEnemies.txt");
+        loadEnemies("resources/data/maps/defaultEnemies.txt");
     }
 
 

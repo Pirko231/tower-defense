@@ -2,7 +2,9 @@
 
 UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     : map(_map), towerManager(_towerManager), money(_money),
-    upgradeButton(util::AssetLoader::get().font), bin(util::AssetLoader::get().binIcon),
+    upgradeButton(util::AssetLoader::get().font), 
+    moneyUpgradeIcon(util::AssetLoader::get().coinIcon), moneyUpgradeText(util::AssetLoader::get().font),
+    bin(util::AssetLoader::get().binIcon),
     moneyBinIcon(util::AssetLoader::get().coinIcon), moneyBinText(util::AssetLoader::get().font),
     damageIcon(util::AssetLoader::get().attackIcon), damageText(util::AssetLoader::get().font),
     rangeIcon(util::AssetLoader::get().rangeIcon), rangeText(util::AssetLoader::get().font)
@@ -15,8 +17,12 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     upgradeButton.setString("UPGRADE");
     upgradeButton.setBackgroundSize({upgradeButton.getGlobalBounds().size.x, upgradeButton.getGlobalBounds().size.y * 2.f});
     upgradeButton.setScale({1.5f,1.5f}); 
-    upgradeButton.setPosition({background.getSize().x / 2.f - upgradeButton.getGlobalBounds().size.x / 2.f,background.getSize().y - upgradeButton.getGlobalBounds().size.y * 2.f});
+    upgradeButton.setPosition({background.getSize().x - upgradeButton.getGlobalBounds().size.x,background.getSize().y - upgradeButton.getGlobalBounds().size.y * 2.f});
     upgradeButton.setFillColor(sf::Color::Red);
+
+    moneyUpgradeIcon.setPosition({0.f, upgradeButton.getPosition().y});
+    moneyUpgradeText.setString("text");
+    moneyUpgradeText.setPosition({moneyUpgradeIcon.getPosition().x + moneyUpgradeIcon.getGlobalBounds().size.x, upgradeButton.getPosition().y + moneyUpgradeText.getGlobalBounds().size.y / 2.f});
 
     moneyBinIcon.setPosition({bin.getPosition().x - moneyBinIcon.getGlobalBounds().size.x * 1.8f, 0.f - 10.f});
     moneyBinText.setString("test");
@@ -54,12 +60,11 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 
     if(upgradeButton.getGlobalBounds().contains(pos))
     {
-        Stats stats{1, 1, 1.5f};
 
         if(*money >= tower->getUpgradePrice())
         {
             *money -= tower->getUpgradePrice();
-            tower->upgrade(stats, 1.5f);
+            tower->upgrade();
         }
     }
     
@@ -79,6 +84,7 @@ void UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
 
 void UpgradeGUI::setTextsData()
 {
+    moneyUpgradeText.setString(std::to_string(tower->getUpgradePrice()));
     moneyBinText.setString(std::to_string(tower->getPrice() / 2));
 
     damageText.setString(std::format("{0:.2f}/s", tower->getDPS()));

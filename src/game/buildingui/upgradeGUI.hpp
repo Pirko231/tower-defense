@@ -14,6 +14,8 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
     Tower* tower{};
     sf::RectangleShape background;
     btn::TextButton upgradeButton;
+    sf::Sprite moneyUpgradeIcon;
+    sf::Text moneyUpgradeText;
 
     sf::Sprite bin;
     sf::Sprite moneyBinIcon;
@@ -60,5 +62,7 @@ private:
         target.draw(damageText,states);
         target.draw(rangeIcon,states);
         target.draw(rangeText,states);
+        target.draw(moneyUpgradeIcon,states);
+        target.draw(moneyUpgradeText,states);
     }
 };

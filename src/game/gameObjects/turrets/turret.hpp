@@ -30,9 +30,10 @@ public:
     int getUpgradePrice() const {return upgrades.getNextStats().price;}
 
     /// @brief mnozy statyskyki o doubler
-    void upgrade(Stats statsDoubler, float priceDoubler)
+    void upgrade()
     {
-        upgrades.nextLevel();
+        if(upgrades.getCurrentLevel() < upgrades.getMaxLevel())
+            upgrades.nextLevel();
     }
 protected:
     explicit Turret(const sf::Texture& _texture, IBulletManager* _bulletManager, const std::filesystem::path& upgradesPath)
