@@ -19,5 +19,11 @@ public:
 
     int getCurrentLevel() const {return currentLevel;}
 
+    int getMaxLevel() const {return levelStats.size();}
+
     Stats getCurrentStats() const {return levelStats[currentLevel];}
+
+    Stats getNextStats() const {return levelStats[currentLevel + 1];}
+
+    void nextLevel() {currentLevel++;}
 }; 

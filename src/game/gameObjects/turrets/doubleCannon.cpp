@@ -7,7 +7,7 @@ namespace
 }
 
 DoubleCannon::DoubleCannon(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, ::range, ::damage)
+    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, "resources/data/turrets/singleCannon.xml")
 {
     maxCooldown = 80;
 }
@@ -27,7 +27,7 @@ void DoubleCannon::barrelOneShoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
 
-    bulletManager->launchBasicBullet(from, target->getPosition(), target, stats.damage);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, getStats().damage);
 }
 
 void DoubleCannon::barrelSecondShoot(sf::Vector2f from, Enemy *target)
@@ -37,5 +37,5 @@ void DoubleCannon::barrelSecondShoot(sf::Vector2f from, Enemy *target)
     cooldown2 = maxCooldown2;
 
 
-    bulletManager->launchBasicBullet(from, target->getPosition(), target, stats.damage);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, getStats().damage);
 }

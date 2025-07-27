@@ -1,13 +1,13 @@
 #include "singleCannon.hpp"
 
-namespace
+/*namespace
 {
     constexpr float range = 4.f;
     constexpr int damage = 25;
-}
+}*/
 
 SingleCannon::SingleCannon(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().singleCannon, _bulletManager , ::range, ::damage)
+    : Turret(util::AssetLoader::get().singleCannon, _bulletManager , "resources/data/turrets/singleCannon.xml")
 {
 }
 
@@ -18,5 +18,5 @@ void SingleCannon::shoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-    bulletManager->launchBasicBullet(from, target->getPosition(), target, stats.damage);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, getStats().damage);
 }

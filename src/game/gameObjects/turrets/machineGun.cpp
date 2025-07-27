@@ -7,7 +7,7 @@ namespace
 }
 
 MachineGun::MachineGun(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().machineGun, _bulletManager, ::range, ::damage)
+    : Turret(util::AssetLoader::get().machineGun, _bulletManager, "resources/data/turrets/singleCannon.xml")
 {
     maxCooldown = 10;
     cooldown = maxCooldown;
@@ -20,6 +20,6 @@ void MachineGun::shoot(sf::Vector2f from, Enemy * target)
         return;
     cooldown = maxCooldown;
 
-    bulletManager->launchBasicBullet(from, target->getPosition(), target, stats.damage);
+    bulletManager->launchBasicBullet(from, target->getPosition(), target, getStats().damage);
     
 }

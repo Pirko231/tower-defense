@@ -7,7 +7,7 @@ namespace
 }
 
 RocketLauncher::RocketLauncher(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, ::range, ::damage)
+    : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, "resources/data/turrets/singleCannon.xml")
 {
     maxCooldown = 400;
 }
@@ -23,5 +23,5 @@ void RocketLauncher::shoot(sf::Vector2f from, Enemy *target)
         return; // cooldown nie minal
     cooldown = maxCooldown;
     
-    bulletManager->launchRocket(from, target->getPosition(), target, stats.damage);
+    bulletManager->launchRocket(from, target->getPosition(), target, getStats().damage);
 }

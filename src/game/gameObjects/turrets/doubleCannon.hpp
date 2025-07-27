@@ -9,7 +9,7 @@ public:
     DoubleCannon(IBulletManager* _bulletManager);
     void shoot(sf::Vector2f, Enemy*) override;
 
-    float getDPS() const override {return Turret::getDPS() + ((float)stats.damage / (float)maxCooldown2);}
+    float getDPS() const override {return Turret::getDPS() + ((float)getStats().damage / (float)maxCooldown2);}
 private:
     /// @brief pierwszy strzal
     void barrelOneShoot(sf::Vector2f from, Enemy * target);

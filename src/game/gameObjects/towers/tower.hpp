@@ -40,7 +40,7 @@ public:
 
     void update();
 
-    void upgrade(Turret::Stats statsDoubler, float upgradePriceDoubler) {turret->upgrade(statsDoubler, upgradePriceDoubler);}
+    void upgrade(Stats statsDoubler, float upgradePriceDoubler) {turret->upgrade(statsDoubler, upgradePriceDoubler);}
 
     int getUpgradePrice() const {return turret->getUpgradePrice();}
     

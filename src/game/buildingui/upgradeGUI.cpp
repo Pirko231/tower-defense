@@ -54,7 +54,7 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 
     if(upgradeButton.getGlobalBounds().contains(pos))
     {
-        Turret::Stats stats{1.f, 1.5f};
+        Stats stats{1, 1, 1.5f};
 
         if(*money >= tower->getUpgradePrice())
         {
