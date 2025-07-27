@@ -43,6 +43,10 @@ public:
     void upgrade() {turret->upgrade();}
 
     int getUpgradePrice() const {return turret->getUpgradePrice();}
+
+    int getLevel() const {return turret->getLevel();}
+
+    int getMaxLevel() const {return turret->getMaxLevel();}
     
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

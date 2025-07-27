@@ -29,6 +29,10 @@ public:
 
     int getUpgradePrice() const {return upgrades.getNextStats().price;}
 
+    int getLevel() const {return upgrades.getCurrentLevel();}
+
+    int getMaxLevel() const {return upgrades.getMaxLevel();}
+
     /// @brief mnozy statyskyki o doubler
     void upgrade()
     {

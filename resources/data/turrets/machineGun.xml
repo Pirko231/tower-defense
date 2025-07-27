@@ -8,7 +8,7 @@
   <level number="2">
     <price>80</price>
     <damage>8</damage>
-    <range>5</range>
+    <range>1</range>
   </level>
   <level number="3">
     <price>150</price>

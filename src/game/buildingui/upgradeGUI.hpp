@@ -16,6 +16,7 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
     btn::TextButton upgradeButton;
     sf::Sprite moneyUpgradeIcon;
     sf::Text moneyUpgradeText;
+    sf::Text currentLevel;
 
     sf::Sprite bin;
     sf::Sprite moneyBinIcon;
@@ -64,5 +65,6 @@ private:
         target.draw(rangeText,states);
         target.draw(moneyUpgradeIcon,states);
         target.draw(moneyUpgradeText,states);
+        target.draw(currentLevel,states);
     }
 };

@@ -3,7 +3,7 @@
 UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     : map(_map), towerManager(_towerManager), money(_money),
     upgradeButton(util::AssetLoader::get().font), 
-    moneyUpgradeIcon(util::AssetLoader::get().coinIcon), moneyUpgradeText(util::AssetLoader::get().font),
+    moneyUpgradeIcon(util::AssetLoader::get().coinIcon), moneyUpgradeText(util::AssetLoader::get().font), currentLevel(util::AssetLoader::get().font),
     bin(util::AssetLoader::get().binIcon),
     moneyBinIcon(util::AssetLoader::get().coinIcon), moneyBinText(util::AssetLoader::get().font),
     damageIcon(util::AssetLoader::get().attackIcon), damageText(util::AssetLoader::get().font),
@@ -19,6 +19,9 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     upgradeButton.setScale({1.5f,1.5f}); 
     upgradeButton.setPosition({background.getSize().x - upgradeButton.getGlobalBounds().size.x,background.getSize().y - upgradeButton.getGlobalBounds().size.y * 2.f});
     upgradeButton.setFillColor(sf::Color::Red);
+
+    currentLevel.setString("test");
+    currentLevel.setPosition({});
 
     moneyUpgradeIcon.setPosition({0.f, upgradeButton.getPosition().y});
     moneyUpgradeText.setString("text");
@@ -84,7 +87,11 @@ void UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
 
 void UpgradeGUI::setTextsData()
 {
-    moneyUpgradeText.setString(std::to_string(tower->getUpgradePrice()));
+    currentLevel.setString(std::to_string(tower->getLevel() + 1) + "/" + std::to_string(tower->getMaxLevel() + 1));
+    if(tower->getLevel() < tower->getMaxLevel())
+        moneyUpgradeText.setString(std::to_string(tower->getUpgradePrice()));
+    else
+        moneyUpgradeText.setString("MAX");
     moneyBinText.setString(std::to_string(tower->getPrice() / 2));
 
     damageText.setString(std::format("{0:.2f}/s", tower->getDPS()));

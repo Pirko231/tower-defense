@@ -19,7 +19,7 @@ public:
 
     int getCurrentLevel() const {return currentLevel;}
 
-    int getMaxLevel() const {return levelStats.size();}
+    int getMaxLevel() const {return levelStats.size() - 1;}
 
     Stats getCurrentStats() const {return levelStats[currentLevel];}
 
