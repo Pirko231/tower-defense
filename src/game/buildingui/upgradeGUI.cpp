@@ -20,7 +20,7 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
 bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 {
     // ustawienie pozycji interfejsu
-    setPosition(setInterfacePosition(mapPointerPos));
+    setInterfacePosition(mapPointerPos);
 
     if(!tower)
         return false;
@@ -50,7 +50,7 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
     return true;
 }
 
-sf::Vector2f UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
+void UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
 {
     sf::Vector2f pos;
     if(mapPointerPos.x < util::mapSize.x * util::tileSize.x / 2)
@@ -58,5 +58,5 @@ sf::Vector2f UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
     else
         pos.x = util::mapSize.x * util::tileSize.x - getGlobalBounds().size.x;
 
-    return pos;
+    setPosition(pos);
 }

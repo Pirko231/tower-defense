@@ -24,7 +24,6 @@ void BuildingUI::click(sf::Vector2i where)
 
 
     Tower* tower{};
-    //upgradeGUI.setVisible(false, tower);
     
     auto tile = map->findTile(where);
     sf::Vector2f previousPos{getMapPointerPosition()};
@@ -43,31 +42,14 @@ void BuildingUI::click(sf::Vector2i where)
             
         }
 
-        //upgradeGUI.setVisible(false, upgradeGUI.getCurrentTower());
-
     }
     else
         if(BuildPoint* bp = map->getBuildPoint(util::calculatePosition(static_cast<sf::Vector2f>(where))))
             if((tower = bp->getTower()))
+            {
                 upgradeGUI.setVisible(true, tower);
-        
-
-    
-
-    /*if(upgradeGUI.isVisible())
-    {
-        
-
-        if (upgradeGUI.click(where, previousPos))
-        {
-            leaveBuildMode();
-            return;
-        }
-            
-    }*/
-
-    
-
+                upgradeGUI.setInterfacePosition(tower->getPosition());
+            }
 
     towerList.setVisible(where, true);
 

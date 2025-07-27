@@ -30,8 +30,10 @@ public:
     void setVisible(bool value, Tower* _tower) {visible = value; tower = _tower;}
 
     Tower* getCurrentTower() const {return tower;}
+
+
+    void setInterfacePosition(sf::Vector2f mapPointerPos);
 private:
-    sf::Vector2f setInterfacePosition(sf::Vector2f mapPointerPos);
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
