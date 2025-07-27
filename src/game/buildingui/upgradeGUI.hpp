@@ -14,9 +14,16 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
     Tower* tower{};
     sf::RectangleShape background;
     btn::TextButton upgradeButton;
+
     sf::Sprite bin;
     sf::Sprite moneyBinIcon;
     sf::Text moneyBinText;
+
+    sf::Sprite damageIcon;
+    sf::Text damageText;
+
+    sf::Sprite rangeIcon;
+    sf::Text rangeText;
 public:
     UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money);
 
@@ -49,5 +56,9 @@ private:
         target.draw(bin,states);
         target.draw(moneyBinIcon,states);
         target.draw(moneyBinText,states);
+        target.draw(damageIcon,states);
+        target.draw(damageText,states);
+        target.draw(rangeIcon,states);
+        target.draw(rangeText,states);
     }
 };
