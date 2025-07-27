@@ -45,11 +45,21 @@ void BuildingUI::click(sf::Vector2i where)
     }
     else
         if(BuildPoint* bp = map->getBuildPoint(util::calculatePosition(static_cast<sf::Vector2f>(where))))
+        {
             if((tower = bp->getTower()))
             {
                 upgradeGUI.setVisible(true, tower);
                 upgradeGUI.setInterfacePosition(tower->getPosition());
             }
+            else
+            {
+                upgradeGUI.setVisible(false,tower);
+            }
+        }
+        else
+        {
+            upgradeGUI.setVisible(false,tower);
+        }
 
     towerList.setVisible(where, true);
 
