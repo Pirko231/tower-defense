@@ -27,10 +27,9 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
 
 
     sf::Vector2f pos = static_cast<sf::Vector2f>(mousePos);
-    if(!getGlobalBounds().contains(pos))
-        return false; // kliknieto nie w przycisk
-
     pos -= getPosition(); // przechodzimy na lokalne koordynaty
+    if(!background.getGlobalBounds().contains(pos))
+        return false; // kliknieto nie w przycisk
 
     if(bin.getGlobalBounds().contains(pos))
     {

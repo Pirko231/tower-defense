@@ -28,6 +28,8 @@ public:
     bool isVisible() const {return visible;}
 
     void setVisible(bool value, Tower* _tower) {visible = value; tower = _tower;}
+
+    Tower* getCurrentTower() const {return tower;}
 private:
     sf::Vector2f setInterfacePosition(sf::Vector2f mapPointerPos);
 
