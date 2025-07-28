@@ -3,7 +3,7 @@
 MachineGun::MachineGun(IBulletManager* _bulletManager)
     : Turret(util::AssetLoader::get().machineGun, _bulletManager, "resources/data/turrets/machineGun.xml")
 {
-    maxCooldown = 10;
+    //maxCooldown = 10;
     cooldown = maxCooldown;
 }
 

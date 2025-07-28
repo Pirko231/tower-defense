@@ -4,15 +4,18 @@
     <price>60</price>
     <damage>150</damage>
     <range>6</range>
+    <firespeed>400</firespeed>
   </level>
   <level number="2">
     <price>100</price>
     <damage>200</damage>
     <range>7</range>
+    <firespeed>400</firespeed>
   </level>
   <level number="3">
     <price>200</price>
     <damage>400</damage>
     <range>8</range>
+    <firespeed>400</firespeed>
   </level>
 </levels>

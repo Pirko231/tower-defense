@@ -1,9 +1,10 @@
 #include "doubleCannon.hpp"
 
 DoubleCannon::DoubleCannon(IBulletManager* _bulletManager)
-    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, "resources/data/turrets/doubleCannon.xml")
+    : Turret(util::AssetLoader::get().doubleCannon, _bulletManager, "resources/data/turrets/doubleCannon.xml"),
+    maxCooldown2(getStats().maxFireSpeed), cooldown2(maxCooldown2 - 10)
 {
-    maxCooldown = 80;
+    //maxCooldown = 80;
 }
 
 void DoubleCannon::shoot(sf::Vector2f from, Enemy * target)

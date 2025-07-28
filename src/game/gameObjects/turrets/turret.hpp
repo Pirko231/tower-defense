@@ -37,16 +37,25 @@ public:
     void upgrade()
     {
         if(upgrades.getCurrentLevel() < upgrades.getMaxLevel())
+        {
             upgrades.nextLevel();
+            maxCooldown = upgrades.getCurrentStats().maxFireSpeed;
+            upgradeDerived();
+        }
     }
 protected:
     explicit Turret(const sf::Texture& _texture, IBulletManager* _bulletManager, const std::filesystem::path& upgradesPath)
         : sprite(_texture), upgrades{upgradesPath}, bulletManager(_bulletManager),  cooldown{maxCooldown}
-    {}
+    {
+        maxCooldown = upgrades.getCurrentStats().maxFireSpeed;
+    }
 
     void setRange(float _range) {;/*upgrades.getCurrentStats().range = _range;*/}
 
     Stats getStats() const {return upgrades.getCurrentStats();}
+
+    /// @brief klasy dziedziczace moga tutaj dokonywac swoich ulepszen, a ta funckja zostanie wywolana przy ulepszeniu
+    virtual void upgradeDerived() {}
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

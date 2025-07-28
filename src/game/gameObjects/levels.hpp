@@ -1,13 +1,13 @@
 #pragma once
 #include <filesystem>
 #include <vector>
-#include "tinyxml2.hpp"
 
 struct Stats
 {
     int price{};
     int damage{};
     float range{};
+    int maxFireSpeed{};
 };
 
 class Levels

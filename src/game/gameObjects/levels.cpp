@@ -1,5 +1,6 @@
 #include "levels.hpp"
 #include <iostream>
+#include "tinyxml2.hpp"
 
 Levels::Levels(const std::filesystem::path &filePath)
 {
@@ -14,13 +15,11 @@ Levels::Levels(const std::filesystem::path &filePath)
     
     for (XMLElement* level = levels->FirstChildElement("level"); level != nullptr; level = level->NextSiblingElement("level"))
     {
-        const char* number = level->Attribute("number");
-
         int price = level->FirstChildElement("price")->IntText();
         int damage = level->FirstChildElement("damage")->IntText();
         float range = level->FirstChildElement("range")->FloatText();
+        int fireSpeed = level->FirstChildElement("firespeed")->IntText();
 
-        //std::cout << "Poziom " << number << ": cena=" << price << ", obrazenia=" << damage << ", zasieg=" << range << std::endl;
-        levelStats.push_back({price,damage,range});
+        levelStats.push_back({price,damage,range, fireSpeed});
     }
 }

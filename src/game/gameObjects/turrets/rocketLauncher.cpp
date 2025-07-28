@@ -3,7 +3,7 @@
 RocketLauncher::RocketLauncher(IBulletManager* _bulletManager)
     : Turret(util::AssetLoader::get().rocketLauncher, _bulletManager, "resources/data/turrets/rocketLauncher.xml")
 {
-    maxCooldown = 400;
+    //maxCooldown = 400;
 }
 
 void RocketLauncher::update()
