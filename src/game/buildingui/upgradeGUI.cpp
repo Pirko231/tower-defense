@@ -7,9 +7,11 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     bin(util::AssetLoader::get().binIcon),
     moneyBinIcon(util::AssetLoader::get().coinIcon), moneyBinText(util::AssetLoader::get().font),
     damageIcon(util::AssetLoader::get().attackIcon), damageText(util::AssetLoader::get().font),
-    rangeIcon(util::AssetLoader::get().rangeIcon), rangeText(util::AssetLoader::get().font)
+    rangeIcon(util::AssetLoader::get().rangeIcon), rangeText(util::AssetLoader::get().font),
+    futureDamageIcon(damageIcon), futureDamageText(damageText),
+    futureRangeIcon(rangeIcon), futureRangeText(rangeText)
 {
-    background.setSize({320.f,150.f});
+    background.setSize({320.f,230.f});
     background.setFillColor(sf::Color{51,204,255});
 
     bin.setPosition({getGlobalBounds().size.x - bin.getGlobalBounds().size.x, 0.f});
@@ -32,7 +34,7 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     moneyBinText.setPosition({moneyBinIcon.getPosition().x + 60.f, 0.f});
 
     damageIcon.setScale({0.8f,0.8f});
-    damageIcon.setPosition({20.f, background.getSize().y / 2.f - damageIcon.getGlobalBounds().size.y / 1.5f});
+    damageIcon.setPosition({20.f, damageIcon.getGlobalBounds().size.y * 1.2f});
     damageText.setString("test");
     damageText.setPosition({damageIcon.getPosition().x + damageIcon.getGlobalBounds().size.x, damageIcon.getPosition().y});
 
@@ -40,6 +42,16 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     rangeIcon.setPosition({damageText.getPosition().x + damageText.getGlobalBounds().size.x * 2.5f, damageIcon.getPosition().y});
     rangeText.setString("test");
     rangeText.setPosition({rangeIcon.getPosition().x + rangeIcon.getGlobalBounds().size.x, damageIcon.getPosition().y});
+
+    futureDamageIcon.setScale({0.8f,0.8f});
+    futureDamageIcon.setPosition({damageIcon.getPosition().x, damageIcon.getPosition().y + futureDamageIcon.getGlobalBounds().size.x * 1.2f});
+    futureDamageText.setString("test");
+    futureDamageText.setPosition({futureDamageIcon.getPosition().x + futureDamageText.getGlobalBounds().size.x, futureDamageIcon.getPosition().y});
+
+    futureRangeIcon.setScale({0.8f,0.8f});
+    futureRangeIcon.setPosition({rangeIcon.getPosition().x, rangeIcon.getPosition().y + futureRangeIcon.getGlobalBounds().size.y * 1.2f});
+    futureRangeText.setString("test");
+    futureRangeText.setPosition({futureRangeIcon.getPosition().x + futureRangeText.getGlobalBounds().size.x, futureRangeIcon.getPosition().y});
 }
 
 bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
