@@ -8,6 +8,7 @@
 #include "../map.hpp"
 #include "../../game/buildingui.hpp"
 #include "../../buttons/playbutton.hpp"
+#include "../pauseMenu.hpp"
 
 class GameScreen : public ScreenState
 {
@@ -23,6 +24,9 @@ class GameScreen : public ScreenState
 
     btn::PlayButton waveButton;
     sf::Text waveCounter;
+
+    bool paused{};
+    PauseMenu pauseMenu;
 public:
     GameScreen(IScreenStateMachine* _machine);
 

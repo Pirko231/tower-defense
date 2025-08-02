@@ -12,10 +12,18 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
 
     waveCounter.setString("test");
     waveCounter.setPosition({waveButton.getPosition().x + waveButton.getGlobalBounds().size.x + 20.f, waveButton.getGlobalBounds().getCenter().y - waveCounter.getGlobalBounds().size.y / 2.f - 20.f});
+
+    pauseMenu.setPosition({util::mapSize.x * util::tileSize.x / 2.f - pauseMenu.getGlobalBounds().size.x / 2.f, util::mapSize.y * util::tileSize.y / 2.f - pauseMenu.getGlobalBounds().size.y / 2.f});
 }
 
 void GameScreen::update()
 {
+    // ustawienie zapalzowania
+    if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
+        paused = !paused;
+    if(paused)
+        return; // wyjdz kiedy zapauzowane
+
     waveButton.update();
 
     towerManager.update();
@@ -79,4 +87,7 @@ void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(bulletManager,states);
 
     target.draw(buildingUI,states);
+
+    if(paused)
+        target.draw(pauseMenu,states);
 }

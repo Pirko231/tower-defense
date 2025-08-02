@@ -70,6 +70,7 @@ add_executable(main
         src/game/gameObjects/turrets/turret.hpp
         src/game/map.cpp
         src/game/map.hpp
+        src/game/pauseMenu.cpp
         src/game/interfaces/towerFactoryInterface.hpp
         src/game/gameObjects/factories/singleCannonFactory.hpp
         src/utils/assetloader.hpp
