@@ -109,6 +109,7 @@ void Map::loadMap(const std::filesystem::path &path, int numberOfDecorations)
     tiles.clear();
     tiles.reserve(600);
     buildPoints.clear();
+    checkpoints.clear();
 
     std::fstream file(path, std::ios::in);
 
