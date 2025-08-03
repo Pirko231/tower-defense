@@ -22,6 +22,10 @@ class GameScreen : public ScreenState
     TowerManagerProxy towerManagerProxy;
     BuildingUI buildingUI;
 
+    std::filesystem::path currentMapPath;
+    std::filesystem::path currentEnemiesPath;
+    int currentDecorAmount;
+
     btn::PlayButton waveButton;
     sf::Text waveCounter;
 
@@ -34,9 +38,9 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) {map.loadMap(_mapPath, decorAmount);}
+    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) {map.loadMap(_mapPath, decorAmount); currentMapPath = _mapPath; currentDecorAmount = decorAmount;}
 
-    void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath);}
+    void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath); currentEnemiesPath = _enemyPath;}
 private:
     /// @brief  zwraca prawda jesli wyszlo z gry
     bool managePauseMenu();

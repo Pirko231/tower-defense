@@ -127,6 +127,13 @@ public:
     /// @brief laduje mape z pliku i zapisuje ja do pojemnika
     void loadMap(const std::filesystem::path& path, int numberOfDecorations);
 
+    void reset()
+    {
+        for(auto& bp : buildPoints)
+            bp.setTower(nullptr);
+        
+    }
+
 private:
     /// @brief sortuje checkpointy przygotowujac je do stanu uzywalnosci. Wywolywane w loadMap
     void sortCheckpoints();

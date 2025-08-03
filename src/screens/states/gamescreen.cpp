@@ -109,6 +109,9 @@ bool GameScreen::managePauseMenu()
         else if(pauseMenu.getRestart(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
             resetLevel();
+            map.reset();
+            map.loadMap(currentMapPath,currentDecorAmount);
+            waveManager.loadEnemies(currentEnemiesPath);
             return true;
         }
         else if(pauseMenu.getContinue(sf::Mouse::getPosition(*stateMachine->getWindow())))
