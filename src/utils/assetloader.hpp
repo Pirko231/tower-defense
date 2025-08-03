@@ -71,19 +71,19 @@ private:
     {
         font.openFromFile("resources/fonts/arial.ttf");
 
-        attackIcon.loadFromFile("resources/textures/attackIcon.png");
-        coinIcon.loadFromFile("resources/textures/coinIcon.png");
-        rangeIcon.loadFromFile("resources/textures/rangeIcon.png");
-        healthIcon.loadFromFile("resources/textures/healthIcon.png");
-        binIcon.loadFromFile("resources/textures/binIcon.png");
+        attackIcon.loadFromFile("resources/textures/icons/attackIcon.png");
+        coinIcon.loadFromFile("resources/textures/icons/coinIcon.png");
+        rangeIcon.loadFromFile("resources/textures/icons/rangeIcon.png");
+        healthIcon.loadFromFile("resources/textures/icons/healthIcon.png");
+        binIcon.loadFromFile("resources/textures/icons/binIcon.png");
 
         background.loadFromFile("resources/textures/background.jpg");
-        playButton.loadFromFile("resources/textures/Play.png");
-        mapButton.loadFromFile("resources/textures/mapBar.png");
+        playButton.loadFromFile("resources/textures/buttons/play.png");
+        mapButton.loadFromFile("resources/textures/buttons/mapBar.png");
         pauseMenuBackground.loadFromFile("resources/textures/pauseMenu.png");
-        quitButton.loadFromFile("resources/textures/quit.png");
-        restartButton.loadFromFile("resources/textures/restart.png");
-        continueButton.loadFromFile("resources/textures/continue.png");
+        quitButton.loadFromFile("resources/textures/buttons/quit.png");
+        restartButton.loadFromFile("resources/textures/buttons/restart.png");
+        continueButton.loadFromFile("resources/textures/buttons/continue.png");
 
         towerBase.loadFromFile("resources/textures/turrets/towerBase.png");
         singleCannon.loadFromFile("resources/textures/turrets/cannon1.png");
