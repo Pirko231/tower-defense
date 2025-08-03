@@ -33,6 +33,9 @@ class UpgradeGUI : public sf::Drawable, public sf::Transformable
 
     sf::Sprite futureRangeIcon;
     sf::Text futureRangeText;
+
+    sf::Text levelDescription;
+    sf::Text futureLevelDescription;
 public:
     UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money);
 
@@ -76,5 +79,7 @@ private:
         target.draw(futureDamageText,states);
         target.draw(futureRangeIcon,states);
         target.draw(futureRangeText,states);
+        target.draw(levelDescription,states);
+        target.draw(futureLevelDescription,states);
     }
 };

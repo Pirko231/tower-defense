@@ -9,7 +9,8 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     damageIcon(util::AssetLoader::get().attackIcon), damageText(util::AssetLoader::get().font),
     rangeIcon(util::AssetLoader::get().rangeIcon), rangeText(util::AssetLoader::get().font),
     futureDamageIcon(damageIcon), futureDamageText(damageText),
-    futureRangeIcon(rangeIcon), futureRangeText(rangeText)
+    futureRangeIcon(rangeIcon), futureRangeText(rangeText),
+    levelDescription(util::AssetLoader::get().font), futureLevelDescription(util::AssetLoader::get().font)
 {
     background.setSize({320.f,230.f});
     background.setFillColor(sf::Color{51,204,255});
@@ -52,6 +53,14 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     futureRangeIcon.setPosition({rangeIcon.getPosition().x, rangeIcon.getPosition().y + futureRangeIcon.getGlobalBounds().size.y * 1.2f});
     futureRangeText.setString("test");
     futureRangeText.setPosition({futureRangeIcon.getPosition().x + futureRangeText.getGlobalBounds().size.x, futureRangeIcon.getPosition().y});
+
+    levelDescription.setString("CURRENT");
+    levelDescription.setCharacterSize(20u);
+    levelDescription.setPosition({background.getGlobalBounds().size.x / 2.f - levelDescription.getGlobalBounds().size.x / 2.f, damageIcon.getPosition().y - damageIcon.getGlobalBounds().size.y / 2.f});
+
+    futureLevelDescription.setString("NEXT");
+    futureLevelDescription.setCharacterSize(20u);
+    futureLevelDescription.setPosition({background.getGlobalBounds().size.x / 2.f - futureLevelDescription.getGlobalBounds().size.x / 2.f, futureDamageIcon.getPosition().y - futureDamageIcon.getGlobalBounds().size.y / 2.f});
 }
 
 bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
@@ -100,7 +109,7 @@ void UpgradeGUI::setInterfacePosition(sf::Vector2f mapPointerPos)
 void UpgradeGUI::setTextsData()
 {
     currentLevel.setString(std::to_string(tower->getLevel() + 1) + "/" + std::to_string(tower->getMaxLevel() + 1));
-    if(tower->getLevel() < tower->getMaxLevel())
+    if(tower->canUpgrade())
         moneyUpgradeText.setString(std::to_string(tower->getUpgradePrice()));
     else
         moneyUpgradeText.setString("MAX");
