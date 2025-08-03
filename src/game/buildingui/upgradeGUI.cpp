@@ -76,7 +76,7 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
     if(upgradeButton.getGlobalBounds().contains(pos))
     {
 
-        if(*money >= tower->getUpgradePrice())
+        if(tower->canUpgrade() && *money >= tower->getUpgradePrice())
         {
             *money -= tower->getUpgradePrice();
             tower->upgrade();
@@ -108,4 +108,15 @@ void UpgradeGUI::setTextsData()
 
     damageText.setString(std::format("{0:.2f}/s", tower->getDPS()));
     rangeText.setString(std::format("{0:.0f}", tower->getRange()));
+
+    if(tower->canUpgrade())
+    {
+        futureDamageText.setString(std::format("{0:.2f}/s", tower->getNextDPS()));
+        futureRangeText.setString(std::format("{0:.0f}", tower->getNextRange()));
+    }
+    else
+    {
+        futureDamageText.setString("--/s");
+        futureRangeText.setString("--");
+    }
 }

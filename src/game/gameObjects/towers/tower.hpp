@@ -40,6 +40,8 @@ public:
 
     void update();
 
+    bool canUpgrade() const {return turret->getLevel() < turret->getMaxLevel();}
+
     void upgrade() {turret->upgrade();}
 
     int getUpgradePrice() const {return turret->getUpgradePrice();}
@@ -47,6 +49,10 @@ public:
     int getLevel() const {return turret->getLevel();}
 
     int getMaxLevel() const {return turret->getMaxLevel();}
+
+    float getNextDPS() const {return turret->getNextDps();}
+
+    float getNextRange() const {return turret->getNextRange();}
     
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

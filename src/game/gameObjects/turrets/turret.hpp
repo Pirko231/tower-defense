@@ -21,6 +21,8 @@ public:
     /// @brief oblicza i zwraca obrazenia na klatke
     virtual float getDPS() const {return (float)upgrades.getCurrentStats().damage / (float)maxCooldown;}
 
+    virtual float getNextDps() const {return (float)upgrades.getNextStats().damage / (float)maxCooldown;}
+
     float getRange() const {return upgrades.getCurrentStats().range;}
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
@@ -32,6 +34,8 @@ public:
     int getLevel() const {return upgrades.getCurrentLevel();}
 
     int getMaxLevel() const {return upgrades.getMaxLevel();}
+
+    float getNextRange() const {return upgrades.getNextStats().range;}
 
     /// @brief mnozy statyskyki o doubler
     void upgrade()
@@ -53,6 +57,8 @@ protected:
     void setRange(float _range) {;/*upgrades.getCurrentStats().range = _range;*/}
 
     Stats getStats() const {return upgrades.getCurrentStats();}
+
+    Stats getNextStats() const {return upgrades.getNextStats();}
 
     /// @brief klasy dziedziczace moga tutaj dokonywac swoich ulepszen, a ta funckja zostanie wywolana przy ulepszeniu
     virtual void upgradeDerived() {}
