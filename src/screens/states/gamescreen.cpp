@@ -104,6 +104,14 @@ void GameScreen::managePauseMenu()
             resetLevel();
             stateMachine->setState(stateMachine->getMapSelectionScreen());
         }
+        else if(pauseMenu.getRestart(sf::Mouse::getPosition(*stateMachine->getWindow())))
+        {
+            resetLevel();
+        }
+        else if(pauseMenu.getContinue(sf::Mouse::getPosition(*stateMachine->getWindow())))
+        {
+            paused = false;
+        }
     }
 
 }

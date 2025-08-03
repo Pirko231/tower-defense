@@ -23,6 +23,8 @@ public:
     sf::Texture mapButton;
     sf::Texture pauseMenuBackground;
     sf::Texture quitButton;
+    sf::Texture restartButton;
+    sf::Texture continueButton;
 
     sf::Texture attackIcon;
     sf::Texture coinIcon;
@@ -80,6 +82,8 @@ private:
         mapButton.loadFromFile("resources/textures/mapBar.png");
         pauseMenuBackground.loadFromFile("resources/textures/pauseMenu.png");
         quitButton.loadFromFile("resources/textures/quit.png");
+        restartButton.loadFromFile("resources/textures/restart.png");
+        continueButton.loadFromFile("resources/textures/continue.png");
 
         towerBase.loadFromFile("resources/textures/turrets/towerBase.png");
         singleCannon.loadFromFile("resources/textures/turrets/cannon1.png");
