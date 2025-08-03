@@ -37,4 +37,8 @@ public:
     void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) {map.loadMap(_mapPath, decorAmount);}
 
     void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath);}
+private:
+    void managePauseMenu();
+
+    void resetLevel();
 };
