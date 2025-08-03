@@ -98,7 +98,7 @@ bool GameScreen::managePauseMenu()
     if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
         paused = !paused;
     
-    if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
+    if (paused && stateMachine->getPressed()[sf::Mouse::Button::Left].released)
     {
         if(pauseMenu.getQuit(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {

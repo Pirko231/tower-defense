@@ -13,7 +13,7 @@ public:
     void launch(sf::Vector2f from, sf::Vector2f where) override;
 
     bool hasHitTarget() const {return (bool)getGlobalBounds().findIntersection(target->getGlobalBounds());}
-
+    
     /// @brief sprawdza czy trafil w cel, jesli tak to wykonuje cala prace (zadanie obraze)
     /// potem oznacza sie jako pocisk do usuniecia
     void hitTarget() override;

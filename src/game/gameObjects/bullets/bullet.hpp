@@ -21,6 +21,8 @@ public:
 
     Enemy* getTarget() const {return target;}
 
+    void setTarget(Enemy* _target) {target = _target;}
+
     int getDamage() const {return damage;}
 
     bool shouldDelete() const {return shouldDelete_;}

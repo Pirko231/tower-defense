@@ -28,6 +28,8 @@ public:
     bool findAdress(Enemy* _adress);
 
     void reset() {enemies.clear();}
+
+    bool empty() const {return enemies.empty();}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

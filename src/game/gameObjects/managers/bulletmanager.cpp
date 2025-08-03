@@ -7,13 +7,20 @@ BulletManager::BulletManager(EnemyManager* _enemyManager)
 
 void BulletManager::update()
 {
-    std::erase_if(rockets, [this](const auto& rocket)
+    std::erase_if(rockets, [this](auto& rocket)
     {
 
         if(!enemyManager->findAdress(rocket->getTarget()))
         {
-            rocket->setDelete(true);
-            return true;
+            if(!enemyManager->empty())
+            {
+                rocket->setTarget(enemyManager->getTheMostFarEnemy(sf::FloatRect{{0.f,0.f}, {util::mapSize.x * util::tileSize.x, util::mapSize.y * util::tileSize.y}}));
+            }
+            else
+            {
+                rocket->setDelete(true);
+                return true;
+            }
         }
         return false;
     });
