@@ -20,6 +20,8 @@ public:
     void launchBasicBullet(sf::Vector2f from, sf::Vector2f where, Enemy* target, int damage) override;
 
     void launchRocket(sf::Vector2f from, sf::Vector2f where, Enemy* target, int damage) override;
+
+    void reset() {bullets.clear(); rockets.clear();}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

@@ -38,7 +38,8 @@ public:
 
     void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath);}
 private:
-    void managePauseMenu();
+    /// @brief  zwraca prawda jesli wyszlo z gry
+    bool managePauseMenu();
 
     void resetLevel();
 };

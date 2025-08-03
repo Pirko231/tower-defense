@@ -67,6 +67,8 @@ public:
     int getMaxWaves() const {return maxWaves;}
 
     int getWaves() const {return waves;}
+
+    void reset() {enemies.clear();}
 private:
     /// @brief przerabia tekst na EnemyType
     /// @param line tekst do przerobienia

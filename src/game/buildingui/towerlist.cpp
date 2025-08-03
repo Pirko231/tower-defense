@@ -11,10 +11,11 @@ TowerList::TowerList(Map* _map, const int* _money, const int* _health)
 
     moneyIcon.setPosition({0.f,-10.f});
     moneyText.setPosition({moneyIcon.getPosition().x + moneyIcon.getGlobalBounds().size.x * 1.2f,moneyIcon.getPosition().y + 10.f});
+    moneyText.setFillColor(sf::Color::Black);
 
     healthIcon.setPosition({220.f, 5.f});
     healthText.setPosition({healthIcon.getPosition().x + healthIcon.getGlobalBounds().size.x * 1.5f, healthIcon.getPosition().y});
-
+    healthText.setFillColor(sf::Color::Black);
 
 
     products.push_back(Product(std::make_unique<SingleCannonFactory>(), {0.f,50.f}));

@@ -19,7 +19,8 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
 
 void GameScreen::update()
 {
-    managePauseMenu();
+    if (managePauseMenu())
+        return;
     if(paused)
         return; // wyjdz kiedy zapauzowane
 
@@ -91,7 +92,7 @@ void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(pauseMenu,states);
 }
 
-void GameScreen::managePauseMenu()
+bool GameScreen::managePauseMenu()
 {
     // ustawienie zapalzowania
     if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
@@ -103,22 +104,30 @@ void GameScreen::managePauseMenu()
         {
             resetLevel();
             stateMachine->setState(stateMachine->getMapSelectionScreen());
+            return true;
         }
         else if(pauseMenu.getRestart(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
             resetLevel();
+            return true;
         }
         else if(pauseMenu.getContinue(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
             paused = false;
+            return true;
         }
     }
-
+    return false;
 }
 
 void GameScreen::resetLevel()
 {
     paused = false;
     buildingUI.leaveBuildMode();
-
+    enemyManager.reset();
+    waveManager.reset();
+    bulletManager.reset();
+    towerManager.reset();
+    money = 100;
+    health = 100;
 }

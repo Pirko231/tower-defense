@@ -27,6 +27,8 @@ public:
     /// @brief przeszukuje przeciwnikow czy istnieje jakis z podanym adresem
     bool findAdress(Enemy* _adress);
 
+    void reset() {enemies.clear();}
+private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

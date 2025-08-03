@@ -28,6 +28,8 @@ public:
     /// @param mapPointerPos pozycja wiezy
     /// @return cena wiezy
     int destructTowers(sf::Vector2f mapPointerPos);
+
+    void reset() {towers.clear();}
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

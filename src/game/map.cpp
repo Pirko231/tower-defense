@@ -25,6 +25,7 @@ void Map::sortCheckpoints()
                 newCheckpoints.push_back(checkpoint);
             }
     }
+    checkpoints.clear();
     checkpoints = newCheckpoints;
     if(exit)
         checkpoints.push_back(Checkpoint{exit->getPosition()});
@@ -227,6 +228,7 @@ Tile Map::createTile(TileType type)
 
 void Map::placeDecorations(int amount)
 {
+    decorations.clear();
     auto textures = getDecorationSet(determineMainTileType());
 
     auto randPosition = [&]()->sf::Vector2f
