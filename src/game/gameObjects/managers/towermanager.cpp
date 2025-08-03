@@ -27,7 +27,7 @@ int TowerManager::destructTowers(sf::Vector2f mapPointerPos)
         {
             if(auto bp = map->getBuildPoint(util::calculatePosition(mapPointerPos)))
                 bp->setTower(nullptr);
-            moneyValue = tower->getPrice();
+            moneyValue = tower->getTotalPrice();
             return true;
         }
         return false;

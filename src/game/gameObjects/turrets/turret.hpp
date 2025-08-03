@@ -12,9 +12,9 @@ private:
 protected:
     IBulletManager* bulletManager{};
 
-    
     int maxCooldown{100};
     int cooldown{};
+    int totalPrice{};
 public:
     virtual void update();
 
@@ -31,6 +31,8 @@ public:
 
     int getUpgradePrice() const {return upgrades.getNextStats().price;}
 
+    int getTotalPrice() const {return totalPrice;}
+
     int getLevel() const {return upgrades.getCurrentLevel();}
 
     int getMaxLevel() const {return upgrades.getMaxLevel();}
@@ -45,11 +47,12 @@ public:
             upgrades.nextLevel();
             maxCooldown = upgrades.getCurrentStats().maxFireSpeed;
             upgradeDerived();
+            totalPrice += upgrades.getCurrentStats().price;
         }
     }
 protected:
     explicit Turret(const sf::Texture& _texture, IBulletManager* _bulletManager, const std::filesystem::path& upgradesPath)
-        : sprite(_texture), upgrades{upgradesPath}, bulletManager(_bulletManager),  cooldown{maxCooldown}
+        : sprite(_texture), upgrades{upgradesPath}, bulletManager(_bulletManager),  cooldown{maxCooldown}, totalPrice(upgrades.getCurrentStats().price)
     {
         maxCooldown = upgrades.getCurrentStats().maxFireSpeed;
     }

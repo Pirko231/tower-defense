@@ -46,6 +46,8 @@ public:
 
     int getUpgradePrice() const {return turret->getUpgradePrice();}
 
+    int getTotalPrice() const {return turret->getTotalPrice();}
+
     int getLevel() const {return turret->getLevel();}
 
     int getMaxLevel() const {return turret->getMaxLevel();}

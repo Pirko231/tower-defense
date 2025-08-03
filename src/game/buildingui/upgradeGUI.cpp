@@ -113,7 +113,7 @@ void UpgradeGUI::setTextsData()
         moneyUpgradeText.setString(std::to_string(tower->getUpgradePrice()));
     else
         moneyUpgradeText.setString("MAX");
-    moneyBinText.setString(std::to_string(tower->getPrice() / 2));
+    moneyBinText.setString(std::to_string(tower->getTotalPrice() / 2));
 
     damageText.setString(std::format("{0:.2f}/s", tower->getDPS()));
     rangeText.setString(std::format("{0:.0f}", tower->getRange()));
