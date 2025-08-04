@@ -56,7 +56,8 @@ private:
     /// @brief  zwraca prawda jesli wyszlo z gry
     bool managePauseMenu();
 
-    void manageEndGame();
+    /// @brief zwraca prawda kiedy koniec gry
+    bool manageEndGame();
 
     void resetLevel();
 };

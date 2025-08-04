@@ -15,11 +15,15 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
 
     pauseMenu.setScale({0.8f,0.8f});
     pauseMenu.setPosition({util::mapSize.x * util::tileSize.x / 2.f - pauseMenu.getGlobalBounds().size.x / 2.f, util::mapSize.y * util::tileSize.y / 2.f - pauseMenu.getGlobalBounds().size.y / 2.f});
+
+    endMenu.setScale({0.8f,0.8f});
+    endMenu.setPosition(pauseMenu.getPosition());
 }
 
 void GameScreen::update()
 {
-    manageEndGame();
+    if (manageEndGame())
+        return;
     if(state == GameState::Finished)
         return; // gra sie skonczyla
 
@@ -134,7 +138,7 @@ bool GameScreen::managePauseMenu()
     return false;
 }
 
-void GameScreen::manageEndGame()
+bool GameScreen::manageEndGame()
 {
     if(health <= 0 || (enemyManager.empty() && waveManager.empty()))
     {
@@ -144,13 +148,34 @@ void GameScreen::manageEndGame()
         if (health <= 0)
         {
             // przegrana
+            endMenu.setState(false);
         }
         else
         {
             // wygrana
+            endMenu.setState(true);
+        }
+
+        if (stateMachine->getPressed()[sf::Mouse::Button::Left].released)
+        {
+            if (endMenu.getQuit(sf::Mouse::getPosition(*stateMachine->getWindow())))
+            {
+                resetLevel();
+                stateMachine->setState(stateMachine->getMapSelectionScreen());
+                return true;
+            }
+
+            if (endMenu.getRestart(sf::Mouse::getPosition(*stateMachine->getWindow())))
+            {
+                resetLevel();
+                map.reset();
+                map.loadMap(currentMapPath, currentDecorAmount);
+                waveManager.loadEnemies(currentEnemiesPath);
+                return true;
+            }
         }
     }
-    
+    return false;   
 }
 
 void GameScreen::resetLevel()
