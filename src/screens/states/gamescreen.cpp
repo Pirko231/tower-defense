@@ -19,9 +19,13 @@ GameScreen::GameScreen(IScreenStateMachine* _stateMachine)
 
 void GameScreen::update()
 {
+    manageEndGame();
+    if(state == GameState::Finished)
+        return; // gra sie skonczyla
+
     if (managePauseMenu())
         return;
-    if(paused)
+    if(state == GameState::Paused)
         return; // wyjdz kiedy zapauzowane
 
     waveButton.update();
@@ -88,17 +92,24 @@ void GameScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
     target.draw(buildingUI,states);
 
-    if(paused)
+    if(state == GameState::Paused)
         target.draw(pauseMenu,states);
+    if(state == GameState::Finished)
+        target.draw(endMenu,states);
 }
 
 bool GameScreen::managePauseMenu()
 {
     // ustawienie zapalzowania
     if(stateMachine->getPressed()[sf::Keyboard::Key::Escape].released)
-        paused = !paused;
+    {
+        if(state == GameState::Paused)
+            state = GameState::Running;
+        else
+            state = GameState::Paused;
+    }
     
-    if (paused && stateMachine->getPressed()[sf::Mouse::Button::Left].released)
+    if (state == GameState::Paused && stateMachine->getPressed()[sf::Mouse::Button::Left].released)
     {
         if(pauseMenu.getQuit(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
@@ -116,16 +127,35 @@ bool GameScreen::managePauseMenu()
         }
         else if(pauseMenu.getContinue(sf::Mouse::getPosition(*stateMachine->getWindow())))
         {
-            paused = false;
+            state = GameState::Running;
             return true;
         }
     }
     return false;
 }
 
+void GameScreen::manageEndGame()
+{
+    if(health <= 0 || (enemyManager.empty() && waveManager.empty()))
+    {
+
+        state = GameState::Finished;
+
+        if (health <= 0)
+        {
+            // przegrana
+        }
+        else
+        {
+            // wygrana
+        }
+    }
+    
+}
+
 void GameScreen::resetLevel()
 {
-    paused = false;
+    state = GameState::Running;
     buildingUI.leaveBuildMode();
     enemyManager.reset();
     waveManager.reset();

@@ -68,6 +68,8 @@ public:
 
     int getWaves() const {return waves;}
 
+    bool empty() const {return enemies.empty();}
+
     void reset() {enemies.clear();}
 private:
     /// @brief przerabia tekst na EnemyType

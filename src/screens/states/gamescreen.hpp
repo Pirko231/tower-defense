@@ -9,6 +9,16 @@
 #include "../../game/buildingui.hpp"
 #include "../../buttons/playbutton.hpp"
 #include "../pauseMenu.hpp"
+#include "../endMenu.hpp"
+
+/// @brief typ wyliczeniowy reprezentujacy obecny stan gry.
+/// moglem uzyc wzorca stan ale bylaby to zbedna kompilkacja
+enum class GameState : short
+{
+    Running,
+    Paused,
+    Finished
+};
 
 class GameScreen : public ScreenState
 {
@@ -29,8 +39,9 @@ class GameScreen : public ScreenState
     btn::PlayButton waveButton;
     sf::Text waveCounter;
 
-    bool paused{};
+    GameState state;
     PauseMenu pauseMenu;
+    EndMenu endMenu;
 public:
     GameScreen(IScreenStateMachine* _machine);
 
@@ -44,6 +55,8 @@ public:
 private:
     /// @brief  zwraca prawda jesli wyszlo z gry
     bool managePauseMenu();
+
+    void manageEndGame();
 
     void resetLevel();
 };

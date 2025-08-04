@@ -4,6 +4,7 @@
 
 class PauseMenu : public sf::Drawable, public sf::Transformable
 {
+protected:
     sf::Sprite background;
 
     sf::Sprite quit;
@@ -17,19 +18,19 @@ public:
     /// @brief zwraca czy powinno sie wyjsc do ekranu glownego
     /// @param mousePos pozycja myszki - kiedy najezdza na przycisk to wyjsc
     /// @return czy najezdza na przycisk
-    bool getQuit(sf::Vector2i mousePos) const
+    virtual bool getQuit(sf::Vector2i mousePos) const
     {
         sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
         return getButtonBounds(quit.getGlobalBounds()).contains(localCords);
     }
 
-    bool getRestart(sf::Vector2i mousePos) const
+    virtual bool getRestart(sf::Vector2i mousePos) const
     {
         sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
         return getButtonBounds(restart.getGlobalBounds()).contains(localCords);
     }
 
-    bool getContinue(sf::Vector2i mousePos) const
+    virtual bool getContinue(sf::Vector2i mousePos) const
     {
         sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
         return getButtonBounds(cont.getGlobalBounds()).contains(localCords);
