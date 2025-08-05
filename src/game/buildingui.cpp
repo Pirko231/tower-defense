@@ -31,35 +31,36 @@ void BuildingUI::click(sf::Vector2i where)
         tower = map->getBuildPoint((sf::Vector2i)previousPos)->getTower();
     mapPointer.setPosition(tile->getPosition());
 
-    if(upgradeGUI.getGlobalBounds().contains(static_cast<sf::Vector2f>(where)) && tower)
+    if (upgradeGUI.isVisible() && upgradeGUI.getGlobalBounds().contains(static_cast<sf::Vector2f>(where)) && tower)
     {
         /*if(upgradeGUI.isVisible())
         {
-        
+
             if (upgradeGUI.click(where, previousPos))
             {
                 leaveBuildMode();
                 return;
             }
-            
+
         }*/
-       if(upgradeGUI.getBin(where))
-       {
+        if (upgradeGUI.getBin(where))
+        {
             *money += towerManager->destructTowers(previousPos) / 2;
             leaveBuildMode();
             mapPointer.setPosition(previousPos);
-       }
+        }
 
-       if(upgradeGUI.getUpgrade(where))
-       {
-            if(tower->canUpgrade() && *money >= tower->getUpgradePrice())
+        if (upgradeGUI.getUpgrade(where))
+        {
+            if (tower->canUpgrade() && *money >= tower->getUpgradePrice())
             {
                 *money -= tower->getUpgradePrice();
                 tower->upgrade();
                 upgradeGUI.refresh();
                 mapPointer.setPosition(previousPos);
             }
-       }
+        }
+        mapPointer.setPosition(previousPos);
     }
     else
         if(BuildPoint* bp = map->getBuildPoint(util::calculatePosition(static_cast<sf::Vector2f>(where))))
