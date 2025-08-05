@@ -13,8 +13,10 @@ class MapButton : public Button
     std::filesystem::path mapPath;
     std::filesystem::path enemyPath;
     int decorationAmount;
+    int health;
+    int money;
 public:
-    MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName, int decorationAmount);
+    MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName, int decorationAmount, int _health, int _money);
 
     MapButton(MapInfo::MapData data);
     
@@ -25,6 +27,10 @@ public:
     const std::filesystem::path& getEnemies() const {return enemyPath;}
 
     int getDecorationAmount() const {return decorationAmount;}
+
+    int getHealth() const {return health;}
+
+    int getMoney() const {return money;}
 
     void update() override;
 

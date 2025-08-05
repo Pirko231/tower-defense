@@ -17,9 +17,9 @@ public:
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
-    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) override
+    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount, int _health, int _money) override
     {
-        static_cast<GameScreen*>(gameScreen.get())->setCurrentMap(_mapPath,decorAmount);
+        static_cast<GameScreen*>(gameScreen.get())->setCurrentMap(_mapPath,decorAmount, _health, _money);
     }
 
     void setCurrentEnemies(const std::filesystem::path& _enemyPath) override

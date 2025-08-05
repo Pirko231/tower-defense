@@ -189,6 +189,6 @@ void GameScreen::resetLevel()
     waveManager.reset();
     bulletManager.reset();
     towerManager.reset();
-    money = 100;
-    health = 100;
+    money = currentMoney;
+    health = currentHealth;
 }

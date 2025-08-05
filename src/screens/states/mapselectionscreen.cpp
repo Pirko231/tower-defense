@@ -11,6 +11,8 @@ MapSelectionScreen::MapSelectionScreen(IScreenStateMachine* _stateMachine)
     btn::MapButton{buttonInfo[4]},
     btn::MapButton{buttonInfo[5]}})
 {
+    buttonInfo.clear(); // dane sie nie przydzadza - czyszcze aby nie marnowac pamieci
+
     mapButtons[0].setPosition({80.f,150.f}); // 180,150
     for (int i = 1; i < 3; i++)
         mapButtons[i].setPosition({mapButtons[i - 1].getPosition().x + mapButtons[i].getGlobalBounds().size.x * 1.3f, mapButtons[i - 1].getPosition().y});
@@ -30,7 +32,7 @@ void MapSelectionScreen::update()
         for (auto& button : mapButtons)
             if (button.isPressed(sf::Mouse::getPosition(*stateMachine->getWindow())))
             {
-                stateMachine->setCurrentMap(button.getMap(), button.getDecorationAmount());
+                stateMachine->setCurrentMap(button.getMap(), button.getDecorationAmount(), button.getHealth(), button.getMoney());
                 stateMachine->setCurrentEnemies(button.getEnemies());
                 stateMachine->setState(stateMachine->getGameScreen());
             }

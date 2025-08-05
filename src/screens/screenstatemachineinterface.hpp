@@ -15,7 +15,7 @@ public:
         : pressed{_pressed}, window{_window}
     {}
 
-    virtual void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) = 0;
+    virtual void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount, int health, int money) = 0;
 
     virtual void setCurrentEnemies(const std::filesystem::path& _enemyPath) = 0;
 

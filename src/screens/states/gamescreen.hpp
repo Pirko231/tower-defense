@@ -35,6 +35,8 @@ class GameScreen : public ScreenState
     std::filesystem::path currentMapPath;
     std::filesystem::path currentEnemiesPath;
     int currentDecorAmount;
+    int currentHealth;
+    int currentMoney;
 
     btn::PlayButton waveButton;
     sf::Text waveCounter;
@@ -49,7 +51,11 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount) {map.loadMap(_mapPath, decorAmount); currentMapPath = _mapPath; currentDecorAmount = decorAmount;}
+    void setCurrentMap(const std::filesystem::path& _mapPath, int decorAmount, int _health, int _money)
+    {
+        map.loadMap(_mapPath, decorAmount); currentMapPath = _mapPath; currentDecorAmount = decorAmount;
+        health = _health; money = _money; currentHealth = _health; currentMoney = _money;
+    }
 
     void setCurrentEnemies(const std::filesystem::path& _enemyPath) {waveManager.loadEnemies(_enemyPath); currentEnemiesPath = _enemyPath;}
 private:

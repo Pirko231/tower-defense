@@ -3,8 +3,8 @@
 
 namespace btn
 {
-    MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath, int _decorationAmount)
-        : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath), decorationAmount(_decorationAmount)
+    MapButton::MapButton(const sf::String& _mapName, const std::filesystem::path& _mapPath, const std::filesystem::path& _enemyPath, int _decorationAmount, int _health, int _money)
+        : text(util::AssetLoader::get().font), background(util::AssetLoader::get().mapButton), mapPath(_mapPath), decorationAmount(_decorationAmount), health(_health), money(_money)
     {
         mapPath = "resources/data/maps/";
         mapPath += _mapPath;
@@ -20,7 +20,7 @@ namespace btn
     }
 
     MapButton::MapButton(MapInfo::MapData data)
-        : MapButton(data.name, data.mapPath, data.enemyPath, data.decorAmount)
+        : MapButton(data.name, data.mapPath, data.enemyPath, data.decorAmount, data.health, data.money)
     {}
 
     void MapButton::update()

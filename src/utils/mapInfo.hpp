@@ -46,4 +46,6 @@ public:
     }
 
     MapData operator[](int key) {return data.at(key);}
+
+    void clear() {data.clear();}
 };
