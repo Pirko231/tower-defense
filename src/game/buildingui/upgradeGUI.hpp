@@ -55,6 +55,22 @@ public:
 
 
     void setInterfacePosition(sf::Vector2f mapPointerPos);
+
+    /// @brief zwraca prawda jesli kliknieto przycisk ulepsz
+    /// @param mousePos pozycja myszki
+    bool getUpgrade(sf::Vector2i mousePos)
+    {
+        sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
+        return upgradeButton.getGlobalBounds().contains(localCords);
+    }
+
+    /// @brief zwraca prawda jesli nacisnieto kosz
+    /// @param mousePos pozycja myszy
+    bool getBin(sf::Vector2i mousePos)
+    {
+        sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
+        return bin.getGlobalBounds().contains(localCords);
+    }
 private:
     void setTextsData();
 

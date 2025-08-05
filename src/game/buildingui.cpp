@@ -23,15 +23,17 @@ void BuildingUI::click(sf::Vector2i where)
     }
 
 
-    Tower* tower{};
+    static Tower* tower{};
     
     auto tile = map->findTile(where);
     sf::Vector2f previousPos{getMapPointerPosition()};
+    if(auto bp = map->getBuildPoint((sf::Vector2i)previousPos); bp)
+        tower = map->getBuildPoint((sf::Vector2i)previousPos)->getTower();
     mapPointer.setPosition(tile->getPosition());
 
-    if(upgradeGUI.getGlobalBounds().contains(static_cast<sf::Vector2f>(where)))
+    if(upgradeGUI.getGlobalBounds().contains(static_cast<sf::Vector2f>(where)) && tower)
     {
-        if(upgradeGUI.isVisible())
+        /*if(upgradeGUI.isVisible())
         {
         
             if (upgradeGUI.click(where, previousPos))
@@ -40,8 +42,22 @@ void BuildingUI::click(sf::Vector2i where)
                 return;
             }
             
-        }
+        }*/
+       if(upgradeGUI.getBin(where))
+       {
+            *money += towerManager->destructTowers(getMapPointerPosition()) / 2;
+       }
 
+       if(upgradeGUI.getUpgrade(where))
+       {
+            if(tower->canUpgrade() && *money >= tower->getUpgradePrice())
+            {
+                *money -= tower->getUpgradePrice();
+                tower->upgrade();
+                leaveBuildMode();
+                mapPointer.setPosition(previousPos);
+            }
+       }
     }
     else
         if(BuildPoint* bp = map->getBuildPoint(util::calculatePosition(static_cast<sf::Vector2f>(where))))
