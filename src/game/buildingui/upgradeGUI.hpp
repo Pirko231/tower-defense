@@ -53,6 +53,12 @@ public:
 
     Tower* getCurrentTower() const {return tower;}
 
+    /// @brief pobiera dane od wiezy
+    void refresh()
+    {
+        setTextsData();
+    }
+
 
     void setInterfacePosition(sf::Vector2f mapPointerPos);
 

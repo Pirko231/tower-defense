@@ -45,7 +45,9 @@ void BuildingUI::click(sf::Vector2i where)
         }*/
        if(upgradeGUI.getBin(where))
        {
-            *money += towerManager->destructTowers(getMapPointerPosition()) / 2;
+            *money += towerManager->destructTowers(previousPos) / 2;
+            leaveBuildMode();
+            mapPointer.setPosition(previousPos);
        }
 
        if(upgradeGUI.getUpgrade(where))
@@ -54,7 +56,7 @@ void BuildingUI::click(sf::Vector2i where)
             {
                 *money -= tower->getUpgradePrice();
                 tower->upgrade();
-                leaveBuildMode();
+                upgradeGUI.refresh();
                 mapPointer.setPosition(previousPos);
             }
        }
