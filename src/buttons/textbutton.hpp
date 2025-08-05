@@ -16,7 +16,7 @@ public:
 
     bool isPressed(sf::Vector2i mousePos) const override;
 
-    sf::FloatRect getGlobalBounds() const override {return sf::FloatRect(getPosition(), {text.getGlobalBounds().size.x  * getScale().x, text.getGlobalBounds().size.y  * getScale().y} );}
+    sf::FloatRect getGlobalBounds() const override {return sf::FloatRect(getPosition(), {background.getGlobalBounds().size.x  * getScale().x, background.getGlobalBounds().size.y  * getScale().y} );}
 
     void setCharacterSize(unsigned int fontSize) {text.setCharacterSize(fontSize);}
 

@@ -18,9 +18,9 @@ UpgradeGUI::UpgradeGUI(Map* _map, TowerManagerProxy* _towerManager, int* _money)
     bin.setPosition({getGlobalBounds().size.x - bin.getGlobalBounds().size.x, 0.f});
 
     upgradeButton.setString("UPGRADE");
-    upgradeButton.setBackgroundSize({upgradeButton.getGlobalBounds().size.x, upgradeButton.getGlobalBounds().size.y * 2.f});
-    upgradeButton.setScale({1.5f,1.5f}); 
-    upgradeButton.setPosition({background.getSize().x - upgradeButton.getGlobalBounds().size.x,background.getSize().y - upgradeButton.getGlobalBounds().size.y * 2.f});
+    upgradeButton.setBackgroundSize({180.f,54.f});
+    //upgradeButton.setScale({1.5f,1.5f}); 
+    upgradeButton.setPosition({background.getSize().x - upgradeButton.getGlobalBounds().size.x,background.getSize().y - upgradeButton.getGlobalBounds().size.y});
     upgradeButton.setFillColor(sf::Color::Red);
 
     currentLevel.setString("test");
@@ -82,7 +82,7 @@ bool UpgradeGUI::click(sf::Vector2i mousePos, sf::Vector2f mapPointerPos)
         *money += towerManager->destructTowers(mapPointerPos) / 2;
     }
 
-    if(upgradeButton.getGlobalBounds().contains(pos))
+    if(upgradeButton.isPressed((sf::Vector2i)pos))
     {
 
         if(tower->canUpgrade() && *money >= tower->getUpgradePrice())

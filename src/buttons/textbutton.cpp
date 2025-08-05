@@ -9,7 +9,7 @@ namespace btn
     TextButton::TextButton(const sf::Font &font)
         : text(font)
     {
-        text.setCharacterSize(25);
+        text.setCharacterSize(37);
         text.setString("empty string");
     }
 
