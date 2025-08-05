@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maps>
+    <map number="1">
+        <mapPath></mapPath>
+        <enemyPath></enemyPath>
+        <name></name>
+        <decorAmount></decorAmount>
+        <health></health>
+        <money></money>
+    </map>
+</maps>

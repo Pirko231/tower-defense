@@ -4,7 +4,7 @@
 
 MapSelectionScreen::MapSelectionScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), background(util::AssetLoader::get().background), title(util::AssetLoader::get().font),
-    mapButtons({btn::MapButton{"meadows", "map1.txt", "enemies1.txt", 2},
+    buttonInfo("resources/data/maps.xml"), mapButtons({btn::MapButton{"meadows", "map1.txt", "enemies1.txt", 2},
     btn::MapButton{"swamp", "map2.txt", "enemies2.txt", 0},
     btn::MapButton{"desert", "map3.txt", "enemies3.txt", 7},
     btn::MapButton{"ice lake", "map4.txt", "enemies4.txt", 8},
