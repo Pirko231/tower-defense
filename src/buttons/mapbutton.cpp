@@ -19,6 +19,10 @@ namespace btn
         text.setPosition({getGlobalBounds().getCenter().x - text.getGlobalBounds().size.x / 2.f, getGlobalBounds().getCenter().y - text.getGlobalBounds().size.y / 1.f});
     }
 
+    MapButton::MapButton(MapInfo::MapData data)
+        : MapButton(data.name, data.mapPath, data.enemyPath, data.decorAmount)
+    {}
+
     void MapButton::update()
     {
     }

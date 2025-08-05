@@ -1,6 +1,7 @@
 #pragma once
 #include "button.hpp"
 #include <SFML/Graphics.hpp>
+#include "mapInfo.hpp"
 
 namespace btn
 {
@@ -15,6 +16,8 @@ class MapButton : public Button
 public:
     MapButton(const sf::String& mapName, const std::filesystem::path& mapPath, const std::filesystem::path& enemyName, int decorationAmount);
 
+    MapButton(MapInfo::MapData data);
+    
     sf::FloatRect getGlobalBounds() const override {return sf::FloatRect{getPosition(),background.getGlobalBounds().size};}
 
     const std::filesystem::path& getMap() const {return mapPath;}

@@ -32,7 +32,7 @@ public:
         }
 
         tinyxml2::XMLElement* maps = doc.FirstChildElement("maps");
-        for(tinyxml2::XMLElement* map = maps->FirstChildElement("map"); map != nullptr; map->NextSiblingElement("map"))
+        for(tinyxml2::XMLElement* map = maps->FirstChildElement("map"); map != nullptr; map = map->NextSiblingElement("map"))
         {
             int number = map->IntAttribute("number");
             std::filesystem::path mapPath = map->FirstChildElement("mapPath")->GetText();

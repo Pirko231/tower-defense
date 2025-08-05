@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <maps>
+    <map number="0">
+        <mapPath>map1.txt</mapPath>
+        <enemyPath>enemies1.txt</enemyPath>
+        <name>Meadows</name>
+        <decorAmount>2</decorAmount>
+        <health>100</health>
+        <money>100</money>
+    </map>
     <map number="1">
-        <mapPath></mapPath>
-        <enemyPath></enemyPath>
-        <name></name>
-        <decorAmount></decorAmount>
-        <health></health>
-        <money></money>
+        <mapPath>map2.txt</mapPath>
+        <enemyPath>enemies2.txt</enemyPath>
+        <name>Swamp</name>
+        <decorAmount>0</decorAmount>
+        <health>100</health>
+        <money>100</money>
+    </map>
+    <map number="2">
+        <mapPath>map3.txt</mapPath>
+        <enemyPath>enemies3.txt</enemyPath>
+        <name>Desert</name>
+        <decorAmount>7</decorAmount>
+        <health>100</health>
+        <money>100</money>
+    </map>
+    <map number="3">
+        <mapPath>map4.txt</mapPath>
+        <enemyPath>enemies4.txt</enemyPath>
+        <name>Snowy Mountains</name>
+        <decorAmount>8</decorAmount>
+        <health>100</health>
+        <money>100</money>
+    </map>
+    <map number="4">
+        <mapPath>map5.txt</mapPath>
+        <enemyPath>enemies5.txt</enemyPath>
+        <name>Krzeszowice</name>
+        <decorAmount>7</decorAmount>
+        <health>100</health>
+        <money>100</money>
+    </map>
+    <map number="5">
+        <mapPath>map6.txt</mapPath>
+        <enemyPath>enemies6.txt</enemyPath>
+        <name>Alwernia</name>
+        <decorAmount>10</decorAmount>
+        <health>100</health>
+        <money>100</money>
     </map>
 </maps>

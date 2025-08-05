@@ -4,12 +4,12 @@
 
 MapSelectionScreen::MapSelectionScreen(IScreenStateMachine* _stateMachine)
     : ScreenState(_stateMachine), background(util::AssetLoader::get().background), title(util::AssetLoader::get().font),
-    buttonInfo("resources/data/maps.xml"), mapButtons({btn::MapButton{"meadows", "map1.txt", "enemies1.txt", 2},
-    btn::MapButton{"swamp", "map2.txt", "enemies2.txt", 0},
-    btn::MapButton{"desert", "map3.txt", "enemies3.txt", 7},
-    btn::MapButton{"ice lake", "map4.txt", "enemies4.txt", 8},
-    btn::MapButton{"krzeszowice", "map5.txt", "enemies5.txt", 7},
-    btn::MapButton{"Alwernia", "map6.txt", "enemies6.txt", 10}})
+    buttonInfo("resources/data/maps.xml"), mapButtons({btn::MapButton{buttonInfo[0]},
+    btn::MapButton{buttonInfo[1]},
+    btn::MapButton{buttonInfo[2]},
+    btn::MapButton{buttonInfo[3]},
+    btn::MapButton{buttonInfo[4]},
+    btn::MapButton{buttonInfo[5]}})
 {
     mapButtons[0].setPosition({80.f,150.f}); // 180,150
     for (int i = 1; i < 3; i++)
