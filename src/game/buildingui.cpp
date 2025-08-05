@@ -33,16 +33,7 @@ void BuildingUI::click(sf::Vector2i where)
 
     if (upgradeGUI.isVisible() && upgradeGUI.getGlobalBounds().contains(static_cast<sf::Vector2f>(where)) && tower)
     {
-        /*if(upgradeGUI.isVisible())
-        {
-
-            if (upgradeGUI.click(where, previousPos))
-            {
-                leaveBuildMode();
-                return;
-            }
-
-        }*/
+        
         if (upgradeGUI.getBin(where))
         {
             *money += towerManager->destructTowers(previousPos) / 2;
