@@ -3,29 +3,29 @@
     <enemy type="1">
         <health>50</health>
         <damage>5</damage>
-        <money>5</money>
+        <money>2</money>
         <shield>0</shield>
         <speed>1</speed>
     </enemy>
     <enemy type="2">
-        <health>50</health>
-        <damage>5</damage>
-        <money>5</money>
+        <health>150</health>
+        <damage>15</damage>
+        <money>10</money>
         <shield>0</shield>
         <speed>1</speed>
     </enemy>
     <enemy type="3">
-        <health>50</health>
-        <damage>5</damage>
-        <money>5</money>
-        <shield>0</shield>
-        <speed>1</speed>
+        <health>300</health>
+        <damage>50</damage>
+        <money>20</money>
+        <shield>5</shield>
+        <speed>0.5</speed>
     </enemy>
     <enemy type="4">
-        <health>50</health>
-        <damage>5</damage>
-        <money>5</money>
-        <shield>0</shield>
-        <speed>1</speed>
+        <health>150</health>
+        <damage>20</damage>
+        <money>15</money>
+        <shield>3</shield>
+        <speed>2</speed>
     </enemy>
 </enemies>

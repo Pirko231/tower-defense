@@ -35,7 +35,7 @@ protected:
 
     sf::Vector2f moveBy{};
 protected:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType,int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed);
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType);
 public:
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 

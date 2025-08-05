@@ -2,8 +2,8 @@
 
 EnemyStats Enemy::allStats("resources/data/enemies.xml");
 
-Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType, int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed)
-    : maxHealth(_maxHealth), speed(_speed), damage(_damage), shield(_shield), moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
+Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType)
+    : sprite(_texture), currentCheckpoint(_checkpoint)
 {
     setOrigin(getGlobalBounds().getCenter());;
 
