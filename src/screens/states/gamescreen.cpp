@@ -110,7 +110,10 @@ bool GameScreen::managePauseMenu()
         if(state == GameState::Paused)
             state = GameState::Running;
         else
+        {
             state = GameState::Paused;
+            pauseMenu.setStats(health,money);
+        }
     }
     
     if (state == GameState::Paused && stateMachine->getPressed()[sf::Mouse::Button::Left].released)
@@ -144,7 +147,7 @@ bool GameScreen::manageEndGame()
     {
 
         state = GameState::Finished;
-
+        endMenu.setStats(health,money);
         if (health <= 0)
         {
             // przegrana

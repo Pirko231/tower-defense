@@ -3,13 +3,20 @@
 
 class EndMenu : public PauseMenu
 {
-    bool state;
+    sf::Text gameOverText;
 public:
     EndMenu();
 
     /// @brief ustawia stan - czy wygrana czy przegrana
     /// @param _state true jesli wygrana, false jesli przegrana
-    void setState(bool _state) {state = _state;}
+    void setState(bool _state)
+    {
+        if(_state)
+            gameOverText.setString("Victory");
+        else
+            gameOverText.setString("Defeat");
+        gameOverText.setPosition({background.getGlobalBounds().size.x / 2.f - gameOverText.getGlobalBounds().size.x / 2.f, background.getGlobalBounds().size.y / 5.f});
+    }
 
     bool getContinue(sf::Vector2i mousePos) const override {throw std::runtime_error("EndMenu::getContinue() is unsupported");}
 
@@ -17,8 +24,8 @@ public:
     {
         states.transform *= getTransform();
 
-        target.draw(background,states);
-        target.draw(quit,states);
-        target.draw(restart,states);
+        drawDefaultButtons(target,states);
+        drawStats(target,states);
+        target.draw(gameOverText,states);
     }
 };

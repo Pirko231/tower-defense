@@ -10,6 +10,12 @@ protected:
     sf::Sprite quit;
     sf::Sprite restart;
     sf::Sprite cont; // continue
+
+    sf::Sprite coinIcon;
+    sf::Text coinText;
+
+    sf::Sprite healthIcon;
+    sf::Text healthText;
 public:
     PauseMenu();
 
@@ -35,14 +41,15 @@ public:
         sf::Vector2f localCords = (sf::Vector2f)mousePos - getPosition();
         return getButtonBounds(cont.getGlobalBounds()).contains(localCords);
     }
+
+    void setStats(int health, int money) {healthText.setString(std::to_string(health)); coinText.setString(std::to_string(money));}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         states.transform *= getTransform();
 
-        target.draw(background,states);
-        target.draw(quit,states);
-        target.draw(restart,states);
+        drawDefaultButtons(target,states);
+        drawStats(target,states);
         target.draw(cont,states);
     }
 
@@ -53,5 +60,20 @@ private:
     {
         sf::FloatRect rect{{bounds.position.x * getScale().x, bounds.position.y * getScale().y}, {bounds.size.x * getScale().x, bounds.size.y * getScale().y}};
         return rect;
+    }
+protected:
+    void drawDefaultButtons(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        target.draw(background,states);
+        target.draw(quit,states);
+        target.draw(restart,states);
+    }
+
+    void drawStats(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        target.draw(coinIcon,states);
+        target.draw(coinText,states);
+        target.draw(healthIcon,states);
+        target.draw(healthText,states);
     }
 };
