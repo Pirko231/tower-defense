@@ -2,6 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include "../../checkpoint.hpp"
 #include "../healthbar.hpp"
+#include "../enemyStats.hpp"
+
+enum class EnemyType
+{
+    Empty = 0, // tylko dla error handling
+    BasicSoldier = 1,
+    EliteSoldier = 2,
+    MechaSoldier = 3,
+    SuperSoldier = 4
+};
 
 /// @class klasa abstrakcyjna do przeciwnikow
 /// @brief wzorzec metoda szablonowa (funkcja update)
@@ -17,6 +27,7 @@ class Enemy : public sf::Drawable, public sf::Transformable
     int moneyValue{};
 
     int arrivalTimer{}; // timer do dojsca do kolejnego checkpointa
+    static EnemyStats allStats;
 protected:
     sf::Sprite sprite;
 
@@ -24,7 +35,7 @@ protected:
 
     sf::Vector2f moveBy{};
 protected:
-    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed);
+    Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType,int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed);
 public:
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), sprite.getGlobalBounds().size};}
 

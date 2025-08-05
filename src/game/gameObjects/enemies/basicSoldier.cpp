@@ -10,5 +10,5 @@ namespace
 }
 
 BasicSoldier::BasicSoldier(Checkpoint::Iterator _checkpoint)
-    : Enemy(util::AssetLoader::get().basicSoldier, _checkpoint, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
+    : Enemy(util::AssetLoader::get().basicSoldier, _checkpoint, EnemyType::BasicSoldier, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
 {}

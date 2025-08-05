@@ -10,5 +10,5 @@ namespace
 }
 
 MechaSoldier::MechaSoldier(Checkpoint::Iterator checkpoint)
-    : Enemy(util::AssetLoader::get().mechaSoldier, checkpoint, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
+    : Enemy(util::AssetLoader::get().mechaSoldier, checkpoint,EnemyType::MechaSoldier , soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
 {}

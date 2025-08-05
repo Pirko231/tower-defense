@@ -13,6 +13,8 @@ public:
 
     void update(int health);
 
+    void setMax(int max) {maxHealth = max;}
+
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect{getPosition(), background.getSize()};}
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override

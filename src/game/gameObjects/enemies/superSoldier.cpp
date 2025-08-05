@@ -10,7 +10,7 @@ namespace
 }
 
 SuperSoldier::SuperSoldier(Checkpoint::Iterator checkpoint)
-    : Enemy(util::AssetLoader::get().superSoldier, checkpoint, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
+    : Enemy(util::AssetLoader::get().superSoldier, checkpoint, EnemyType::SuperSoldier, soldierMoneyValue, maxSoldierHealth, soldierDamage, soldierShield, soldierSpeed)
 {
     setScale({0.65f,0.65f});
 }

@@ -1,6 +1,8 @@
 #include "enemy.hpp"
 
-Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed)
+EnemyStats Enemy::allStats("resources/data/enemies.xml");
+
+Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, EnemyType enemyType, int _moneyValue, int _maxHealth, int _damage, int _shield, float _speed)
     : maxHealth(_maxHealth), speed(_speed), damage(_damage), shield(_shield), moneyValue(_moneyValue), sprite(_texture), currentCheckpoint(_checkpoint)
 {
     setOrigin(getGlobalBounds().getCenter());;
@@ -10,6 +12,15 @@ Enemy::Enemy(const sf::Texture& _texture, Checkpoint::Iterator _checkpoint, int 
         moveBy = mBy.normalized();
 
     setRotation(moveBy.angle());
+
+    auto stats = allStats[static_cast<int>(enemyType)];
+    damage = stats.damage;
+    shield = stats.shield;
+    speed = stats.speed;
+    moneyValue = stats.money;
+    maxHealth = stats.health;
+    health = maxHealth;
+    healthBar.setMax(maxHealth);
 }
 
 void Enemy::update()

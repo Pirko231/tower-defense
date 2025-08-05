@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enemies>
+    <enemy type="1">
+        <health>50</health>
+        <damage>5</damage>
+        <money>5</money>
+        <shield>0</shield>
+        <speed>1</speed>
+    </enemy>
+    <enemy type="2">
+        <health>50</health>
+        <damage>5</damage>
+        <money>5</money>
+        <shield>0</shield>
+        <speed>1</speed>
+    </enemy>
+    <enemy type="3">
+        <health>50</health>
+        <damage>5</damage>
+        <money>5</money>
+        <shield>0</shield>
+        <speed>1</speed>
+    </enemy>
+    <enemy type="4">
+        <health>50</health>
+        <damage>5</damage>
+        <money>5</money>
+        <shield>0</shield>
+        <speed>1</speed>
+    </enemy>
+</enemies>

@@ -8,15 +8,7 @@
 #include "../factories/mechaSoldierFactory.hpp"
 #include "../factories/superSoldierFactory.hpp"
 
-// na razie zdefiniuje tutaj potem sie przerzuci w razie potrzeby
-enum class EnemyType
-{
-    Empty = 0, // tylko dla error handling
-    BasicSoldier = 1,
-    EliteSoldier = 2,
-    MechaSoldier = 3,
-    SuperSoldier = 4
-};
+
 
 /// @brief przechowuje typ i timer do wyjscia
 struct PackedEnemy
