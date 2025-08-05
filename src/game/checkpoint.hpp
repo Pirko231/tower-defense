@@ -3,7 +3,7 @@
 #include "base.hpp"
 
 // checkpoint nie ma byc drawable, to jest tylko test
-class Checkpoint : public sf::Drawable, public sf::Transformable
+class Checkpoint : public sf::Transformable
 {
     sf::FloatRect bounds{{0.f,0.f}, static_cast<sf::Vector2f>(util::tileSize)};
 public:
@@ -11,15 +11,6 @@ public:
     Checkpoint(sf::Vector2f position)
     {
         setPosition(position);
-    }
-
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
-    {
-        states.transform *= getTransform();
-        sf::RectangleShape shape(bounds.size);
-        shape.setFillColor(sf::Color::Red);
-
-        target.draw(shape, states);
     }
 
     sf::FloatRect getGlobalBounds() const {return sf::FloatRect(getPosition(), bounds.size);}
