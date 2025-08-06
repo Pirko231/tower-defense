@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <levels>
-  <level number="1">
+  <level>
     <price>30</price>
     <damage>25</damage>
     <range>4</range>
     <firespeed>100</firespeed>
   </level>
-  <level number="2">
+  <level>
     <price>50</price>
     <damage>28</damage>
     <range>4</range>
     <firespeed>100</firespeed>
   </level>
-  <level number="3">
+  <level>
     <price>80</price>
     <damage>35</damage>
     <range>5</range>

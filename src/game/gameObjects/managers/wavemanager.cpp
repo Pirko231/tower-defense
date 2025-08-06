@@ -74,7 +74,7 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
         loadEnemies("resources/data/maps/defaultEnemies.txt");
     }
 
-
+    std::erase_if(enemies, [](auto& e){return e.empty();});
     maxWaves = enemies.size();
     waves = 0;
 }
