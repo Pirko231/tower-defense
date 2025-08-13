@@ -6,7 +6,7 @@
         <name>Meadows</name>
         <decorAmount>2</decorAmount>
         <health>100</health>
-        <money>100</money>
+        <money>100000</money>
     </map>
     <map number="1">
         <mapPath>map2.txt</mapPath>
