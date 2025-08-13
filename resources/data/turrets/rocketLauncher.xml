@@ -7,15 +7,21 @@
     <firespeed>300</firespeed>
   </level>
   <level>
-    <price>100</price>
-    <damage>200</damage>
-    <range>7</range>
+    <price>150</price>
+    <damage>180</damage>
+    <range>6</range>
     <firespeed>250</firespeed>
   </level>
   <level>
-    <price>200</price>
-    <damage>400</damage>
-    <range>8</range>
+    <price>300</price>
+    <damage>250</damage>
+    <range>7</range>
     <firespeed>200</firespeed>
+  </level>
+  <level>
+    <price>800</price>
+    <damage>350</damage>
+    <range>8</range>
+    <firespeed>100</firespeed>
   </level>
 </levels>

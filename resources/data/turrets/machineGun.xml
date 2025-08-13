@@ -8,24 +8,24 @@
   </level>
   <level>
     <price>25</price>
-    <damage>7</damage>
+    <damage>6</damage>
     <range>1</range>
-    <firespeed>10</firespeed>
+    <firespeed>9</firespeed>
   </level>
   <level>
     <price>50</price>
-    <damage>8</damage>
+    <damage>7</damage>
     <range>1</range>
     <firespeed>9</firespeed>
   </level>
     <level>
-    <price>120</price>
+    <price>160</price>
     <damage>10</damage>
     <range>2</range>
     <firespeed>9</firespeed>
   </level>
   <level>
-    <price>400</price>
+    <price>500</price>
     <damage>10</damage>
     <range>3</range>
     <firespeed>6</firespeed>

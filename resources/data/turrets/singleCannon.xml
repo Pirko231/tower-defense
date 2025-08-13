@@ -7,7 +7,7 @@
     <firespeed>100</firespeed>
   </level>
   <level>
-    <price>10</price>
+    <price>15</price>
     <damage>28</damage>
     <range>4</range>
     <firespeed>80</firespeed>
@@ -16,7 +16,7 @@
     <price>30</price>
     <damage>30</damage>
     <range>4</range>
-    <firespeed>80</firespeed>
+    <firespeed>72</firespeed>
   </level>
   <level>
     <price>80</price>

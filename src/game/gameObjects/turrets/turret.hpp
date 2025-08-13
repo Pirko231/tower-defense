@@ -21,7 +21,7 @@ public:
     /// @brief oblicza i zwraca obrazenia na klatke
     virtual float getDPS() const {return (float)upgrades.getCurrentStats().damage / (float)maxCooldown;}
 
-    virtual float getNextDps() const {return (float)upgrades.getNextStats().damage / (float)maxCooldown;}
+    virtual float getNextDps() const {return (float)upgrades.getNextStats().damage / (float)upgrades.getNextStats().maxFireSpeed;}
 
     float getRange() const {return upgrades.getCurrentStats().range;}
 
