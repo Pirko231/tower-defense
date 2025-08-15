@@ -44,7 +44,10 @@ public:
         if(firstWave)
             return false;
 
-        return currentWave != enemies.end() || currentWave->size() != 0;
+        if(currentWave == enemies.end())
+            return false;
+
+        return currentWave->size() != 0;
     }
 
     /// @brief ustawia kolejna fale

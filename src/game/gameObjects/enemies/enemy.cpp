@@ -59,6 +59,8 @@ void Enemy::nextDestination()
     if(!currentCheckpoint.hasNext())
         return;
     currentCheckpoint++;
+    if(!currentCheckpoint.hasNext())
+        return;
 
     calculateMoveBy();
 }

@@ -11,7 +11,7 @@ endif()
 
 # 🟢 Ustawienie ścieżek do SFML (zmień na swoją lokalizację SFML)
 
-set(SFML_ROOT "/opt/sfml-3")
+set(SFML_ROOT "C:/SFML/SFML-3.0.0")
 set(CMAKE_PREFIX_PATH "/opt/sfml-3")
 set(SFML_INCLUDE_DIR "${SFML_ROOT}/include")
 set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
@@ -28,29 +28,12 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects/obj)
 include_directories(${CMAKE_SOURCE_DIR}/lib)
 
-find_package(OpenGL REQUIRED)
-
-set(IMGUI_DIR "${CMAKE_SOURCE_DIR}/lib/imgui")
-add_library(imgui
-    ${IMGUI_DIR}/imgui.cpp
-    ${IMGUI_DIR}/imgui_draw.cpp
-    ${IMGUI_DIR}/imgui_tables.cpp
-    ${IMGUI_DIR}/imgui_widgets.cpp
-    ${IMGUI_DIR}/backends/imgui-SFML.cpp  # albo sfml, glfw, itd.
-    ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
-        src/utils/base.hpp
-)
-
 set(XML_DIR "${CMAKE_SOURCE_DIR}/lib")
 add_library(tinyxml2
     ${XML_DIR}/tinyxml2.cpp
     ${XML_DIR}/tinyxml2.hpp
     ${XML_DIR}/srlzio.hpp
 )
-
-target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
-
-
 find_package(SFML 3.0.0 COMPONENTS System Window Graphics Audio Network REQUIRED)
 
 
@@ -139,4 +122,4 @@ target_compile_features(main PRIVATE cxx_std_20)
 add_compile_options(-fdiagnostics-color=always)
 
 # Linkowanie SFML
-target_link_libraries(main PRIVATE ${SFML_LIBS} tinyxml2 imgui OpenGL::GL)
+target_link_libraries(main PRIVATE ${SFML_LIBS} tinyxml2)

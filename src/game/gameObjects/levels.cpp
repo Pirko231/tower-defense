@@ -6,7 +6,7 @@ Levels::Levels(const std::filesystem::path &filePath)
 {
     using namespace tinyxml2;
     XMLDocument doc;
-    XMLError result = doc.LoadFile(filePath.c_str());
+    XMLError result = doc.LoadFile(filePath.string().c_str());
     if (result != XML_SUCCESS) {
         std::cerr << "Nie udało się wczytać pliku XML! Kod błędu: " << result << std::endl;
         return;

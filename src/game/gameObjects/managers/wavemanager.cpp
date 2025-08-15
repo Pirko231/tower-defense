@@ -8,8 +8,11 @@ void WaveManager::update()
 {
     if(firstWave)
         return;
+    int waveSize = 0;
+    if(currentWave != enemies.end())
+        waveSize = currentWave->size();
 
-    if(currentWave->size() == 0 || currentWave == enemies.end())
+    if(waveSize == 0 || currentWave == enemies.end())
         return;
 
     // timer do odmierzania czasu do pojawiania sie kolejnych przeciwnikow
@@ -22,13 +25,15 @@ void WaveManager::update()
     
     enemyManager->addEnemy(getFactory(currentWave->back().type).get());
     currentWave->pop_back();
+    waveSize--;
+    if(currentWave->size() > 0)
+        timer = currentWave->back().timer;
     if(currentWave->size() == 0)
     {
         enemies.erase(enemies.begin());
         currentWave = enemies.end();
+        waveSize = 0;
     }
-    if(currentWave->size() > 0)
-        timer = currentWave->back().timer;
 }
 
 void WaveManager::loadEnemies(const std::filesystem::path &filePath)
@@ -82,8 +87,17 @@ void WaveManager::loadEnemies(const std::filesystem::path &filePath)
 PackedEnemy WaveManager::loadEnemy(std::string &line)
 {
     PackedEnemy result{EnemyType::Empty, 0};
-    std::string timer = std::string(line.begin() + line.find(',') + 1, line.end());
-    line.erase(line.begin() + line.find(','), line.end());
+    std::string timer{};
+    if(auto pos = line.find(','); pos != std::string::npos && line.length() >= 3)
+    {
+        timer = std::string(line.begin() + pos + 1, line.end());
+        line.erase(line.begin() + line.find(','), line.end());
+    }
+    else
+    {
+        std::cerr << "Error at enemy loading(,)" << std::endl;
+        return result;
+    }
     try
     {
         int val = std::stoi(timer);

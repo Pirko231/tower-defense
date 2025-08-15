@@ -24,7 +24,7 @@ public:
     MapInfo(const std::filesystem::path& path)
     {
         tinyxml2::XMLDocument doc;
-        auto result = doc.LoadFile(path.c_str());
+        auto result = doc.LoadFile(path.string().c_str());
         if(result != tinyxml2::XML_SUCCESS)
         {
             std::cerr << "XML file failed to open " << path << '\n';

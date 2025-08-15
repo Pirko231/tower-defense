@@ -1,4 +1,5 @@
 #include "enemymanager.hpp"
+#include <algorithm>
 
 EnemyManager::EnemyManager(Map* _map, int* _health, int* _money)
     : map(_map), baseHealth(_health), money(_money)
@@ -9,20 +10,16 @@ EnemyManager::EnemyManager(Map* _map, int* _health, int* _money)
 
 void EnemyManager::update()
 {
+    // kasowanie po zniszczeniu przez dzialka
     std::erase_if(enemies, [this](const std::unique_ptr<Enemy>& e)->bool
         {if (e->shouldDelete()) {*money += e->getMoney(); return true;} return false;});
-    for(auto it = enemies.begin(); it != enemies.end(); it++)
-    {
-        std::unique_ptr<Enemy>& enemy = *it;
-        enemy->update();
-        if (!enemy->hasNext())
-        {
-            *baseHealth -= enemy->getDamage();
-            enemies.erase(it);
-            it--;
-        }
-    }
 
+    // ruch
+    std::for_each(enemies.begin(), enemies.end(), [this](const auto& e){e->update();});
+
+    // kasowanie kiedy dojda do konca mapy
+    std::erase_if(enemies, [this](const auto& e)
+        {if (!e->hasNext()) {*baseHealth -= e->getDamage(); return true;} return false;});
 }
 
 Enemy* EnemyManager::getTheMostFarEnemy(sf::FloatRect area)
